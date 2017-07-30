@@ -1,8 +1,10 @@
 LightProject项目
 
 后端采用Maven+Spring+SpringMVC+Mybatis，
-结合微信提供的API进行开发，具体API介绍可查看微信公众平台：https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1445241432
-图片等资料的存储使用了七牛云 https://www.qiniu.com/
+结合微信提供的API进行开发，具体API介绍可查看微信公众平台：
+https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1445241432
+图片等资料的存储使用了七牛云
+https://www.qiniu.com/
 
 LightProject为后端JAVA程序
 light-generator为Mybatis逆向工程
@@ -29,7 +31,6 @@ API接口说明
     },
     "data": {
         "XXX":"XXX"
-
     }
 }
 含有分页的消息
