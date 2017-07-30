@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.LgPostEmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.light.pojo.LgPostEmployee" >
+    <id column="peid" property="peid" jdbcType="INTEGER" />
+    <result column="post_id" property="postId" jdbcType="INTEGER" />
+    <result column="employee_id" property="employeeId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    peid, post_id, employee_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.light.pojo.LgPostEmployeeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lg_post_employee
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lg_post_employee
+    where peid = #{peid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lg_post_employee
+    where peid = #{peid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.light.pojo.LgPostEmployeeExample" >
+    delete from lg_post_employee
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.light.pojo.LgPostEmployee" >
+    insert into lg_post_employee (peid, post_id, employee_id
+      )
+    values (#{peid,jdbcType=INTEGER}, #{postId,jdbcType=INTEGER}, #{employeeId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.light.pojo.LgPostEmployee" >
+    insert into lg_post_employee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="peid != null" >
+        peid,
+      </if>
+      <if test="postId != null" >
+        post_id,
+      </if>
+      <if test="employeeId != null" >
+        employee_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="peid != null" >
+        #{peid,jdbcType=INTEGER},
+      </if>
+      <if test="postId != null" >
+        #{postId,jdbcType=INTEGER},
+      </if>
+      <if test="employeeId != null" >
+        #{employeeId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.light.pojo.LgPostEmployeeExample" resultType="java.lang.Integer" >
+    select count(*) from lg_post_employee
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update lg_post_employee
+    <set >
+      <if test="record.peid != null" >
+        peid = #{record.peid,jdbcType=INTEGER},
+      </if>
+      <if test="record.postId != null" >
+        post_id = #{record.postId,jdbcType=INTEGER},
+      </if>
+      <if test="record.employeeId != null" >
+        employee_id = #{record.employeeId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update lg_post_employee
+    set peid = #{record.peid,jdbcType=INTEGER},
+      post_id = #{record.postId,jdbcType=INTEGER},
+      employee_id = #{record.employeeId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.light.pojo.LgPostEmployee" >
+    update lg_post_employee
+    <set >
+      <if test="postId != null" >
+        post_id = #{postId,jdbcType=INTEGER},
+      </if>
+      <if test="employeeId != null" >
+        employee_id = #{employeeId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where peid = #{peid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.light.pojo.LgPostEmployee" >
+    update lg_post_employee
+    set post_id = #{postId,jdbcType=INTEGER},
+      employee_id = #{employeeId,jdbcType=INTEGER}
+    where peid = #{peid,jdbcType=INTEGER}
+  </update>
+</mapper>

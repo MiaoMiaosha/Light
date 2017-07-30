@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>员工档案</title>
+    <link rel="stylesheet" type="text/css" href="../../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common/common.css">
+</head>
+
+<body>
+    <div class="com_table t_center">
+        <form action="" class="form-horizontal" role="form" id="staffFrom">
+            <div class="form-group">
+                <label for="name" class="col-xs-4 control-label">姓名</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="eid" id="eid">
+                    <input type="text" name="name" id="name" class="form-control" placeholder="请输入姓名" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="job" class="col-xs-4 control-label">职称</label>
+                <div class="col-xs-8">
+                    <select name="job" id="job" class="form-control">
+                                    <option value="1">设计师</option>
+                                    <option value="2">合同人</option>
+                                </select>
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <label for="companyName" class="col-xs-4 control-label">单位名称</label>
+                <div class="col-xs-8">
+                    <input type="text" name="companyName" id="companyName" class="form-control" placeholder="请输入单位地址" />
+                </div>
+            </div>-->
+            <!--<div class="form-group">
+                <label for="companyAddress" class="col-xs-4 control-label">单位地址</label>
+                <div class="col-xs-8">
+                    <input type="text" name="companyAddress" id="companyAddress" class="form-control" placeholder="请输入单位地址" />
+                </div>
+            </div>-->
+            <div class="form-group">
+                <label for="companyAccount" class="col-xs-4 control-label">个人银行账号</label>
+                <div class="col-xs-8">
+                    <input type="text" name="companyAccount" id="companyAccount" class="form-control" placeholder="请输入单位账号">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="accountBank" class="col-xs-4 control-label">银行支行</label>
+                <div class="col-xs-8">
+                    <input type="text" name="accountBank" id="accountBank" class="form-control" placeholder="请输入银行支行">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="birthday" class="col-xs-4 control-label">出生</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="birthday" id="birthday">
+                    <input type="date" name="birthday1" id="birthday1" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sex" class="col-xs-4 control-label">性别</label>
+                <div class="col-xs-8">
+                    <select name="sex" id="sex" class="form-control">
+                                    <option value="0">保密</option>
+                                    <option value="1">男</option>
+                                    <option value="2">女</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idcardNumber" class="col-xs-4 control-label">身份证号</label>
+                <div class="col-xs-8">
+                    <input type="text" name="idcardNumber" id="idcardNumber" class="form-control" placeholder="请输入身份证号">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idcardAddress" class="col-xs-4 control-label">身份证地址</label>
+                <div class="col-xs-8">
+                    <input type="text" name="idcardAddress" id="idcardAddress" class="form-control" placeholder="请输入身份证地址">
+                </div>
+            </div>
+
+            <div class="form-group editbox">
+                <label class="col-xs-4 control-label">证件</label>
+                <div class="col-xs-8">
+                    <p class="picNotes">身份证正面照</p>
+                </div>
+            </div>
+            <div class="form-group filebox editbox">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="picUpBox">
+                        <input type="hidden" name="idcardFrontUrl" id="idcardFrontUrl">
+                        <input type="file" accept="image/*" class="com_fileup" name="idcardFrontUrl1" id="idcardFrontUrl1" onchange="getImg(this)" />
+                        <button type="button" id="addPic" class="btn btn-info com_add addPic">上传身份证正面照</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group picbox editbox">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="com_picGroup picGroup" id="sfzz">
+                        <ul class="clearfix"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group editbox">
+                <label class="col-xs-4 control-label">证件</label>
+                <div class="col-xs-8">
+                    <p class="picNotes">身份证反面照</p>
+                </div>
+            </div>
+            <div class="form-group filebox editbox">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="picUpBox">
+                        <input type="hidden" name="idcardBehindUrl" id="idcardBehindUrl">
+                        <input type="file" accept="image/*" class="com_fileup" name="idcardBehindUrl1" id="idcardBehindUrl1" onchange="getImg(this)" />
+                        <button type="button" id="" class="btn btn-info com_add addPic">上传身份证反面照</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group picbox editbox">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="com_picGroup picGroup" id="sfzf">
+                        <ul class="clearfix"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group editbox">
+                <label class="col-xs-4 control-label">学历</label>
+                <div class="col-xs-8">
+                    <p class="picNotes">学历照片</p>
+                </div>
+            </div>
+            <div class="form-group filebox editbox">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="picUpBox">
+                        <input type="hidden" name="education" id="education">
+                        <input type="file" accept="image/*" class="com_fileup" name="education1" id="education1" onchange="getImg(this)" />
+                        <button type="button" id="" class="btn btn-info com_add addPic">上传学历图片</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group picbox editbox">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="com_picGroup picGroup" id="xl">
+                        <ul class="clearfix"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group editbox">
+                <label class="col-xs-4 control-label">合同上传</label>
+                <div class="col-xs-8">
+                    <p class="picNotes">合同照片</p>
+                </div>
+            </div>
+            <div class="form-group filebox editbox">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="picUpBox">
+                        <input type="hidden" name="contact" id="contact">
+                        <input type="file" accept="image/*" class="com_fileup" name="contact1" id="contact1" onchange="getImg(this)" />
+                        <button type="button" id="" class="btn btn-info com_add addPic">上传合同</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group picbox editbox">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="com_picGroup picGroup" id="ht">
+                        <ul class="clearfix"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="probationBaseSalary" class="col-xs-4 control-label">试用底薪</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="probationBaseSalary" id="probationBaseSalary" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="officialSalaryOne" class="col-xs-4 control-label">正式底薪一</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="officialSalaryOne" id="officialSalaryOne" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="officialSalaryTwo" class="col-xs-4 control-label">正式底薪二</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="officialSalaryTwo" id="officialSalaryTwo" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="officialSalaryThree" class="col-xs-4 control-label">正式底薪三</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="officialSalaryThree" id="officialSalaryThree" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="officialSalaryFour" class="col-xs-4 control-label">正式底薪四</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="officialSalaryFour" id="officialSalaryFour" class="form-control" value="0">
+                </div>
+            </div>
+
+            <div class="form-group check-box d_none">
+                <label for="status" class="col-xs-4 control-label">审核状态</label>
+                <div class="col-xs-8">
+                    <select name="status" id="status" class="form-control">
+                                    <option value="0">解冻</option>
+                                    <option value="1">冻结</option>
+                                    <!--<option value="2">拒绝申请</option>-->
+                                </select>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="mobile" class="col-xs-4 control-label">电话</label>
+                <div class="col-xs-8">
+                    <input type="tel" name="mobile" id="mobile" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="qq" class="col-xs-4 control-label">QQ</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="qq" id="qq" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="wx" class="col-xs-4 control-label">微信号</label>
+                <div class="col-xs-8">
+                    <input type="text" name="wx" id="wx" class="form-control" placeholder="请输入微信号">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dearFriendName" class="col-xs-4 control-label">亲密朋友</label>
+                <div class="col-xs-8">
+                    <input type="text" name="dearFriendName" id="dearFriendName" class="form-control" placeholder="请输入亲密朋友的名字">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dearFriendMobile" class="col-xs-4 control-label">电话</label>
+                <div class="col-xs-8">
+                    <input type="tel" name="dearFriendMobile" id="dearFriendMobile" class="form-control" placeholder="请输入亲密朋友的电话">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="entryTime" class="col-xs-4 control-label">入职时间</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="entryTime" id="entryTime">
+                    <input type="date" name="entryTime1" id="entryTime1" class="form-control">
+                </div>
+            </div>
+            <div class="form-group yg">
+                <label for="username" class="col-xs-4 control-label">员工账号</label>
+                <div class="col-xs-8">
+                    <input type="text" name="username" id="username" class="form-control">
+                </div>
+            </div>
+            <div class="form-group yg">
+                <label for="password" class="col-xs-4 control-label">员工密码</label>
+                <div class="col-xs-8">
+                    <input type="text" name="password" id="password" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <!--<button type="button" class="btn btnAdd changeBtn" id="addTable">确认提交</button>-->
+                <button type="button" class="btn btnAdd" id="editTable">确认修改</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="../../lib/jquery-2.1.1.min.js "></script>
+<script src="../../lib/jquery-migrate-1.2.1.min.js "></script>
+<script src="../../lib/bootstrap/js/bootstrap.min.js "></script>
+<script src="../../js/common.js "></script>
+<script src="../../js/app/perinfo/staff_add.js "></script>
+<script>
+    $(function() {
+        checkLoginStatus();
+    })
+</script>
+
+</html>

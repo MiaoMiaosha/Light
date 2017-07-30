@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.LgNewsImageMapper" >
+  <resultMap id="BaseResultMap" type="com.light.pojo.LgNewsImage" >
+    <id column="ni_id" property="niId" jdbcType="INTEGER" />
+    <result column="news_id" property="newsId" jdbcType="INTEGER" />
+    <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ni_id, news_id, img_url
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.light.pojo.LgNewsImageExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lg_news_image
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lg_news_image
+    where ni_id = #{niId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lg_news_image
+    where ni_id = #{niId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.light.pojo.LgNewsImageExample" >
+    delete from lg_news_image
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.light.pojo.LgNewsImage" >
+    insert into lg_news_image (ni_id, news_id, img_url
+      )
+    values (#{niId,jdbcType=INTEGER}, #{newsId,jdbcType=INTEGER}, #{imgUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.light.pojo.LgNewsImage" >
+    insert into lg_news_image
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="niId != null" >
+        ni_id,
+      </if>
+      <if test="newsId != null" >
+        news_id,
+      </if>
+      <if test="imgUrl != null" >
+        img_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="niId != null" >
+        #{niId,jdbcType=INTEGER},
+      </if>
+      <if test="newsId != null" >
+        #{newsId,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null" >
+        #{imgUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.light.pojo.LgNewsImageExample" resultType="java.lang.Integer" >
+    select count(*) from lg_news_image
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update lg_news_image
+    <set >
+      <if test="record.niId != null" >
+        ni_id = #{record.niId,jdbcType=INTEGER},
+      </if>
+      <if test="record.newsId != null" >
+        news_id = #{record.newsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.imgUrl != null" >
+        img_url = #{record.imgUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update lg_news_image
+    set ni_id = #{record.niId,jdbcType=INTEGER},
+      news_id = #{record.newsId,jdbcType=INTEGER},
+      img_url = #{record.imgUrl,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.light.pojo.LgNewsImage" >
+    update lg_news_image
+    <set >
+      <if test="newsId != null" >
+        news_id = #{newsId,jdbcType=INTEGER},
+      </if>
+      <if test="imgUrl != null" >
+        img_url = #{imgUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ni_id = #{niId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.light.pojo.LgNewsImage" >
+    update lg_news_image
+    set news_id = #{newsId,jdbcType=INTEGER},
+      img_url = #{imgUrl,jdbcType=VARCHAR}
+    where ni_id = #{niId,jdbcType=INTEGER}
+  </update>
+</mapper>

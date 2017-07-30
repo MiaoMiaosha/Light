@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.LgLoginUserMapper" >
+  <resultMap id="BaseResultMap" type="com.light.pojo.LgLoginUser" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_type_id" property="userTypeId" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="role_ids" property="roleIds" jdbcType="VARCHAR" />
+    <result column="is_locked" property="isLocked" jdbcType="INTEGER" />
+    <result column="user_type" property="userType" jdbcType="INTEGER" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="unionid" property="unionid" jdbcType="VARCHAR" />
+    <result column="head_img" property="headImg" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, user_type_id, username, password, role_ids, is_locked, user_type, nick_name, 
+    open_id, unionid, head_img
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.light.pojo.LgLoginUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lg_login_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lg_login_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lg_login_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.light.pojo.LgLoginUserExample" >
+    delete from lg_login_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.light.pojo.LgLoginUser" >
+    insert into lg_login_user (id, user_type_id, username, 
+      password, role_ids, is_locked, 
+      user_type, nick_name, open_id, 
+      unionid, head_img)
+    values (#{id,jdbcType=INTEGER}, #{userTypeId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{roleIds,jdbcType=VARCHAR}, #{isLocked,jdbcType=INTEGER}, 
+      #{userType,jdbcType=INTEGER}, #{nickName,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, 
+      #{unionid,jdbcType=VARCHAR}, #{headImg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.light.pojo.LgLoginUser" >
+    insert into lg_login_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userTypeId != null" >
+        user_type_id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="roleIds != null" >
+        role_ids,
+      </if>
+      <if test="isLocked != null" >
+        is_locked,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="unionid != null" >
+        unionid,
+      </if>
+      <if test="headImg != null" >
+        head_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userTypeId != null" >
+        #{userTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="roleIds != null" >
+        #{roleIds,jdbcType=VARCHAR},
+      </if>
+      <if test="isLocked != null" >
+        #{isLocked,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null" >
+        #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        #{headImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.light.pojo.LgLoginUserExample" resultType="java.lang.Integer" >
+    select count(*) from lg_login_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update lg_login_user
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userTypeId != null" >
+        user_type_id = #{record.userTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.username != null" >
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleIds != null" >
+        role_ids = #{record.roleIds,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isLocked != null" >
+        is_locked = #{record.isLocked,jdbcType=INTEGER},
+      </if>
+      <if test="record.userType != null" >
+        user_type = #{record.userType,jdbcType=INTEGER},
+      </if>
+      <if test="record.nickName != null" >
+        nick_name = #{record.nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.openId != null" >
+        open_id = #{record.openId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.unionid != null" >
+        unionid = #{record.unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.headImg != null" >
+        head_img = #{record.headImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update lg_login_user
+    set id = #{record.id,jdbcType=INTEGER},
+      user_type_id = #{record.userTypeId,jdbcType=INTEGER},
+      username = #{record.username,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      role_ids = #{record.roleIds,jdbcType=VARCHAR},
+      is_locked = #{record.isLocked,jdbcType=INTEGER},
+      user_type = #{record.userType,jdbcType=INTEGER},
+      nick_name = #{record.nickName,jdbcType=VARCHAR},
+      open_id = #{record.openId,jdbcType=VARCHAR},
+      unionid = #{record.unionid,jdbcType=VARCHAR},
+      head_img = #{record.headImg,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.light.pojo.LgLoginUser" >
+    update lg_login_user
+    <set >
+      <if test="userTypeId != null" >
+        user_type_id = #{userTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="roleIds != null" >
+        role_ids = #{roleIds,jdbcType=VARCHAR},
+      </if>
+      <if test="isLocked != null" >
+        is_locked = #{isLocked,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null" >
+        unionid = #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        head_img = #{headImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.light.pojo.LgLoginUser" >
+    update lg_login_user
+    set user_type_id = #{userTypeId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      role_ids = #{roleIds,jdbcType=VARCHAR},
+      is_locked = #{isLocked,jdbcType=INTEGER},
+      user_type = #{userType,jdbcType=INTEGER},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      unionid = #{unionid,jdbcType=VARCHAR},
+      head_img = #{headImg,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

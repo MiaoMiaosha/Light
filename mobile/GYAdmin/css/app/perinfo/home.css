@@ -1,0 +1,198 @@
+.menu {
+    padding: 20px 0;
+}
+
+.menu .itembox {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.menu .itembox i {
+    font-size: 32px;
+    color: #fff;
+}
+
+.bg2d98f8 {
+    background: #2d98f8;
+}
+
+.bgfdae15 {
+    background: #fdae15;
+}
+
+.bgf54f91 {
+    background: #f54f91;
+}
+
+.bg84cc2c {
+    background: #84cc2c;
+}
+
+.bg1bc5bc {
+    background: #1bc5bc;
+}
+
+.bgd479fa {
+    background: #d479fa;
+}
+
+.bgf8d030 {
+    background: #f8d030;
+}
+
+.bgfb6b46 {
+    background: #fb6b46;
+}
+
+.bgf54f91 i,
+.bg84cc2c i,
+.bgf8d030 i {
+    line-height: 54px;
+}
+
+.menu .itembox+p {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.menu .itembox+p.nob {
+    margin-bottom: 0px;
+}
+
+.case h3,
+.f_devices h3 {
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+    padding: 0 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.case h3 i,
+.f_devices h3 i {
+    font-size: 14px;
+    float: right;
+}
+
+.case .caseGroup {
+    padding: 20px 0;
+}
+
+.case .col-xs-4 {
+    padding: 0 1%;
+}
+
+.case .casebox img {
+    height: 65px;
+    overflow: hidden;
+}
+
+.case .introbox {
+    font-size: 12px;
+}
+
+.case .introbox p.name {
+    margin: 5px 0;
+    font-weight: 600;
+}
+
+.case .introbox i.com_num {
+    color: #fda80f;
+    word-break: break-all;
+}
+
+.picWall {
+    padding: 20px 0;
+    background: #f5f3f4;
+}
+
+.picWall .col-xs-12 {
+    padding: 0;
+}
+
+.picWall .b10 {
+    margin-bottom: 5px;
+}
+
+.picWall .pbox {
+    padding: 0 2%;
+}
+
+.picWall .p2 {
+    padding: 0;
+    padding-right: 2%;
+}
+
+.picWall .p3 {
+    padding: 0;
+    padding-left: 3%;
+}
+
+.picWall .p4,
+.picWall .p5 {
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+.picWall .p4 {
+    padding-right: 3%;
+}
+
+.picWall .p5 {
+    padding-left: 2%;
+}
+
+.f_devices .deviceBox {
+    padding: 20px 0;
+}
+
+.f_devices .deviceBox .col-xs-6 {
+    padding: 0 2%;
+}
+
+.f_devices .deviceItem .infobox {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.f_devices .infobox p.name {
+    margin: 10px 0;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.f_devices .infobox p.price {
+    color: #666;
+}
+
+.f_devices .infobox p.price i {
+    color: #fda80f;
+}
+
+.zscase {
+    padding: 20px 0;
+    background: #f5f3f4;
+}
+
+.zscase .col-xs-3 {
+    padding: 0 1%;
+}
+
+.zscase .zsbox {
+    background: #fff;
+}
+
+.zscase .zsbox img {
+    height: 50px;
+}
+
+.zscase .zsbox p {
+    padding: 10px 0;
+    font-size: 12px;
+    text-align: center;
+}

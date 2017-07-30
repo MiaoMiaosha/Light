@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.LgPostMapper" >
+  <resultMap id="BaseResultMap" type="com.light.pojo.LgPost" >
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="login_user_id" property="loginUserId" jdbcType="INTEGER" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="post_title" property="postTitle" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="upload_img" property="uploadImg" jdbcType="VARCHAR" />
+    <result column="upload_doc" property="uploadDoc" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pid, login_user_id, nick_name, post_title, type, content, upload_img, upload_doc, 
+    create_time, project_id, status, open_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.light.pojo.LgPostExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lg_post
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lg_post
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lg_post
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.light.pojo.LgPostExample" >
+    delete from lg_post
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.light.pojo.LgPost" >
+    insert into lg_post (pid, login_user_id, nick_name, 
+      post_title, type, content, 
+      upload_img, upload_doc, create_time, 
+      project_id, status, open_id
+      )
+    values (#{pid,jdbcType=INTEGER}, #{loginUserId,jdbcType=INTEGER}, #{nickName,jdbcType=VARCHAR}, 
+      #{postTitle,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+      #{uploadImg,jdbcType=VARCHAR}, #{uploadDoc,jdbcType=VARCHAR}, #{createTime,jdbcType=INTEGER}, 
+      #{projectId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.light.pojo.LgPost" >
+    insert into lg_post
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="loginUserId != null" >
+        login_user_id,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="postTitle != null" >
+        post_title,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="uploadImg != null" >
+        upload_img,
+      </if>
+      <if test="uploadDoc != null" >
+        upload_doc,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="loginUserId != null" >
+        #{loginUserId,jdbcType=INTEGER},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="postTitle != null" >
+        #{postTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadImg != null" >
+        #{uploadImg,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadDoc != null" >
+        #{uploadDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.light.pojo.LgPostExample" resultType="java.lang.Integer" >
+    select count(*) from lg_post
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update lg_post
+    <set >
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.loginUserId != null" >
+        login_user_id = #{record.loginUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.nickName != null" >
+        nick_name = #{record.nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postTitle != null" >
+        post_title = #{record.postTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uploadImg != null" >
+        upload_img = #{record.uploadImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uploadDoc != null" >
+        upload_doc = #{record.uploadDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.projectId != null" >
+        project_id = #{record.projectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.openId != null" >
+        open_id = #{record.openId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update lg_post
+    set pid = #{record.pid,jdbcType=INTEGER},
+      login_user_id = #{record.loginUserId,jdbcType=INTEGER},
+      nick_name = #{record.nickName,jdbcType=VARCHAR},
+      post_title = #{record.postTitle,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
+      content = #{record.content,jdbcType=VARCHAR},
+      upload_img = #{record.uploadImg,jdbcType=VARCHAR},
+      upload_doc = #{record.uploadDoc,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=INTEGER},
+      project_id = #{record.projectId,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      open_id = #{record.openId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.light.pojo.LgPost" >
+    update lg_post
+    <set >
+      <if test="loginUserId != null" >
+        login_user_id = #{loginUserId,jdbcType=INTEGER},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="postTitle != null" >
+        post_title = #{postTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadImg != null" >
+        upload_img = #{uploadImg,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadDoc != null" >
+        upload_doc = #{uploadDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.light.pojo.LgPost" >
+    update lg_post
+    set login_user_id = #{loginUserId,jdbcType=INTEGER},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      post_title = #{postTitle,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      upload_img = #{uploadImg,jdbcType=VARCHAR},
+      upload_doc = #{uploadDoc,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=INTEGER},
+      project_id = #{projectId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      open_id = #{openId,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+</mapper>

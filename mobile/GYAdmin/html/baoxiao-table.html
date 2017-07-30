@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>报销表</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/common/common.css">
+</head>
+
+<body>
+    <div class="com_table t_center">
+        <form action="" class="form-horizontal" role="form" id="baoxiaoForm">
+            <div class="form-group">
+                <label for="createTime" class="col-xs-4 control-label">日期</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="rid" id="rid">
+                    <input type="hidden" name="createTime" id="createTime">
+                    <input type="date" name="createTime1" id="createTime1" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="reimburseUserType" class="col-xs-4 control-label">报销人</label>
+                <div class="col-xs-8">
+                    <select name="reimburseUserType" id="reimburseUserType" class="form-control" onchange="getUserId(this)">
+                                    <option value="1">调用员工档案</option>
+                                    <option value="2">调用合作方档案</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="reimburseUserId" class="col-xs-4 control-label">员工</label>
+                <div class="col-xs-8">
+                    <select name="reimburseUserId" id="reimburseUserId" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="money" class="col-xs-4 control-label">报销金额</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="money" id="money" class="form-control" onkeyup="checkMoney(this)">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="marketName" class="col-xs-4 control-label">市场名称</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="marketName" id="marketName">
+                    <select name="marketNameType" id="marketNameType" class="form-control">
+                        
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="typeId" class="col-xs-4 control-label">报销类型</label>
+                <div class="col-xs-8">
+                    <select name="typeId" id="typeId" class="form-control">
+                                    <!--<option value="0">市场差旅费</option>
+                                    <option value="1">谈业务差旅</option>
+                                    <option value="2">客户接待</option>
+                                    <option value="3">快递图文</option>
+                                    <option value="4">设计院挂号</option>
+                                    <option value="5">物业水电租金</option>
+                                    <option value="6">办公相关</option>
+                                    <option value="7">企业活动</option>
+                                    <option value="8">税费相关</option>
+                                    <option value="9">其他</option>-->
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="invoiceStatus" class="col-xs-4 control-label">发票</label>
+                <div class="col-xs-8">
+                    <select name="invoiceStatus" id="invoiceStatus" class="form-control">
+                                    <option value="0">提供</option>
+                                    <option value="1">未提供</option>
+                                    <option value="2">部分提供</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="event" class="col-xs-4 control-label">事件</label>
+                <div class="col-xs-8">
+                    <textarea name="event" id="event" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group check-box d_none">
+                <label for="status" class="col-xs-4 control-label">审核状态</label>
+                <div class="col-xs-8">
+                    <select name="status" id="status" class="form-control">
+                                    <option value="0">申请中</option>
+                                    <option value="1">申请成功</option>
+                                    <option value="2">拒绝申请</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="remark" class="col-xs-4 control-label">备注</label>
+                <div class="col-xs-8">
+                    <textarea name="remark" id="remark" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btnAdd changeBtn" id="addTable">确认提交</button>
+                <button type="button" class="btn btnAdd d_none" id="editTable">确认提交</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="../lib/jquery-2.1.1.min.js "></script>
+<script src="../lib/jquery-migrate-1.2.1.min.js "></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js "></script>
+<script src="../js/common.js "></script>
+<script src="../js/app/baoxiao_add.js "></script>
+<script>
+    $(function() {
+        checkLoginStatus();
+    })
+</script>
+
+</html>

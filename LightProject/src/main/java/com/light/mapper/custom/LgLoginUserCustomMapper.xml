@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.custom.LgLoginUserCustomMapper" >
+
+  <select id="getUserNickNameByLoginId" resultType="java.lang.String"
+   parameterType="java.lang.Integer">
+   select nick_name from lg_login_user where id = #{loginId}
+  </select>
+  
+   <select id="getEmployeeIdByLoginId" resultType="java.lang.Integer"
+   parameterType="java.lang.Integer">
+   select user_type_id from lg_login_user where id=#{userId}
+  </select>
+ 
+    <select id="getHeadUrlByLoginId" resultType="java.lang.String"
+   parameterType="java.lang.Integer">
+   	select head_img from lg_login_user where id=#{loginId}
+  </select>
+  
+      <select id="getRoleIdByLoginId" resultType="java.lang.String"
+   parameterType="java.lang.Integer">
+   	select role_ids from lg_login_user where id=#{loginId}
+  </select>
+  
+</mapper>

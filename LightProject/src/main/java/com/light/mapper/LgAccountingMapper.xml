@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.LgAccountingMapper" >
+  <resultMap id="BaseResultMap" type="com.light.pojo.LgAccounting" >
+    <id column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="receive_date" property="receiveDate" jdbcType="INTEGER" />
+    <result column="market_id" property="marketId" jdbcType="INTEGER" />
+    <result column="market_name" property="marketName" jdbcType="VARCHAR" />
+    <result column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="receive_bank" property="receiveBank" jdbcType="INTEGER" />
+    <result column="receive_money" property="receiveMoney" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="invoice_status" property="invoiceStatus" jdbcType="INTEGER" />
+    <result column="invoice_time" property="invoiceTime" jdbcType="INTEGER" />
+    <result column="invoice_pic" property="invoicePic" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="INTEGER" />
+    <result column="operate_no" property="operateNo" jdbcType="INTEGER" />
+    <result column="login_user_id" property="loginUserId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    aid, receive_date, market_id, market_name, type_id, receive_bank, receive_money, 
+    remark, invoice_status, invoice_time, invoice_pic, update_time, operate_no, login_user_id, 
+    status, project_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.light.pojo.LgAccountingExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lg_accounting
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lg_accounting
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lg_accounting
+    where aid = #{aid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.light.pojo.LgAccountingExample" >
+    delete from lg_accounting
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.light.pojo.LgAccounting" >
+    insert into lg_accounting (aid, receive_date, market_id, 
+      market_name, type_id, receive_bank, 
+      receive_money, remark, invoice_status, 
+      invoice_time, invoice_pic, update_time, 
+      operate_no, login_user_id, status, 
+      project_id)
+    values (#{aid,jdbcType=INTEGER}, #{receiveDate,jdbcType=INTEGER}, #{marketId,jdbcType=INTEGER}, 
+      #{marketName,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, #{receiveBank,jdbcType=INTEGER}, 
+      #{receiveMoney,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{invoiceStatus,jdbcType=INTEGER}, 
+      #{invoiceTime,jdbcType=INTEGER}, #{invoicePic,jdbcType=VARCHAR}, #{updateTime,jdbcType=INTEGER}, 
+      #{operateNo,jdbcType=INTEGER}, #{loginUserId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{projectId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.light.pojo.LgAccounting" >
+    insert into lg_accounting
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="receiveDate != null" >
+        receive_date,
+      </if>
+      <if test="marketId != null" >
+        market_id,
+      </if>
+      <if test="marketName != null" >
+        market_name,
+      </if>
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="receiveBank != null" >
+        receive_bank,
+      </if>
+      <if test="receiveMoney != null" >
+        receive_money,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="invoiceStatus != null" >
+        invoice_status,
+      </if>
+      <if test="invoiceTime != null" >
+        invoice_time,
+      </if>
+      <if test="invoicePic != null" >
+        invoice_pic,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="operateNo != null" >
+        operate_no,
+      </if>
+      <if test="loginUserId != null" >
+        login_user_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="receiveDate != null" >
+        #{receiveDate,jdbcType=INTEGER},
+      </if>
+      <if test="marketId != null" >
+        #{marketId,jdbcType=INTEGER},
+      </if>
+      <if test="marketName != null" >
+        #{marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="receiveBank != null" >
+        #{receiveBank,jdbcType=INTEGER},
+      </if>
+      <if test="receiveMoney != null" >
+        #{receiveMoney,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceStatus != null" >
+        #{invoiceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceTime != null" >
+        #{invoiceTime,jdbcType=INTEGER},
+      </if>
+      <if test="invoicePic != null" >
+        #{invoicePic,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="operateNo != null" >
+        #{operateNo,jdbcType=INTEGER},
+      </if>
+      <if test="loginUserId != null" >
+        #{loginUserId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.light.pojo.LgAccountingExample" resultType="java.lang.Integer" >
+    select count(*) from lg_accounting
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update lg_accounting
+    <set >
+      <if test="record.aid != null" >
+        aid = #{record.aid,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiveDate != null" >
+        receive_date = #{record.receiveDate,jdbcType=INTEGER},
+      </if>
+      <if test="record.marketId != null" >
+        market_id = #{record.marketId,jdbcType=INTEGER},
+      </if>
+      <if test="record.marketName != null" >
+        market_name = #{record.marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typeId != null" >
+        type_id = #{record.typeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiveBank != null" >
+        receive_bank = #{record.receiveBank,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiveMoney != null" >
+        receive_money = #{record.receiveMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceStatus != null" >
+        invoice_status = #{record.invoiceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.invoiceTime != null" >
+        invoice_time = #{record.invoiceTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.invoicePic != null" >
+        invoice_pic = #{record.invoicePic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.operateNo != null" >
+        operate_no = #{record.operateNo,jdbcType=INTEGER},
+      </if>
+      <if test="record.loginUserId != null" >
+        login_user_id = #{record.loginUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.projectId != null" >
+        project_id = #{record.projectId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update lg_accounting
+    set aid = #{record.aid,jdbcType=INTEGER},
+      receive_date = #{record.receiveDate,jdbcType=INTEGER},
+      market_id = #{record.marketId,jdbcType=INTEGER},
+      market_name = #{record.marketName,jdbcType=VARCHAR},
+      type_id = #{record.typeId,jdbcType=INTEGER},
+      receive_bank = #{record.receiveBank,jdbcType=INTEGER},
+      receive_money = #{record.receiveMoney,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      invoice_status = #{record.invoiceStatus,jdbcType=INTEGER},
+      invoice_time = #{record.invoiceTime,jdbcType=INTEGER},
+      invoice_pic = #{record.invoicePic,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=INTEGER},
+      operate_no = #{record.operateNo,jdbcType=INTEGER},
+      login_user_id = #{record.loginUserId,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      project_id = #{record.projectId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.light.pojo.LgAccounting" >
+    update lg_accounting
+    <set >
+      <if test="receiveDate != null" >
+        receive_date = #{receiveDate,jdbcType=INTEGER},
+      </if>
+      <if test="marketId != null" >
+        market_id = #{marketId,jdbcType=INTEGER},
+      </if>
+      <if test="marketName != null" >
+        market_name = #{marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null" >
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="receiveBank != null" >
+        receive_bank = #{receiveBank,jdbcType=INTEGER},
+      </if>
+      <if test="receiveMoney != null" >
+        receive_money = #{receiveMoney,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceStatus != null" >
+        invoice_status = #{invoiceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceTime != null" >
+        invoice_time = #{invoiceTime,jdbcType=INTEGER},
+      </if>
+      <if test="invoicePic != null" >
+        invoice_pic = #{invoicePic,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="operateNo != null" >
+        operate_no = #{operateNo,jdbcType=INTEGER},
+      </if>
+      <if test="loginUserId != null" >
+        login_user_id = #{loginUserId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.light.pojo.LgAccounting" >
+    update lg_accounting
+    set receive_date = #{receiveDate,jdbcType=INTEGER},
+      market_id = #{marketId,jdbcType=INTEGER},
+      market_name = #{marketName,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      receive_bank = #{receiveBank,jdbcType=INTEGER},
+      receive_money = #{receiveMoney,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      invoice_status = #{invoiceStatus,jdbcType=INTEGER},
+      invoice_time = #{invoiceTime,jdbcType=INTEGER},
+      invoice_pic = #{invoicePic,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=INTEGER},
+      operate_no = #{operateNo,jdbcType=INTEGER},
+      login_user_id = #{loginUserId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      project_id = #{projectId,jdbcType=INTEGER}
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+</mapper>

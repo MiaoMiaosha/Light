@@ -1,0 +1,186 @@
+.devices_body {
+    background: #f2f3f7;
+}
+
+#piclist img {
+    height: 172px;
+}
+
+.condition {
+    padding-top: 10px;
+    height: 50px;
+}
+
+.condition .clis {
+    background: #fff;
+    text-align: center;
+    width: 32%;
+    height: 40px;
+    line-height: 40px;
+}
+
+.condition .clis.cur {
+    color: #86db31;
+}
+
+.condition .clis:not(:last-child) {
+    margin-right: 1.3%;
+}
+
+.devices_body .dlist {
+    margin: 10px 0;
+}
+
+.dlist .col-xs-6 {
+    padding: 0 1%;
+    margin-bottom: 5px;
+}
+
+.dlist .dbox {
+    background: #fff;
+    padding: 5px;
+    text-align: center;
+}
+
+.dlist .dbox img {
+    height: 105px;
+}
+
+.dbox .dinfo {
+    text-align: left;
+    font-size: 12px;
+    line-height: 20px;
+    margin-top: 5px;
+}
+
+.dbox .dinfo p.name {
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dbox .dinfo p.price {
+    color: #686868;
+}
+
+.dbox .dinfo p.price i {
+    color: #fda80f;
+}
+
+
+/*设备详情页*/
+
+#devicePic .carousel-indicators li {
+    background: #c5c0c6;
+}
+
+#devicePic .carousel-indicators .active {
+    background: #fda80f;
+}
+
+.device_info {
+    background: #fff;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.device_info h3 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.device_info p.notes {
+    font-size: 12px;
+    margin: 10px 0;
+    color: #fda80f;
+}
+
+.device_info p.intro {
+    font-size: 14px;
+    color: #969696;
+    line-height: 24px;
+}
+
+.device_info .prices {
+    margin-top: 10px;
+    color: #969696;
+}
+
+.device_info .prices i {
+    font-size: 16px;
+}
+
+.device_info .prices .tehui {
+    margin-right: 10px;
+}
+
+.device_info .prices .tehui i {
+    color: #fda80f;
+}
+
+.devices_body .more {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    background: #fff;
+    margin-top: 10px;
+}
+
+.devices_body .more i {
+    vertical-align: middle;
+    float: right;
+}
+
+.devices_body .seeMoreDevice {
+    margin-bottom: 10px;
+}
+
+.devices_body .chat {
+    height: 40px;
+    text-align: center;
+    background: #fff;
+    margin-bottom: 10px;
+}
+
+.devices_body .chat .row {
+    width: 100%;
+    margin: 0;
+}
+
+.devices_body .chat [class*='col-xs-'] {
+    padding: 0;
+    height: 40px;
+}
+
+.devices_body .chat .chat_ctn {
+    height: inherit;
+    font-size: 12px;
+}
+
+.chat .chat_ctn .chatNow {
+    width: 100%;
+    border: 0;
+    height: 100%;
+    background: #fda80f;
+    color: #fff;
+}
+
+.fixedBack {
+    position: fixed;
+    right: 20px;
+    bottom: 140px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    border: 1px solid #999;
+    color: #fda80f;
+    background: #fff;
+}
+
+.otherDetails {
+    margin-bottom: 10px;
+}

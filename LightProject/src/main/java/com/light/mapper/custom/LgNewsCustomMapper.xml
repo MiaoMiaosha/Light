@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.custom.LgNewsCustomMapper" >
+
+  <select id="getListWithoutContent" resultType="com.light.pojo.LgNews">
+	  select 
+		nid,
+	  user_id as userId,
+	  user_name as userName,
+	  `status`,news_title as newsTitle,
+	  create_time as createTime,
+		view_count as viewCount,
+	  type, img_url as imgUrl,
+	  content, pc_content as pcContent,
+	  content_type as contentType
+	 from lg_news
+	 
+	 <where >
+	     <if test="nid != null">
+	       nid = #{nid,jdbcType=INTEGER}
+	     </if>
+	     <if test="userId != null">
+	       user_id = #{userId,jdbcType=INTEGER}
+	     </if>
+	     <if test="userName != null">
+	       user_name = #{userName,jdbcType=VARCHAR}
+	     </if>
+	     <if test="startTime != null">
+	      and create_time <![CDATA[>=]]> #{startTime,jdbcType=INTEGER}
+	     </if>
+	     <if test="endTime != null">
+	      and create_time <![CDATA[<=]]> #{endTime,jdbcType=INTEGER}
+	     </if>
+	      <if test="status != null">
+	      and status =  #{status,jdbcType=INTEGER}
+	     </if>
+	      <if test="newsTitle != null">
+	      and news_title like  #{newsTitle,jdbcType=VARCHAR}
+	     </if>
+	       <if test="type != null">
+	      and type =  #{type,jdbcType=INTEGER}
+	     </if>
+	      <if test="contentType != null">
+	      and content_type =  #{contentType,jdbcType=INTEGER}
+	     </if>
+	    </where>
+	   <if test="order != null" >
+        order by ${order}
+      </if>
+	 
+  </select>
+  
+</mapper>

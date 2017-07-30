@@ -1,0 +1,101 @@
+.case_body .oneMenu {
+    padding: 0 15px;
+    height: 52px;
+    background: #f6f6f6;
+    border-bottom: 2px solid #dcdcdc;
+}
+
+.case_body .oneMenu ul {
+    height: inherit;
+}
+
+.case_body .olis {
+    width: 20%;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 10px;
+}
+
+.case_body .olis.cur {
+    color: #86db31;
+    background: #fff;
+    border-radius: 20px;
+    position: relative;
+}
+
+.case_body .olis.cur:after {
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+    bottom: -12px;
+    left: 44%;
+}
+
+.case_body .olis.cur .cur:after {
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #dcdcdc transparent;
+    bottom: -10px;
+    left: 44%;
+}
+
+.case_body .oneItem .itemBox {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.case_body .itemBox .slis {
+    width: 20%;
+    text-align: center;
+}
+
+.case_body .itemBox .slis.cur {
+    color: #86db31;
+}
+
+.case_body .oneItem .itemList {
+    padding: 20px;
+}
+
+.oneItem .itemList .title {
+    width: 90%;
+    height: 30px;
+    line-height: 40px;
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    margin-left: -45%;
+}
+
+.oneItem .itemList .mask {
+    width: 100%;
+    height: inherit;
+    background: #000;
+    opacity: 0.6;
+}
+
+.oneItem .itemList .mask+p {
+    position: absolute;
+    top: 0;
+    line-height: 30px;
+    color: #fff;
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.oneItem .itemList .tlis:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+
+/*详情页*/

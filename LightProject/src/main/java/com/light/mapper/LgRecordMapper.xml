@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.LgRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.light.pojo.LgRecord" >
+    <id column="rid" property="rid" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_type" property="userType" jdbcType="INTEGER" />
+    <result column="record_time" property="recordTime" jdbcType="INTEGER" />
+    <result column="person_name" property="personName" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="process_one" property="processOne" jdbcType="VARCHAR" />
+    <result column="process_two" property="processTwo" jdbcType="VARCHAR" />
+    <result column="process_three" property="processThree" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="VARCHAR" />
+    <result column="record_result" property="recordResult" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    rid, user_id, user_type, record_time, person_name, mobile, process_one, process_two, 
+    process_three, amount, record_result
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.light.pojo.LgRecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lg_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lg_record
+    where rid = #{rid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lg_record
+    where rid = #{rid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.light.pojo.LgRecordExample" >
+    delete from lg_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.light.pojo.LgRecord" >
+    insert into lg_record (rid, user_id, user_type, 
+      record_time, person_name, mobile, 
+      process_one, process_two, process_three, 
+      amount, record_result)
+    values (#{rid,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{userType,jdbcType=INTEGER}, 
+      #{recordTime,jdbcType=INTEGER}, #{personName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{processOne,jdbcType=VARCHAR}, #{processTwo,jdbcType=VARCHAR}, #{processThree,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=VARCHAR}, #{recordResult,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.light.pojo.LgRecord" >
+    insert into lg_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rid != null" >
+        rid,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="recordTime != null" >
+        record_time,
+      </if>
+      <if test="personName != null" >
+        person_name,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="processOne != null" >
+        process_one,
+      </if>
+      <if test="processTwo != null" >
+        process_two,
+      </if>
+      <if test="processThree != null" >
+        process_three,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="recordResult != null" >
+        record_result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rid != null" >
+        #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="recordTime != null" >
+        #{recordTime,jdbcType=INTEGER},
+      </if>
+      <if test="personName != null" >
+        #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="processOne != null" >
+        #{processOne,jdbcType=VARCHAR},
+      </if>
+      <if test="processTwo != null" >
+        #{processTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="processThree != null" >
+        #{processThree,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="recordResult != null" >
+        #{recordResult,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.light.pojo.LgRecordExample" resultType="java.lang.Integer" >
+    select count(*) from lg_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update lg_record
+    <set >
+      <if test="record.rid != null" >
+        rid = #{record.rid,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userType != null" >
+        user_type = #{record.userType,jdbcType=INTEGER},
+      </if>
+      <if test="record.recordTime != null" >
+        record_time = #{record.recordTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.personName != null" >
+        person_name = #{record.personName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null" >
+        mobile = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.processOne != null" >
+        process_one = #{record.processOne,jdbcType=VARCHAR},
+      </if>
+      <if test="record.processTwo != null" >
+        process_two = #{record.processTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.processThree != null" >
+        process_three = #{record.processThree,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amount != null" >
+        amount = #{record.amount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recordResult != null" >
+        record_result = #{record.recordResult,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update lg_record
+    set rid = #{record.rid,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      user_type = #{record.userType,jdbcType=INTEGER},
+      record_time = #{record.recordTime,jdbcType=INTEGER},
+      person_name = #{record.personName,jdbcType=VARCHAR},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
+      process_one = #{record.processOne,jdbcType=VARCHAR},
+      process_two = #{record.processTwo,jdbcType=VARCHAR},
+      process_three = #{record.processThree,jdbcType=VARCHAR},
+      amount = #{record.amount,jdbcType=VARCHAR},
+      record_result = #{record.recordResult,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.light.pojo.LgRecord" >
+    update lg_record
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="recordTime != null" >
+        record_time = #{recordTime,jdbcType=INTEGER},
+      </if>
+      <if test="personName != null" >
+        person_name = #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="processOne != null" >
+        process_one = #{processOne,jdbcType=VARCHAR},
+      </if>
+      <if test="processTwo != null" >
+        process_two = #{processTwo,jdbcType=VARCHAR},
+      </if>
+      <if test="processThree != null" >
+        process_three = #{processThree,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="recordResult != null" >
+        record_result = #{recordResult,jdbcType=INTEGER},
+      </if>
+    </set>
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.light.pojo.LgRecord" >
+    update lg_record
+    set user_id = #{userId,jdbcType=INTEGER},
+      user_type = #{userType,jdbcType=INTEGER},
+      record_time = #{recordTime,jdbcType=INTEGER},
+      person_name = #{personName,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      process_one = #{processOne,jdbcType=VARCHAR},
+      process_two = #{processTwo,jdbcType=VARCHAR},
+      process_three = #{processThree,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=VARCHAR},
+      record_result = #{recordResult,jdbcType=INTEGER}
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.LgStallApplyMapper" >
+  <resultMap id="BaseResultMap" type="com.light.pojo.LgStallApply" >
+    <id column="said" property="said" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="contact_name" property="contactName" jdbcType="VARCHAR" />
+    <result column="contact_mobile" property="contactMobile" jdbcType="VARCHAR" />
+    <result column="stall_id" property="stallId" jdbcType="INTEGER" />
+    <result column="stall_name" property="stallName" jdbcType="VARCHAR" />
+    <result column="market_id" property="marketId" jdbcType="INTEGER" />
+    <result column="market_name" property="marketName" jdbcType="VARCHAR" />
+    <result column="floor_id" property="floorId" jdbcType="INTEGER" />
+    <result column="floor_name" property="floorName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    said, user_id, create_time, status, contact_name, contact_mobile, stall_id, stall_name, 
+    market_id, market_name, floor_id, floor_name
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.light.pojo.LgStallApplyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lg_stall_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lg_stall_apply
+    where said = #{said,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lg_stall_apply
+    where said = #{said,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.light.pojo.LgStallApplyExample" >
+    delete from lg_stall_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.light.pojo.LgStallApply" >
+    insert into lg_stall_apply (said, user_id, create_time, 
+      status, contact_name, contact_mobile, 
+      stall_id, stall_name, market_id, 
+      market_name, floor_id, floor_name
+      )
+    values (#{said,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{createTime,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{contactName,jdbcType=VARCHAR}, #{contactMobile,jdbcType=VARCHAR}, 
+      #{stallId,jdbcType=INTEGER}, #{stallName,jdbcType=VARCHAR}, #{marketId,jdbcType=INTEGER}, 
+      #{marketName,jdbcType=VARCHAR}, #{floorId,jdbcType=INTEGER}, #{floorName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.light.pojo.LgStallApply" >
+    insert into lg_stall_apply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="said != null" >
+        said,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="contactName != null" >
+        contact_name,
+      </if>
+      <if test="contactMobile != null" >
+        contact_mobile,
+      </if>
+      <if test="stallId != null" >
+        stall_id,
+      </if>
+      <if test="stallName != null" >
+        stall_name,
+      </if>
+      <if test="marketId != null" >
+        market_id,
+      </if>
+      <if test="marketName != null" >
+        market_name,
+      </if>
+      <if test="floorId != null" >
+        floor_id,
+      </if>
+      <if test="floorName != null" >
+        floor_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="said != null" >
+        #{said,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="stallId != null" >
+        #{stallId,jdbcType=INTEGER},
+      </if>
+      <if test="stallName != null" >
+        #{stallName,jdbcType=VARCHAR},
+      </if>
+      <if test="marketId != null" >
+        #{marketId,jdbcType=INTEGER},
+      </if>
+      <if test="marketName != null" >
+        #{marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="floorId != null" >
+        #{floorId,jdbcType=INTEGER},
+      </if>
+      <if test="floorName != null" >
+        #{floorName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.light.pojo.LgStallApplyExample" resultType="java.lang.Integer" >
+    select count(*) from lg_stall_apply
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update lg_stall_apply
+    <set >
+      <if test="record.said != null" >
+        said = #{record.said,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.contactName != null" >
+        contact_name = #{record.contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactMobile != null" >
+        contact_mobile = #{record.contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stallId != null" >
+        stall_id = #{record.stallId,jdbcType=INTEGER},
+      </if>
+      <if test="record.stallName != null" >
+        stall_name = #{record.stallName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.marketId != null" >
+        market_id = #{record.marketId,jdbcType=INTEGER},
+      </if>
+      <if test="record.marketName != null" >
+        market_name = #{record.marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.floorId != null" >
+        floor_id = #{record.floorId,jdbcType=INTEGER},
+      </if>
+      <if test="record.floorName != null" >
+        floor_name = #{record.floorName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update lg_stall_apply
+    set said = #{record.said,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      contact_name = #{record.contactName,jdbcType=VARCHAR},
+      contact_mobile = #{record.contactMobile,jdbcType=VARCHAR},
+      stall_id = #{record.stallId,jdbcType=INTEGER},
+      stall_name = #{record.stallName,jdbcType=VARCHAR},
+      market_id = #{record.marketId,jdbcType=INTEGER},
+      market_name = #{record.marketName,jdbcType=VARCHAR},
+      floor_id = #{record.floorId,jdbcType=INTEGER},
+      floor_name = #{record.floorName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.light.pojo.LgStallApply" >
+    update lg_stall_apply
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null" >
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobile != null" >
+        contact_mobile = #{contactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="stallId != null" >
+        stall_id = #{stallId,jdbcType=INTEGER},
+      </if>
+      <if test="stallName != null" >
+        stall_name = #{stallName,jdbcType=VARCHAR},
+      </if>
+      <if test="marketId != null" >
+        market_id = #{marketId,jdbcType=INTEGER},
+      </if>
+      <if test="marketName != null" >
+        market_name = #{marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="floorId != null" >
+        floor_id = #{floorId,jdbcType=INTEGER},
+      </if>
+      <if test="floorName != null" >
+        floor_name = #{floorName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where said = #{said,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.light.pojo.LgStallApply" >
+    update lg_stall_apply
+    set user_id = #{userId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      contact_mobile = #{contactMobile,jdbcType=VARCHAR},
+      stall_id = #{stallId,jdbcType=INTEGER},
+      stall_name = #{stallName,jdbcType=VARCHAR},
+      market_id = #{marketId,jdbcType=INTEGER},
+      market_name = #{marketName,jdbcType=VARCHAR},
+      floor_id = #{floorId,jdbcType=INTEGER},
+      floor_name = #{floorName,jdbcType=VARCHAR}
+    where said = #{said,jdbcType=INTEGER}
+  </update>
+</mapper>

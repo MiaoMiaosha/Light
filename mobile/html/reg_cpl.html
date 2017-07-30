@@ -1,0 +1,49 @@
+<link rel="stylesheet" type="text/css" href="../css/app/reg.css">
+<div class="reg_body p_rel" data-pageName="reg_cpl">
+    <div class="com_table regCplCtn t_center">
+        <form action="" class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="control-label col-xs-4 uimg">头像</label>
+                <div class="col-xs-8">
+                    <input type="file" accept="image/*" name="fileUser" id="fileUser" onchange="upUserImg(this)" />
+                    <img src="../images/user1.jpg" id="userImg" alt="" title="" />
+                    <span>（点击更换头像）</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ucount" class="control-label col-xs-4">账号</label>
+                <div class="col-xs-8">
+                    <p class="bdphone t_left">15805915880</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="unicheng" class="control-label col-xs-4">昵称</label>
+                <div class="col-xs-8">
+                    <input type="text" name="unicheng" id="unicheng" class="form-control" placeholder="请输入昵称" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="urealName" class="control-label col-xs-4">真实姓名</label>
+                <div class="col-xs-8">
+                    <input type="text" name="urealName" id="urealName" class="form-control" placeholder="请输入真实姓名" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="uwx" class="control-label col-xs-4">微信号</label>
+                <div class="col-xs-8">
+                    <input type="text" name="uwx" id="uwx" class="form-control" placeholder="请输入微信号" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="uemail" class="control-label col-xs-4">常用邮箱</label>
+                <div class="col-xs-8">
+                    <input type="email" name="uemail" id="uemail" class="form-control" placeholder="请输入常用邮箱" />
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btnAdd">保存</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="../js/app/reg_cpl.js "></script>

@@ -1,0 +1,46 @@
+.collect_body {
+    background: #f2f3f7;
+}
+
+.collect_body .collectList {
+    padding: 20px 0;
+}
+
+.collect_body .collectList .clis {
+    background: #fff;
+    padding: 10px 20px;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.collectList .clis h3 {
+    font-size: 16px;
+    line-height: 26px;
+    padding-right: 20px;
+}
+
+.collectList .clis h3 i {
+    font-size: 24px;
+    vertical-align: baseline;
+    margin-right: 6px;
+}
+
+.collectList .clis p {
+    padding-left: 30px;
+    line-height: 24px;
+    color: #666;
+    font-size: 12px;
+}
+
+.collectList .clis .close {
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    width: 32px;
+    height: 32px;
+    font-size: 24px;
+    text-align: center;
+    line-height: 32px;
+    margin-top: -16px;
+}

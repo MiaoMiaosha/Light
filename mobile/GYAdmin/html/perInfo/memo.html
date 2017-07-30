@@ -1,0 +1,43 @@
+<link rel="stylesheet" type="text/css" href="../../css/app/perinfo/memo.css">
+<div class="memo_body">
+    <div class="memoBox">
+        <div class="proBox">
+            <select name="projectId" id="projectId" class="showProject" onchange="getProjectMark(this)"></select>
+        </div>
+        <ul id="typeGroup">
+            <li class="mlis" data-type="1" id="one">
+                <p>合同阶段<i class="icon-add"></i></p>
+                <!--<div class="memoCtn p_rel">
+                    <div class="ctnText">备忘录首行内容备忘录首行内容备忘录首行内容备忘录首行内容备忘录首行内容</div>
+                    <div class="ctnOp">
+                        <ul class="clearfix">
+                            <li class="f_left colis"><i class="icon-editor"></i></li>
+                            <li class="f_left colis"><i class="icon-close"></i></li>
+                        </ul>
+                    </div>
+                </div>-->
+            </li>
+            <li class="mlis" data-type="2" id="two">
+                <p>平面阶段<i class="icon-add"></i></p>
+            </li>
+            <li class="mlis" data-type="3" id="three">
+                <p>效果图阶段<i class="icon-add"></i></p>
+            </li>
+            <li class="mlis" data-type="4" id="four">
+                <p>施工图阶段<i class="icon-add"></i></p>
+            </li>
+            <li class="mlis" data-type="5" id="five">
+                <p>施工装修阶段<i class="icon-add"></i></p>
+            </li>
+            <li class="mlis" data-type="6" id="six">
+                <p>竣工开业阶段<i class="icon-add"></i></p>
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="../../js/app/perinfo/memo.js "></script>
+<script>
+    $(function() {
+        checkLoginStatus();
+    })
+</script>

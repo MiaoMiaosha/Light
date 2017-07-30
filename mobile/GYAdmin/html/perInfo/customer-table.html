@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>员工-客户档案编辑</title>
+    <link rel="stylesheet" type="text/css" href="../../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common/common.css">
+</head>
+
+<body>
+    <div class="com_table t_center">
+        <form action="" class="form-horizontal" role="form" id="customerForm">
+            <div class="form-group">
+                <label for="companyName" class="col-xs-4 control-label">单位名称</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="cid" id="cid">
+                    <input type="text" name="companyName" id="companyName" class="form-control" placeholder="请输入单位名称" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="manager" class="col-xs-4 control-label">负责人</label>
+                <div class="col-xs-8">
+                    <input type="text" name="manager" id="manager" class="form-control" placeholder="请输入负责人" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mobile" class="col-xs-4 control-label">电话</label>
+                <div class="col-xs-8">
+                    <input type="tel" name="mobile" id="mobile" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address" class="col-xs-4 control-label">快递地址</label>
+                <div class="col-xs-8">
+                    <input type="text" name="address" id="address" class="form-control" placeholder="请输入快递地址">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="receivePerson" class="col-xs-4 control-label">收件人</label>
+                <div class="col-xs-8">
+                    <input type="text" name="receivePerson" id="receivePerson" class="form-control" placeholder="请输入收件人">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="receiveMobile" class="col-xs-4 control-label">收件电话</label>
+                <div class="col-xs-8">
+                    <input type="tel" name="receiveMobile" id="receiveMobile" class="form-control">
+                </div>
+            </div>
+            <div class="form-group check-box d_none">
+                <label for="status" class="col-xs-4 control-label">审核状态</label>
+                <div class="col-xs-8">
+                    <select name="status" id="status" class="form-control">
+                                    <option value="0">申请中</option>
+                                    <option value="1">申请成功</option>
+                                    <option value="2">拒绝申请</option>
+                                </select>
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <label for="company-info" class="col-xs-4 control-label">公司介绍</label>
+                <div class="col-xs-8">
+                    <textarea name="company-info" id="company-info" class="form-control" rows="5"></textarea>
+                </div>
+            </div>-->
+            <div class="form-group">
+                <label for="remark" class="col-xs-4 control-label">备注</label>
+                <div class="col-xs-8">
+                    <textarea name="remark" id="remark" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username" class="col-xs-4 control-label">客户账号</label>
+                <div class="col-xs-8">
+                    <input type="text" name="username" id="username" class="form-control" placeholder="请输入账号">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-xs-4 control-label">客户密码</label>
+                <div class="col-xs-8">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="请输入密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btnAdd" id="editTable">确认提交</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="../../lib/jquery-2.1.1.min.js "></script>
+<script src="../../lib/jquery-migrate-1.2.1.min.js "></script>
+<script src="../../lib/bootstrap/js/bootstrap.min.js "></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/app/perinfo/customer_add.js"></script>
+<script>
+    $(function() {
+        checkLoginStatus();
+    })
+</script>
+
+</html>

@@ -1,0 +1,53 @@
+.search_body {
+    height: inherit;
+}
+
+.search_body .title {
+    height: 40px;
+    line-height: 38px;
+    padding: 0 15px;
+}
+
+.search_body .title .slis {
+    margin-right: 10px;
+}
+
+.search_body .title .slis.cur {
+    color: #e82361;
+    border-bottom: 2px solid #e82361;
+}
+
+.search_body .ctn {
+    background: #F2F3F7;
+    padding-top: 20px;
+    min-height: calc(100% - 40px);
+}
+
+.search_body .hotwords .col-xs-3 {
+    padding: 0 2%;
+}
+
+.search_body .hotwords .col-xs-3 p {
+    padding: 2px;
+    border-radius: 4px;
+    background: #fff;
+    border: 1px solid #cecece;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+#showResult .resultItem {
+    /*height: 45px;*/
+    margin-bottom: 10px;
+}
+
+#showResult .resultItem h3 {
+    margin: 0 10px;
+    font-size: 18px;
+    font-weight: 100;
+    line-height: 32px;
+    /* margin-bottom: 10px; */
+    background: #fff;
+    border-radius: 5px;
+    padding: 0 10px;
+}

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.LgPartnerMapper" >
+  <resultMap id="BaseResultMap" type="com.light.pojo.LgPartner" >
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="cooperate_content" property="cooperateContent" jdbcType="VARCHAR" />
+    <result column="chief_person" property="chiefPerson" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="bank_account" property="bankAccount" jdbcType="VARCHAR" />
+    <result column="bank_account_no" property="bankAccountNo" jdbcType="VARCHAR" />
+    <result column="bank_branch" property="bankBranch" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="cooperate_name" property="cooperateName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pid, cooperate_content, chief_person, mobile, address, bank_account, bank_account_no, 
+    bank_branch, remark, create_time, status, cooperate_name
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.light.pojo.LgPartnerExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lg_partner
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lg_partner
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lg_partner
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.light.pojo.LgPartnerExample" >
+    delete from lg_partner
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.light.pojo.LgPartner" >
+    insert into lg_partner (pid, cooperate_content, chief_person, 
+      mobile, address, bank_account, 
+      bank_account_no, bank_branch, remark, 
+      create_time, status, cooperate_name
+      )
+    values (#{pid,jdbcType=INTEGER}, #{cooperateContent,jdbcType=VARCHAR}, #{chiefPerson,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, 
+      #{bankAccountNo,jdbcType=VARCHAR}, #{bankBranch,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{cooperateName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.light.pojo.LgPartner" >
+    insert into lg_partner
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="cooperateContent != null" >
+        cooperate_content,
+      </if>
+      <if test="chiefPerson != null" >
+        chief_person,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="bankAccount != null" >
+        bank_account,
+      </if>
+      <if test="bankAccountNo != null" >
+        bank_account_no,
+      </if>
+      <if test="bankBranch != null" >
+        bank_branch,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="cooperateName != null" >
+        cooperate_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="cooperateContent != null" >
+        #{cooperateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="chiefPerson != null" >
+        #{chiefPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNo != null" >
+        #{bankAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankBranch != null" >
+        #{bankBranch,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="cooperateName != null" >
+        #{cooperateName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.light.pojo.LgPartnerExample" resultType="java.lang.Integer" >
+    select count(*) from lg_partner
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update lg_partner
+    <set >
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.cooperateContent != null" >
+        cooperate_content = #{record.cooperateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chiefPerson != null" >
+        chief_person = #{record.chiefPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null" >
+        mobile = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankAccount != null" >
+        bank_account = #{record.bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankAccountNo != null" >
+        bank_account_no = #{record.bankAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankBranch != null" >
+        bank_branch = #{record.bankBranch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.cooperateName != null" >
+        cooperate_name = #{record.cooperateName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update lg_partner
+    set pid = #{record.pid,jdbcType=INTEGER},
+      cooperate_content = #{record.cooperateContent,jdbcType=VARCHAR},
+      chief_person = #{record.chiefPerson,jdbcType=VARCHAR},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      bank_account = #{record.bankAccount,jdbcType=VARCHAR},
+      bank_account_no = #{record.bankAccountNo,jdbcType=VARCHAR},
+      bank_branch = #{record.bankBranch,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      cooperate_name = #{record.cooperateName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.light.pojo.LgPartner" >
+    update lg_partner
+    <set >
+      <if test="cooperateContent != null" >
+        cooperate_content = #{cooperateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="chiefPerson != null" >
+        chief_person = #{chiefPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccountNo != null" >
+        bank_account_no = #{bankAccountNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankBranch != null" >
+        bank_branch = #{bankBranch,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="cooperateName != null" >
+        cooperate_name = #{cooperateName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.light.pojo.LgPartner" >
+    update lg_partner
+    set cooperate_content = #{cooperateContent,jdbcType=VARCHAR},
+      chief_person = #{chiefPerson,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      bank_account = #{bankAccount,jdbcType=VARCHAR},
+      bank_account_no = #{bankAccountNo,jdbcType=VARCHAR},
+      bank_branch = #{bankBranch,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      cooperate_name = #{cooperateName,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+</mapper>

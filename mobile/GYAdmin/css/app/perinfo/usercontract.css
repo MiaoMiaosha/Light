@@ -1,0 +1,78 @@
+.userContract_body .ucType {
+    padding-top: 2px;
+}
+
+.ucType .uclis {
+    width: 33.3%;
+    text-align: center;
+    background: #fff;
+    line-height: 40px;
+}
+
+.ucType .uclis.cur {
+    color: #86db31;
+}
+
+.ucType .uclis:not(:last-child) {
+    border-right: 2px solid #f2f3f7;
+}
+
+.userContract_body .ucItem {
+    margin-top: 10px;
+}
+
+.ucItem .uitem {
+    padding: 10px;
+    width: 95%;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.ucItem .uitem:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.uitem .uiBox h3 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.uiBox h3 span {
+    font-size: 14px;
+    font-weight: 100;
+    float: right;
+    line-height: 24px;
+}
+
+.uiBox h3 .undone {
+    color: #fda80f;
+}
+
+.uiBox h3 .done {
+    color: #86db31
+}
+
+.uitem .uiBox p {
+    font-size: 12px;
+    line-height: 24px;
+    color: #c1c1c1;
+}
+
+.opbox {
+    text-align: right;
+    padding: 5px 0;
+    margin-top: 10px;
+}
+
+.opbox a {
+    padding: 5px;
+    /* border: 1px solid #ddd; */
+    color: #fff;
+    border-radius: 4px;
+    background: #fda80f;
+}
+
+.opbox a:not(:last-child) {
+    margin-right: 10px;
+}

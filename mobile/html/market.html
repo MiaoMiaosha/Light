@@ -1,0 +1,490 @@
+<link rel="stylesheet" type="text/css" href="../lib/summernote/summernote.css">
+<!--<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">-->
+<link rel="stylesheet" type="text/css" href="../css/app/market.css">
+<link rel="stylesheet" type="text/css" href="../css/app/stall.css">
+<link rel="stylesheet" type="text/css" href="../css/app/join.css">
+<style>
+    #meditToolBar {
+        /*position: fixed;*/
+        z-index: 100;
+        /*width: 90%;*/
+        /*left: 5%;*/
+        top: 0;
+        height: 40px;
+    }
+    
+    #meditContent {
+        padding: 10px;
+        border: 1px solid #ccc;
+        height: 200px;
+        /*margin-top: 48px;*/
+        overflow: auto;
+        text-align: left;
+    }
+</style>
+<div class="pannelBox">
+    <div class="exPanel com_li">
+        <ul class="clearfix">
+            <li class="f_left plis cur bgfbb508">发布案例</li>
+            <li class="f_left plis bgff2957">发布招商</li>
+            <li class="f_left plis bg2990e0">发布设备</li>
+            <li class="f_left plis bgb25be1">发布加盟</li>
+            <li class="f_left plis bg2baece">发布新闻</li>
+        </ul>
+    </div>
+    <div class="com_box">
+        <div class="case_body com_item">
+            <div class="com_table caseCtn t_center">
+                <div class="ad" id="ad1">
+                    <img src="../images/n1.jpg" alt="" />
+                </div>
+                <h3>- 发布案例 -</h3>
+                <form action="" class="form-horizontal" role="form" id="caseForm">
+                    <div class="form-group">
+                        <label for="caseName" class="col-xs-4 control-label">案例名称</label>
+                        <div class="col-xs-8">
+                            <input type="hidden" name="userId" id="" value="" />
+                            <input type="text" id="caseName" name="caseName" class="form-control" placeholder="输入案例名称" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="area" class="col-xs-4 control-label">面积</label>
+                        <div class="col-xs-8">
+                            <input type="number" name="area" id="" class="form-control" placeholder="请输入面积大小" />
+                        </div>
+                    </div>
+                    <div class="form-group filebox">
+                        <label for="imgUrl" class="col-xs-4 control-label">上传图片</label>
+                        <div class="col-xs-8 t_left">
+                            <input type="hidden" name="imgUrl" id="">
+                            <input type="file" accept="image/*" name="casefile" id="casefile" class="com_fileup" onchange="getCaseImg(this)" />
+                            <button type="button" class="btn btn-addPic com_add" id="caseAdd">上传</button>
+                        </div>
+                    </div>
+                    <div class="form-group picbox">
+                        <label class="col-xs-4 control-label"></label>
+                        <div class="col-xs-8">
+                            <div class="showPic picGroup com_picGroup" id="casePicBox">
+                                <ul class="clearfix">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="col-xs-4 control-label">案例描述</label>
+                        <div class="col-xs-8">
+                            <textarea name="description" id="description" class="form-control" rows="5" placeholder="请输入案例描述"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btnAdd" id="caseApply">提交申请</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="vegMarket_body com_item d_none">
+            <div class="com_table markCtn t_center">
+                <div class="ad" id="ad2">
+                    <img src="../images/n1.jpg" alt="" />
+                </div>
+                <h3>- 发布招商 -</h3>
+                <form action="" class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="marketName" class="col-xs-4 control-label">市场名称</label>
+                        <div class="col-xs-8">
+                            <input type="hidden" name="userId">
+                            <input type="text" name="marketName" id="marketName" class="form-control" placeholder="请输入市场名称" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="province1" class="col-xs-4 control-label">省份</label>
+                        <div class="col-xs-8">
+                            <input type="hidden" name="province1" id="province1" value="">
+                            <select name="provincebox" id="provincebox" class="form-control" onchange="getCity1(this)">
+                                    <option value="0">浙江省</option>
+                                    <option value="1">江苏省</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="cityBox">
+                        <label for="city1" class="col-xs-4 control-label">城市</label>
+                        <div class="col-xs-8">
+                            <input type="hidden" name="city1" id="city1" value="">
+                            <select name="citybox" id="citybox" class="form-control" onchange="getTown1(this)">
+                                    <option value="0">杭州市</option>
+                                    <option value="1">南京市</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="townBox">
+                        <label for="district1" class="col-xs-4 control-label">县区</label>
+                        <div class="col-xs-8">
+                            <input type="hidden" name="district1" id="district1" value="">
+                            <select name="districtbox" id="districtbox" class="form-control" onchange="getXian1(this)">
+                                    <option value="0">滨江区</option>
+                                    <option value="1">不明区</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="col-xs-4 control-label">详细地址</label>
+                        <div class="col-xs-8">
+                            <input type="text" name="address" id="address" class="form-control" placeholder="请输入详细地址">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="area" class="col-xs-4 control-label">面积</label>
+                        <div class="col-xs-8">
+                            <input type="text" name="area" id="area" class="form-control" placeholder="请输入面积大小">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="floorInfo" class="col-xs-4 control-label">楼层</label>
+                        <div class="col-xs-8">
+                            <input type="hidden" name="floorInfo" id="floorInfo">
+                            <div class="devide-box p_rel" id="floorInfobox" data-open="0">
+                                <!--<span data-id="11">张三<i class="icon-guanbifuzhi"></i></span><span data-id="18">李四<i class="icon-guanbifuzhi"></i></span><span data-id="13">李四<i class="icon-guanbifuzhi"></i></span>
+                        <span data-id="21">王五<i class="icon-guanbifuzhi"></i></span><span data-id="16">六小龄童<i class="icon-guanbifuzhi"></i></span>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="marketCompany" class="col-xs-4 control-label">市场单位</label>
+                        <div class="col-xs-8">
+                            <input type="text" name="marketCompany" id="marketCompany" class="form-control" placeholder="请输入市场单位">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="marketIntro" class="col-xs-4 control-label">公司简介</label>
+                        <div class="col-xs-8">
+                            <textarea rows="5" class="form-control" name="marketIntro" id="marketIntro"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactName" class="col-xs-4 control-label">负责人名称</label>
+                        <div class="col-xs-8">
+                            <input type="text" name="contactName" id="contactName" class="form-control" placeholder="请输入负责人名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMobile" class="col-xs-4 control-label">负责人电话</label>
+                        <div class="col-xs-8">
+                            <input type="tel" name="contactMobile" id="contactMobile" class="form-control" placeholder="请输入负责人电话">
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <label for="meetAddress" class="col-xs-4 control-label">洽谈地址</label>
+                        <div class="col-xs-8">
+                            <input type="tel" name="meetAddress" id="meetAddress" class="form-control" placeholder="请输入洽谈地址">
+                        </div>
+                    </div>-->
+                    <div class="form-group filebox">
+                        <label for="imgUrl" class="col-xs-4 control-label">上传图片</label>
+                        <div class="col-xs-8 t_left">
+                            <input type="hidden" name="imgUrl" id="">
+                            <input type="file" accept="image/*" name="addfile" class="com_fileup" id="addfile" onchange="getMarketImg(this)" />
+                            <button type="button" class="btn btn-addPic com_add" id="marketAdd">上传</button>
+                        </div>
+                    </div>
+                    <div class="form-group picbox">
+                        <label class="col-xs-4 control-label"></label>
+                        <div class="col-xs-8">
+                            <div class="showPic picGroup com_picGroup" id="showPic">
+                                <ul class="clearfix">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btnAdd" id="marketApply">提交申请</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="goods_body com_item d_none">
+            <div class="com_table goodsCtn t_center">
+                <div class="ad" id="ad3">
+                    <img src="../images/n1.jpg" alt="" />
+                </div>
+                <h3>- 发布设备 -</h3>
+                <form action="" class="form-horizontal" role="form" id="goodsForm">
+                    <div class="form-group">
+                        <label for="goodsName" class="col-xs-4 control-label">设备名称</label>
+                        <div class="col-xs-8">
+                            <input type="hidden" name="userId" id="" value="" />
+                            <input type="text" id="goodsName" name="goodsName" class="form-control" placeholder="输入设备名称" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="goodsPrice" class="col-xs-4 control-label">价格</label>
+                        <div class="col-xs-8">
+                            <input type="number" name="goodsPrice" id="goodsPrice" class="form-control" placeholder="请输入价格" />
+                        </div>
+                    </div>
+                    <div class="form-group filebox">
+                        <label for="imgUrl" class="col-xs-4 control-label">上传图片</label>
+                        <div class="col-xs-8 t_left">
+                            <input type="hidden" name="img" id="">
+                            <input type="file" accept="image/*" name="casefile" id="goodsfile" class="com_fileup" onchange="getGoodsImg(this)" />
+                            <button type="button" class="btn btn-addPic com_add" id="goodsAdd">上传</button>
+                        </div>
+                    </div>
+                    <div class="form-group picbox">
+                        <label class="col-xs-4 control-label"></label>
+                        <div class="col-xs-8">
+                            <div class="showPic picGroup com_picGroup" id="">
+                                <ul class="clearfix">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="col-xs-4 control-label">设备描述</label>
+                        <div class="col-xs-8">
+                            <textarea name="description" id="" class="form-control" rows="5" placeholder="请输入设备描述"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btnAdd" id="goodsApply">提交申请</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="join_body com_item d_none">
+            <div class="com_table joinCtn t_center">
+                <div class="ad" id="ad4">
+                    <img src="../images/n1.jpg" alt="" />
+                </div>
+                <h3>- 发布加盟 -</h3>
+                <form action="" class="form-horizontal" role="form" id="joinForm">
+                    <div class="form-group">
+                        <label for="fullName" class="col-xs-4 control-label">公司全称</label>
+                        <div class="col-xs-8">
+                            <input type="hidden" name="userId">
+                            <input type="text" name="fullName" id="fullName" class="form-control" placeholder="请输入公司全称" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="province" class="col-xs-4 control-label">省份</label>
+                        <div class="col-xs-8">
+                            <select name="province" id="province" class="form-control" onchange="getCity(this)">
+                                    <option value="0">浙江省</option>
+                                    <option value="1">江苏省</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="form-group d_none" id="cityJoinBox">
+                        <label for="city" class="col-xs-4 control-label">城市</label>
+                        <div class="col-xs-8">
+                            <select name="city" id="city" class="form-control" onchange="getTown(this)">
+                                    <option value="0">杭州市</option>
+                                    <option value="1">南京市</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="form-group d_none" id="townJoinBox">
+                        <label for="district" class="col-xs-4 control-label">县区</label>
+                        <div class="col-xs-8">
+                            <select name="district" id="district" class="form-control">
+                                    <option value="0">滨江区</option>
+                                    <option value="1">不明区</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mainBusiness " class="col-xs-4 control-label">公司主营</label>
+                        <div class="col-xs-8 com_cbkAll">
+                            <input type="hidden" name="mainBusiness" id="mainBusiness">
+                            <ul class="clearfix" id="mainZhuying">
+                                <li class="f_left cbklis">
+                                    <label>
+                                            <input type="checkbox" class="cbk" name="" id="1">农贸市场设计
+                                        </label>
+                                </li>
+                                <li class="f_left cbklis">
+                                    <label>
+                                            <input type="checkbox" class="cbk" name="" id="3">农贸市场管理
+                                        </label>
+                                </li>
+                                <li class="f_left cbklis">
+                                    <label>
+                                            <input type="checkbox" class="cbk" name="" id="5">农贸市场电商
+                                        </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="companyIntro" class="col-xs-4 control-label">公司简介</label>
+                        <div class="col-xs-8">
+                            <textarea rows="5" id="companyIntro" name="companyIntro" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btnAdd" id="joinBtn">提交申请</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="news_body com_item d_none">
+            <div class="com_table newsCtn t_center">
+                <div class="ad" id="ad5">
+                    <img src="../images/n1.jpg" alt="" />
+                </div>
+                <h3>- 发布新闻 -</h3>
+                <form action="" class="form-horizontal" role="form" id="newsForm">
+                    <div class="form-group">
+                        <label for="newsTitle" class="col-xs-4 control-label">新闻标题</label>
+                        <div class="col-xs-8">
+                            <input type="hidden" name="userId" id="" value="" />
+                            <input type="text" id="newsTitle" name="newsTitle" class="form-control" placeholder="输入新闻标题" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="type" class="col-xs-4 control-label">新闻类型</label>
+                        <div class="col-xs-8">
+                            <select name="type" id="type" class="form-control">
+                                <option value="1">公司新闻</option>
+                                <option value="2">行业资讯</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--<div class="form-group filebox">
+                        <label for="imgUrl" class="col-xs-4 control-label">上传图片</label>
+                        <div class="col-xs-8 t_left">
+                            <input type="hidden" name="imgUrl" id="">
+                            <input type="file" accept="image/*" name="casefile" id="newsfile" class="com_fileup" onchange="getImg(this)" />
+                            <button type="button" class="btn btn-addPic com_add" id="newsAdd">上传</button>
+                        </div>
+                    </div>
+                    <div class="form-group picbox">
+                        <label class="col-xs-4 control-label"></label>
+                        <div class="col-xs-8">
+                            <div class="showPic picGroup com_picGroup" id="">
+                                <ul class="clearfix">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="form-group">
+                        <label for="content" class="col-xs-4 control-label">新闻描述</label>
+                        <div class="col-xs-8">
+                            <textarea class="d_none" name="content" rows="5"></textarea>
+                            <!--<iframe src="http://tobyhan.cn/LightProject/editor" frameborder="0" name="newscontent" scrolling="no" height="500"></iframe>-->
+                            <!--<textarea name="content" id="content" class="form-control" rows="5" placeholder="请输入新闻描述"></textarea>-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <div id="meditToolBar"></div>
+                            <div id="meditContent"></div>
+                        </div>
+                    </div>
+                    <div class="form-group filebox">
+                        <label for="imgUrl" class="col-xs-4 control-label">上传封面</label>
+                        <div class="col-xs-8 t_left">
+                            <input type="hidden" name="imgUrl" id="">
+                            <input type="file" accept="image/*" name="casefile" id="newsfile" class="com_fileup" onchange="getNewsImg(this)" style="display:none" />
+                            <button type="button" class="btn btn-addPic com_add" id="newsAdd">上传</button>
+                        </div>
+                    </div>
+                    <div class="form-group picbox">
+                        <label class="col-xs-4 control-label"></label>
+                        <div class="col-xs-8">
+                            <div class="showPic picGroup com_picGroup" id="newsPicBox">
+                                <ul class="clearfix">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btnAdd" id="newsApply">提交申请</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/app/market.js "></script>
+<script src="../js/app/join.js"></script>
+<script src="../js/app/caseAdd.js"></script>
+<script src="../js/app/goodsAdd.js"></script>
+<script src="../lib/build/medit.min.js"></script>
+<!--<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>-->
+<script src="../js/app/newsAdd.js"></script>
+<script>
+    $(function() {
+        // $('#content').summernote({
+        //     height: 444,
+        //     callbacks: {
+        //         onImageUpload: function(files) {
+        //             //上传图片到服务器，使用了formData对象，至于兼容性...据说对低版本IE不太友好
+        //             var formData = new FormData();
+        //             var Base64Encode = new Base64();
+        //             var key = Base64Encode.decode(getRandomKey())
+        //             formData.append('key', key);
+        //             formData.append('file', files[0]);
+        //             formData.append('token', getToken());
+        //             $.ajax({
+        //                 url: getImgServerNot64(), //后台文件上传接口
+        //                 type: 'POST',
+        //                 data: formData,
+        //                 processData: false,
+        //                 contentType: false,
+        //                 success: function(data) {
+        //                     $('#content').summernote('insertImage', imgUrl() + data.url, 'img');
+        //                 }
+        //             });
+        //         }
+        //     }
+        // });
+
+        var meditObj = medit(document.getElementById("meditContent"), document.getElementById("meditToolBar"));
+        medit.extend({
+            name: 'time',
+            icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAClklEQVRYR8WXjW0VQQyExxUAHUAFJBWQVACpgFABoQJCBZAKgAqSVECogKQCSAVABUZf8B73s393QXorPa2ebs87Httjn2nHy3Z8v1YBcPfHkp5JeiHpYfzw4Vf8LiR9NbMfvY51AXD3A0lvJbH3rCtJ78yMvbqqANwdL99LOh5ZuZGEp3PjgIOZp6OznHtlZjCUXUUA7r4n6aMkdtZnSactegP0B0kv473rAMG+WFkAcfmXiPEtnplZ1kDJs7DxKRiBgcOcjQWA8IDL8Ry6D0oURlKqxErYIlSEBQcAMQlHDgCooQ/P92rxc3eHATOrhZI8SiAuzOxozNrkxaDtWxzYb9HeAwBbM7uwMCTwHABZ+5yEM7Nx5mdD3QsgQCRmr8zsMBkcAES8fsaDJ61sD6PNEKSLIl++x/9HKbRjAHhM2d2YWSq9qoisYSAAk4gkJNoAI/+k2N2p3dehYKd1/fr7dAMA7KKoQ4jHDJAY6PyArgViAwCU8jz6xZ2s5wBMsrQGIgFAITPnqHc8Heo+egoac21m+/8TQAnnGzMjtClkeA0AOmaRgclLDQYoW4SmtI7H1eTu1RCkJDwzs5NW/Lc8d/dqEqYyHOKz5ZIGY9UyhMpVQrQGYFOIoq6TXC6axprLcmfdPdm+NDNy4W7NewEzX5LL7nJsgZs1o4nM59pxSkbql47YPWAWPCe0OMW+aHKlgWQ8RBxtBdEz3JRGMtDi+YMYtwHRnHDHDITqIbvY+h3DzYLN3kkG24gOIlUNSWQ7DSfNE4x1zJTZ93rGcsSDLpkWhgDDngZV2jcJTHazp3UWk/T6sXxGJ0YBkkbtVuJ3jfCLMmxZjaSiieDx/CuJHIERRq6ix/M7uj7NWsDu83znAP4A8SpJMGG4znIAAAAASUVORK5CYII=',
+            doWhat: function(node) {
+                node.innerHTML = "this is time node";
+                return node;
+            },
+            setting: [{
+                name: 'time',
+                icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAClklEQVRYR8WXjW0VQQyExxUAHUAFJBWQVACpgFABoQJCBZAKgAqSVECogKQCSAVABUZf8B73s393QXorPa2ebs87Httjn2nHy3Z8v1YBcPfHkp5JeiHpYfzw4Vf8LiR9NbMfvY51AXD3A0lvJbH3rCtJ78yMvbqqANwdL99LOh5ZuZGEp3PjgIOZp6OznHtlZjCUXUUA7r4n6aMkdtZnSactegP0B0kv473rAMG+WFkAcfmXiPEtnplZ1kDJs7DxKRiBgcOcjQWA8IDL8Ry6D0oURlKqxErYIlSEBQcAMQlHDgCooQ/P92rxc3eHATOrhZI8SiAuzOxozNrkxaDtWxzYb9HeAwBbM7uwMCTwHABZ+5yEM7Nx5mdD3QsgQCRmr8zsMBkcAES8fsaDJ61sD6PNEKSLIl++x/9HKbRjAHhM2d2YWSq9qoisYSAAk4gkJNoAI/+k2N2p3dehYKd1/fr7dAMA7KKoQ4jHDJAY6PyArgViAwCU8jz6xZ2s5wBMsrQGIgFAITPnqHc8Heo+egoac21m+/8TQAnnGzMjtClkeA0AOmaRgclLDQYoW4SmtI7H1eTu1RCkJDwzs5NW/Lc8d/dqEqYyHOKz5ZIGY9UyhMpVQrQGYFOIoq6TXC6axprLcmfdPdm+NDNy4W7NewEzX5LL7nJsgZs1o4nM59pxSkbql47YPWAWPCe0OMW+aHKlgWQ8RBxtBdEz3JRGMtDi+YMYtwHRnHDHDITqIbvY+h3DzYLN3kkG24gOIlUNSWQ7DSfNE4x1zJTZ93rGcsSDLpkWhgDDngZV2jcJTHazp3UWk/T6sXxGJ0YBkkbtVuJ3jfCLMmxZjaSiieDx/CuJHIERRq6ix/M7uj7NWsDu83znAP4A8SpJMGG4znIAAAAASUVORK5CYII=',
+                doWhat: function(node) {
+                    medit.settingPage("时间插件测试", "Time test", function() {
+                        console.log("ok点击了")
+                    });
+                }
+            }],
+            focus: function(node) {
+                node.setAttribute("class", "medit-editing");
+            },
+            blur: function(node) {
+                node.removeAttribute("class");
+            }
+        })
+
+        medit.nativeSetting(function(mode, modeName) {
+            console.log(mode, modeName);
+        });
+        //上传图片到服务器，使用了formData对象，至于兼容性...据说对低版本IE不太友好
+        // var formData = new FormData();
+        var Base64Encode = new Base64();
+        var key = Base64Encode.decode(getRandomKey())
+        meditObj.image({
+            path: getImgServerNot64(),
+            name: 'file',
+            qiniuToken: getToken(),
+            qiniuKey: key,
+            size: 0,
+            timeout: 0,
+            ext: ["jpg", "jpeg", "png", "gif", "bmp"], // 上传文件格式限制
+            success: function(res) {
+                console.log(res);
+            },
+            error: function(msg) {
+                alert("error : " + msg);
+            }
+        })
+    })
+</script>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.custom.LgPostCustomMapper" >
+
+
+  <select id="getCountCommemtWithPostId" resultType="java.lang.Integer" 
+    parameterType="java.lang.Integer">
+    	select count(*) from lg_post_comment where post_id = #{postId}
+  </select>
+   <select id="getPostListByProjectId" resultType="com.light.pojo.LgPost" 
+    parameterType="java.lang.Integer">
+    	select lc.* from lg_post as lp, lg_post_comment as lc,
+    	   lg_project as lproject	where lp.project_id = #{projectId} group by lc.pcid
+
+  </select>
+  
+   <select id="getPostLoginUserNameByPcid" resultType="java.lang.String" 
+    parameterType="java.lang.Integer">
+	select login_user_name from lg_post_comment where pcid = #{pcid}
+  </select>
+  
+   <select id="getSonCommentByPcid" resultType="java.lang.Integer" 
+    parameterType="java.lang.Integer">
+	select pcid from lg_post_comment where parent_id = #{pcid}
+  </select>
+  
+  
+   <resultMap id="Rsmap1" type="com.light.dto.LastAtOutputbean" >
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="loginUserId" property="loginUserId" jdbcType="INTEGER" />
+    <result column="nickName" property="nickName" jdbcType="VARCHAR" />
+     <result column="postTitle" property="postTitle" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="createTime" property="createTime" jdbcType="INTEGER" />
+    <result column="projectId" property="projectId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="commentCount" property="commentCount" jdbcType="INTEGER" />
+  </resultMap>
+  <select id="getLastCommentPostList" resultMap="Rsmap1"
+  parameterType="java.lang.Integer">
+			SELECT
+		post.pid as pid,
+		post.login_user_id as loginUserId, post.nick_name as nickName,
+		post.post_title as postTitle, post.type as type,
+		post.create_time as createTime,
+		post.project_id as projectId, post.status as status,
+		count(pcomment.post_id) as commentCount
+	FROM
+		lg_post AS post,
+		lg_post_comment as pcomment
+	WHERE
+		post.pid = pcomment.post_id
+	  and pcomment.login_user_id = #{loginUserId}
+	GROUP BY post.pid
+	order BY
+	 pcomment.create_time desc 	
+  </select>
+  
+  
+    <resultMap id="Rsmap2" type="com.light.pojo.LgPost" >
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="loginUserId" property="loginUserId" jdbcType="INTEGER" />
+    <result column="nickName" property="nickName" jdbcType="VARCHAR" />
+     <result column="postTitle" property="postTitle" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="createTime" property="createTime" jdbcType="INTEGER" />
+    <result column="projectId" property="projectId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+   <select id="getLastATPostList" resultMap="Rsmap2"
+    parameterType="java.lang.Integer">
+	SELECT
+		post.pid as pid,
+		post.login_user_id as loginUserId, post.nick_name as nickName,
+		post.post_title as postTitle, post.type as type,
+	    post.create_time as createTime,
+		post.project_id as projectId, post.status as status
+	FROM
+		lg_post AS post,
+		lg_post_employee as relation,
+	  lg_login_user as login
+	WHERE
+		post.pid = relation.post_id
+	 and relation.employee_id = login.user_type_id
+	 and login.id = #{loginUserId}
+	
+  </select>
+  
+  
+    <select id="getLastPublicPostList" resultType="com.light.pojo.LgPost"
+  parameterType="java.lang.Integer">
+	SELECT
+	post.pid as pid,
+		post.login_user_id as loginUserId, post.nick_name as nickName,
+		post.post_title as postTitle, post.type as type,
+	    post.create_time as createTime,
+		post.project_id as projectId, post.status as status
+	FROM
+		lg_post as post
+	where login_user_id=#{loginUserId}
+
+  </select>
+  
+    <select id="getCommentBean" resultType="com.light.dto.CommentSqlBean"
+    parameterType="java.lang.Integer">
+		SELECT
+		post.post_title AS title,
+		post.nick_name as nickName,
+		project.market_name as market,
+		project.customer_id as customerId
+	FROM
+		lg_post AS post,
+		lg_project AS project
+	WHERE
+		post.project_id = project.pid
+	AND post.pid = #{postId}
+	
+  </select>
+      <select id="getCusListByCustomerId" resultType="java.lang.String"
+    parameterType="java.lang.Integer">
+		SELECT
+		cus.open_id
+	FROM
+		lg_login_user AS login,
+		lg_login_cuslist AS cus
+	WHERE
+		login.id = cus.login_user_id
+	 AND login.user_type_id=#{customerId}
+	 and login.role_ids='4'
+	
+  </select>
+  
+</mapper>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>合作方档案</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/common/common.css">
+</head>
+
+<body>
+    <div class="com_table t_center">
+        <form action="" class="form-horizontal" role="form" id="cooperateForm">
+            <div class="form-group">
+                <label for="cooperateName" class="col-xs-4 control-label">合作方</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="pid" id="pid">
+                    <input type="text" name="cooperateName" id="cooperateName" class="form-control" placeholder="请输入合作方" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cooperateContent" class="col-xs-4 control-label">合作内容</label>
+                <div class="col-xs-8">
+                    <textarea name="cooperateContent" id="cooperateContent" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="chiefPerson" class="col-xs-4 control-label">负责人</label>
+                <div class="col-xs-8">
+                    <input type="text" name="chiefPerson" id="chiefPerson" class="form-control" placeholder="请输入负责人">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mobile" class="col-xs-4 control-label">合作电话</label>
+                <div class="col-xs-8">
+                    <input type="tel" name="mobile" id="mobile" class="form-control" placeholder="请输入合作电话">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address" class="col-xs-4 control-label">合作地址</label>
+                <div class="col-xs-8">
+                    <input type="text" name="address" id="address" class="form-control" placeholder="请输入合作地址">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bankAccount" class="col-xs-4 control-label">银行账户</label>
+                <div class="col-xs-8">
+                    <input type="text" name="bankAccount" id="bankAccount" class="form-control" placeholder="请输入银行账户">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bankAccountNo" class="col-xs-4 control-label">账号</label>
+                <div class="col-xs-8">
+                    <input type="text" name="bankAccountNo" id="bankAccountNo" class="form-control" placeholder="请输入账号">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bankBranch" class="col-xs-4 control-label">支行</label>
+                <div class="col-xs-8">
+                    <input type="text" name="bankBranch" id="bankBranch" class="form-control" placeholder="请输入支行">
+                </div>
+            </div>
+            <div class="form-group cstatus d_none">
+                <label for="status" class="col-xs-4 control-label">合作状态</label>
+                <div class="col-xs-8">
+                    <select name="status" id="status" class="form-control">
+                        <!--<option value="0">未审核</option>-->
+                        <option value="1">合作中</option>
+                        <option value="2">合作关闭</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="remark" class="col-xs-4 control-label">备注</label>
+                <div class="col-xs-8">
+                    <textarea name="remark" id="remark" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btnAdd changeBtn" id="addTable">确认提交</button>
+                <button type="button" class="btn btnAdd d_none" id="editTable">确认提交</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="../lib/jquery-2.1.1.min.js "></script>
+<script src="../lib/jquery-migrate-1.2.1.min.js "></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js "></script>
+<script src="../js/common.js"></script>
+<script src="../js/app/cooperate_add.js"></script>
+<script>
+    $(function() {
+        checkLoginStatus();
+    })
+</script>
+
+</html>

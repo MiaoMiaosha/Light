@@ -1,0 +1,57 @@
+<!--<link rel="stylesheet" type="text/css" href="../../css/app/bannerpic.css">-->
+<div class="comment_body">
+    <div class="addComment com_table t_center">
+        <form action="" class="form-horizontal" role="form" id="saveForm">
+            <div class="form-group">
+                <label for="type" class="col-xs-4 control-label">图片所属</label>
+                <div class="col-xs-8">
+                    <select name="type" id="type" class="form-control" onchange="showAd2Link(this)">
+                        <option value="1">第一张广告图</option>
+                        <option value="2">第二张广告图</option>
+                        <!--<option value="3">招租图片</option>-->
+                    </select>
+                </div>
+            </div>
+            <div class="form-group addlink d_none">
+                <label for="adLink" class="col-xs-4 control-label">图片链接</label>
+                <div class="col-xs-8">
+                    <input type="text" name="adLink" id="adLink" class="form-control" placeholder="请输入图片链接" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 control-label">图片上传</label>
+                <div class="col-xs-8">
+                    <p class="picNotes">只能上传JPG、GIF、PNG或者BMP图片</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="picUpBox">
+                        <input type="hidden" name="urlKey" id="urlKey">
+                        <input type="file" accept="image/*" name="fileup" id="fileup" onchange="getImg(this)" />
+                        <button type="button" id="addPic" class="btn btn-info addPic">上传图片</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="picGroup" id="picGroup">
+                        <ul class="clearfix">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btnAdd" id="save">保存</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="../../js/app/perinfo/bannerpic.js"></script>
+<script>
+    $(function() {
+        checkLoginStatus();
+    })
+</script>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="testTables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/light_project" userId="root"
+			password="miaosha4444">
+		</jdbcConnection>
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- targetProject:生成PO类的位置 -->
+		<javaModelGenerator targetPackage="com.light.pojo"
+			targetProject=".\src">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 从数据库返回的值被清理前后的空格 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+        <!-- targetProject:mapper映射文件生成的位置 -->
+		<sqlMapGenerator targetPackage="com.light.mapper" 
+			targetProject=".\src">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<!-- targetPackage：mapper接口生成的位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.light.mapper" 
+			targetProject=".\src">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<!-- 指定数据库表 -->
+		<table schema="" tableName="lg_accounting">
+			 <columnOverride column="invoice_pic" jdbcType="VARCHAR" />
+		</table>
+		<table schema="" tableName="lg_accounting_extra">
+		</table>		
+		<table schema="" tableName="lg_bonus">
+		</table>							
+		<table schema="" tableName="lg_bonus_extra">
+		</table>		
+		<table schema="" tableName="lg_case">
+			 <columnOverride column="img_url" jdbcType="VARCHAR" />
+		</table>
+		<table schema="" tableName="lg_case_apply"></table>
+		<table schema="" tableName="lg_config"></table>
+		<table schema="" tableName="lg_cooperate_company"></table>
+		<table schema="" tableName="lg_cooperate_company_apply"></table>
+		<table schema="" tableName="lg_customer">
+		</table>		
+		<table schema="" tableName="lg_employee">
+		     <columnOverride column="idcard_front_url" jdbcType="VARCHAR" />
+			    <columnOverride column="idcard_behind_url" jdbcType="VARCHAR" />
+			    <columnOverride column="education" jdbcType="VARCHAR" />
+			    <columnOverride column="contact" jdbcType="VARCHAR" />
+		</table>
+		<table schema="" tableName="lg_employee_bonus">
+		</table>		
+		<table schema="" tableName="lg_floor"></table>
+		<table schema="" tableName="lg_goods">
+			<columnOverride column="img" jdbcType="VARCHAR" />
+			<columnOverride column="sku_json" jdbcType="VARCHAR" />
+		</table>
+		<table schema="" tableName="lg_goods_image">
+			<columnOverride column="img_url" jdbcType="VARCHAR" />
+		</table>
+		<table schema="" tableName="lg_main_business"></table>
+		<table schema="" tableName="lg_market">
+			 <columnOverride column="img_url" jdbcType="VARCHAR" />
+			 <columnOverride column="contract_url" jdbcType="VARCHAR" />
+		</table>
+		<table schema="" tableName="lg_market_apply"></table>
+		<table schema="" tableName="lg_market_files">
+			 <columnOverride column="file_url" jdbcType="VARCHAR" />
+		</table>		
+		<table schema="" tableName="lg_news">
+			<columnOverride column="content" jdbcType="VARCHAR" />
+			<columnOverride column="img_url" jdbcType="VARCHAR" />
+		</table>
+		<table schema="" tableName="lg_news_apply"></table>
+		<table schema="" tableName="lg_news_comment"></table>
+		<table schema="" tableName="lg_news_image">
+						 <columnOverride column="img_url" jdbcType="VARCHAR" />
+		</table>
+		<table schema="" tableName="lg_partner"></table>
+		<table schema="" tableName="lg_project"></table>
+		<table schema="" tableName="lg_record"></table>
+		
+		<table schema="" tableName="lg_region"></table>
+		<table schema="" tableName="lg_reimburse"></table>
+		<table schema="" tableName="lg_reimburse_extra"></table>
+		<table schema="" tableName="lg_salary"></table>
+		<table schema="" tableName="lg_salary_extra"></table>
+		<table schema="" tableName="lg_total_count"></table>
+		<table schema="" tableName="lg_stall"></table>
+		<table schema="" tableName="lg_stall_apply"></table>
+		<table schema="" tableName="lg_train_book">
+			 <columnOverride column="img_url" jdbcType="VARCHAR" />
+			 <columnOverride column="content" jdbcType="VARCHAR" />
+		</table>
+		<table schema="" tableName="lg_train_magzine">
+			 <columnOverride column="img_url" jdbcType="VARCHAR" />
+			 <columnOverride column="content" jdbcType="VARCHAR" />		
+		</table>
+		<table schema="" tableName="lg_train_signup_apply"></table>
+		<table schema="" tableName="lg_train_software">
+			 <columnOverride column="img_url" jdbcType="VARCHAR" />
+			 <columnOverride column="content" jdbcType="VARCHAR" />		
+		</table>
+		<table schema="" tableName="lg_train_teacher"></table>
+		<table schema="" tableName="lg_user"></table>
+		<table schema="" tableName="lg_wx_user">
+			 <columnOverride column="headerpic" jdbcType="VARCHAR" />
+			 <columnOverride column="token" jdbcType="VARCHAR" />
+			 <columnOverride column="authorizer_access_token" jdbcType="VARCHAR" />
+			 <columnOverride column="authorizer_refresh_token" jdbcType="VARCHAR" />
+			 <columnOverride column="web_access_token" jdbcType="VARCHAR" />
+			 <columnOverride column="web_refresh_token" jdbcType="VARCHAR" />
+			 <columnOverride column="qr" jdbcType="VARCHAR" />
+			 <columnOverride column="web_refresh_token" jdbcType="VARCHAR" />
+			 <columnOverride column="menu_config" jdbcType="VARCHAR" />
+		</table>
+	    <table schema="" tableName="lg_token">
+			 <columnOverride column="token" jdbcType="VARCHAR" />
+		</table>
+		<table schema="" tableName="lg_like">
+		</table>
+		
+		<table schema="" tableName="lg_sys_menu">
+		</table>
+		<table schema="" tableName="lg_sys_role">
+		</table>		
+		<table schema="" tableName="lg_sys_role_menu">
+		</table>		
+		<table schema="" tableName="lg_login_user">
+		</table>		
+		<table schema="" tableName="lg_bonus_level">
+		</table>	
+		<table schema="" tableName="lg_employee_project">
+		</table>
+		
+		
+		<table schema="" tableName="lg_post">
+			<columnOverride column="content" jdbcType="VARCHAR" />
+			<columnOverride column="upload_img" jdbcType="VARCHAR" />
+			<columnOverride column="upload_doc" jdbcType="VARCHAR" />
+		</table>	
+		<table schema="" tableName="lg_post_comment">
+			<columnOverride column="img_url" jdbcType="VARCHAR" />
+		</table>
+		<table schema="" tableName="lg_post_employee">
+			<columnOverride column="img_url" jdbcType="VARCHAR" />
+		</table>
+	</context>
+</generatorConfiguration>

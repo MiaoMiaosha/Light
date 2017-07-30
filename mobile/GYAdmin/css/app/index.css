@@ -1,0 +1,57 @@
+    .row {
+        margin: 0;
+    }
+    
+    .ptitle {
+        height: 60px;
+        line-height: 60px;
+        font-size: 18px;
+    }
+    
+    .showItem {
+        margin-top: 20px;
+    }
+    
+    .itembox {
+        padding: 10px;
+        line-height: 40px;
+        border: 1px solid #999;
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+    
+    .itembox a {
+        display: block;
+    }
+    
+    .itembox a i {
+        font-size: 24px;
+    }
+    
+    .admin-info {
+        padding: 10px 20px;
+        background: -webkit-linear-gradient(left, #fff, #ddd);
+        background: -moz-linear-gradient(left, #fff, #ddd);
+        background: -ms-linear-gradient(left, #fff, #ddd);
+    }
+    
+    .admin-info .user-img {
+        width: 60px;
+        float: left;
+        border-radius: 50%;
+        border: 1px solid #999;
+    }
+    
+    .admin-info .user-img img {
+        border-radius: 50%;
+        padding: 5px;
+    }
+    
+    .admin-info .user-info {
+        line-height: 60px;
+        float: right;
+    }
+    
+    .admin-info .user-info p span {
+        margin-left: 10px;
+    }

@@ -1,0 +1,114 @@
+#casePic .carousel-indicators li {
+    background: #c5c0c6;
+}
+
+#casePic .carousel-indicators .active {
+    background: #f1215f;
+}
+
+.caseDc_body {
+    background: #f2f3f7;
+}
+
+#cpic_box img {
+    height: 172px;
+}
+
+.caseDc_body .pic_info {
+    padding: 10px;
+    background: #fff;
+}
+
+.caseDc_body .pic_info h3 {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 36px;
+}
+
+.caseDc_body .pic_info h3 span {
+    font-size: 12px;
+    font-weight: normal;
+    float: right;
+    color: #f8a766;
+}
+
+.caseDc_body .pic_info .starLv {
+    font-size: 12px;
+    color: #989898;
+}
+
+.caseDc_body .pic_info .lvList {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.caseDc_body .pic_info .slis {
+    color: #f8a766;
+    margin: 0 2px;
+}
+
+.caseDc_body .pic_info .slis i {
+    font-size: 14px;
+}
+
+.caseDc_body .pic_info .infolist {
+    line-height: 22px;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #989898;
+}
+
+.caseDc_body .pic_info .infolist i {
+    color: #636363;
+}
+
+.caseDc_body .oplist {
+    height: 40px;
+    line-height: 40px;
+    margin-top: 10px;
+    background: #fff;
+}
+
+.caseDc_body .oplist .oplis {
+    text-align: center;
+    width: 33%;
+}
+
+.caseDc_body .oplist .oplis:not(:last-child) {
+    border-right: 1px solid #f2f3f5;
+}
+
+.oplist .oplis i {
+    margin-right: 5px;
+}
+
+.caseDc_body .more {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    background: #fff;
+    margin-top: 10px;
+}
+
+.caseDc_body .more i {
+    vertical-align: middle;
+    float: right;
+}
+
+.caseDc_body .seeMoreCase {
+    margin-bottom: 10px;
+}
+
+.fixedBack {
+    position: fixed;
+    right: 20px;
+    bottom: 140px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    border: 1px solid #999;
+    color: #fda80f;
+    background: #fff;
+}

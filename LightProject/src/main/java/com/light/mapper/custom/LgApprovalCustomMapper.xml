@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.custom.LgApprovalCustomMapper" >
+
+  <select id="getCaseNameByCaseId" resultType="java.lang.String"
+  	parameterType="java.lang.Integer">
+     select case_name from lg_case where cid = #{caseId}
+  </select>
+  <select id="getMarketNameByMarketId" resultType="java.lang.String"
+  	parameterType="java.lang.Integer">
+     select market_name from lg_market where mid = #{marketId}
+  </select>
+  <select id="getNewsTitleByNewsId" resultType="java.lang.String"
+  	parameterType="java.lang.Integer">
+     select news_title from lg_news where nid = #{newsId}
+  </select>
+    <select id="getCooperateCompanyById" resultType="java.lang.String"
+  	parameterType="java.lang.Integer">
+     select full_name from lg_cooperate_company where cid = #{id}
+  </select>
+  
+  
+</mapper>

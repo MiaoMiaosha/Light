@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>农贸市场管理平台</title>
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../css/common/common.css" rel="stylesheet" />
+    <link href="../css/app/login.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="com_table homeBox t_center">
+        <img src="../imgs/user1.jpg" alt="农贸市场管理平台" style="width: 80px;">
+        <h1 style="font-size: 18px;margin: 40px 0;">农贸市场管理平台</h1>
+        <form action="" class="form-horizontal" role="form" id="loginform">
+            <div class="form-group">
+                <label for="type" class="col-xs-4 control-label">权  限</label>
+                <div class="col-xs-8">
+                    <select name="type" id="type" class="form-control">
+                        <option value="4" data-show="kh">客户</option>
+                        <!--<option value="1" data-show="admin">管理员</option>-->
+                        <!--<option value="2" data-show="kj">会计</option>-->
+                        <option value="3" data-show="yg">光影</option>    
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username" class="col-xs-4 control-label">用户名</label>
+                <div class="col-xs-8">
+                    <input type="text" name="username" id="username" class="form-control" placeholder="请输入用户名" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-xs-4 control-label">密  码</label>
+                <div class="col-xs-8">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="请输入密码" />
+                </div>
+            </div>
+            <!--验证码-->
+            <div class="form-group">
+                <label for="inpcode" class="col-xs-4 control-label">验证码</label>
+                <div class="col-xs-8">
+                    <input type="text" name="inpcode" id="inpcode" class="form-control" />
+                    <img src="http://tobyhan.cn/LightProject/validcode" alt="" id="codepic" onclick="this.src='http://tobyhan.cn/LightProject/validcode?id='+ Math.random()">
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btnAdd" id="login" style="cursor:pointer">登录</button>
+            </div>
+        </form>
+    </div>
+</body>
+<!--<script src="../lib/jquery.min.js"></script>-->
+<script src="../lib/jquery-2.1.1.min.js"></script>
+<script src="../lib/jquery-migrate-1.2.1.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/common.js"></script>
+<!--<script src="../js/login.js"></script>-->
+<script>
+    $(function() {
+        $('#codepic').on('click', function() {
+            $(this).attr('src', validCode() + '?id=' + Math.random());
+        });
+        $('#login').on('click', function() {
+            var username = $('#username').val(),
+                password = $('#password').val(),
+                inpcode = $('#inpcode').val();
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: 'http://tobyhan.cn/LightProject/redirect',
+                data: {
+                    'username': username,
+                    'password': password,
+                    'inpcode': inpcode
+                },
+                success: function(res) {
+                    if (res.status.code == 200) {
+                        var roleId = res.data.roleId;
+                        switch (roleId) {
+                            case 1:
+                                setStr('userid', res.data.userId);
+                                setStr('nickname', res.data.nickname);
+                                setStr('roleId', res.data.roleId);
+                                // setStr('customerId', res.data.customerId);
+                                // setStr('showPage', $('#type').find("option:selected").attr('data-show'));
+                                location.href = "perInfo/index.html";
+                                setStr('showPage', 'admin');
+                                break;
+                            case 2:
+                                setStr('userid', res.data.userId);
+                                setStr('nickname', res.data.nickname);
+                                setStr('roleId', res.data.roleId);
+                                setStr('employeeId', res.data.employeeId);
+                                // setStr('showPage', $('#type').find("option:selected").attr('data-show'));
+                                location.href = "index.html";
+                                setStr('showPage', 'kj');
+                                break;
+                            case 3:
+                                //进入员工中心
+                                setStr('userid', res.data.userId);
+                                setStr('nickname', res.data.nickname);
+                                setStr('roleId', res.data.roleId);
+                                setStr('employeeId', res.data.employeeId);
+                                setStr('job', res.data.job);
+                                // setStr('showPage', $('#type').find("option:selected").attr('data-show'));
+                                window.location.href = " https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3d36f25cad23c1bf&redirect_uri=http%3a%2f%2ftobyhan.cn%2fLightProject%2fwxlogin&response_type=code&scope=snsapi_userinfo&state=" +
+                                    res.data.userId + "#wechat_redirect";
+                                setStr('showPage', 'yg');
+                                break;
+                            case 4:
+                                //进入客户个人中心
+                                setStr('userid', res.data.userId);
+                                setStr('nickname', res.data.nickname);
+                                setStr('roleId', res.data.roleId);
+                                setStr('customerId', res.data.customerId);
+                                // setStr('job', res.data.job);
+                                // setStr('showPage', $('#type').find("option:selected").attr('data-show'));
+                                window.location.href = " https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3d36f25cad23c1bf&redirect_uri=http%3a%2f%2ftobyhan.cn%2fLightProject%2fwxlogin&response_type=code&scope=snsapi_userinfo&state=" +
+                                    res.data.userId + "#wechat_redirect";
+                                setStr('showPage', 'kh');
+                                break;
+                        }
+                    } else {
+                        alert(res.status.msg)
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+
+            });
+            // $.post('http://tobyhan.cn/LightProject/redirect', {
+            //     'username': username,
+            //     'password': password,
+            //     'inpcode': inpcode,
+            //     // 'roleId': loginType
+            // }, function(res) {
+            //     if (res.status.code == 200) {
+            //         var roleId = res.data.roleId;
+            //         switch (roleId) {
+            //             case 1:
+            //                 setStr('userid', res.data.userId);
+            //                 setStr('nickname', res.data.nickname);
+            //                 setStr('roleId', res.data.roleId);
+            //                 // setStr('customerId', res.data.customerId);
+            //                 // setStr('showPage', $('#type').find("option:selected").attr('data-show'));
+            //                 location.href = "perInfo/index.html";
+            //                 setStr('showPage', 'admin');
+            //                 break;
+            //             case 2:
+            //                 setStr('userid', res.data.userId);
+            //                 setStr('nickname', res.data.nickname);
+            //                 setStr('roleId', res.data.roleId);
+            //                 setStr('employeeId', res.data.employeeId);
+            //                 // setStr('showPage', $('#type').find("option:selected").attr('data-show'));
+            //                 location.href = "index.html";
+            //                 setStr('showPage', 'kj');
+            //                 break;
+            //             case 3:
+            //                 //进入员工中心
+            //                 setStr('userid', res.data.userId);
+            //                 setStr('nickname', res.data.nickname);
+            //                 setStr('roleId', res.data.roleId);
+            //                 setStr('employeeId', res.data.employeeId);
+            //                 setStr('job', res.data.job);
+            //                 // setStr('showPage', $('#type').find("option:selected").attr('data-show'));
+            //                 window.location.href = " https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3d36f25cad23c1bf&redirect_uri=http%3a%2f%2ftobyhan.cn%2fLightProject%2fwxlogin&response_type=code&scope=snsapi_userinfo&state=" +
+            //                     res.data.userId + "#wechat_redirect";
+            //                 setStr('showPage', 'yg');
+            //                 break;
+            //             case 4:
+            //                 //进入客户个人中心
+            //                 setStr('userid', res.data.userId);
+            //                 setStr('nickname', res.data.nickname);
+            //                 setStr('roleId', res.data.roleId);
+            //                 setStr('customerId', res.data.customerId);
+            //                 // setStr('job', res.data.job);
+            //                 // setStr('showPage', $('#type').find("option:selected").attr('data-show'));
+            //                 window.location.href = " https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3d36f25cad23c1bf&redirect_uri=http%3a%2f%2ftobyhan.cn%2fLightProject%2fwxlogin&response_type=code&scope=snsapi_userinfo&state=" +
+            //                     res.data.userId + "#wechat_redirect";
+            //                 setStr('showPage', 'kh');
+            //                 break;
+            //         }
+            //     } else {
+            //         alert(res.status.msg)
+            //     }
+            // }, 'json')
+        });
+        // getStr('userid').length > 0 && getStr('userid') != 'undefined'
+        if ((getCookie('userId').length != 0 && getCookie('userId') != 'undefined') && getStr('roleId') == 2) {
+            window.location.href = "index.html";
+        } else if ((getCookie('userId').length != 0 && getCookie('userId') != 'undefined') && (getStr('roleId') == 3 || getStr('roleId') == 4 || getStr('roleId') == 1)) {
+            location.href = "perInfo/index.html";
+        }
+    })
+</script>
+
+</html>

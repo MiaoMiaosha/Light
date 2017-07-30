@@ -1,0 +1,103 @@
+<div class="publishPic_body com_body">
+    <div class="pCtn com_table t_center">
+        <form action="" class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="psheng" class="col-xs-4 control-label">省份</label>
+                <div class="col-xs-8">
+                    <select name="psheng" id="psheng" class="form-control">
+                                    <option value="0">浙江省</option>
+                                    <option value="1">福建省</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pcity" class="col-xs-4 control-label">城市</label>
+                <div class="col-xs-8">
+                    <select name="pcity" id="pcity" class="form-control">
+                                    <option value="0">杭州市</option>
+                                    <option value="1">福州市</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pmname" class="col-xs-4 control-label">农贸市场名</label>
+                <div class="col-xs-8">
+                    <input type="text" name="pmname" id="pmname" class="form-control" placeholder="请输入农贸市场名" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ptype" class="col-xs-4 control-label">发布内容</label>
+                <div class="col-xs-8">
+                    <select name="ptype" id="ptype" class="form-control">
+                                    <option value="0">上传开业图片</option>
+                                    <option value="1">上传开业资料</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="plv" class="col-xs-4 control-label">发布阶段</label>
+                <div class="col-xs-8">
+                    <select name="plv" id="plv" class="form-control">
+                                    <option value="0">效果阶段</option>
+                                    <option value="1">设计阶段</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pques" class="col-xs-4 control-label">发布问题</label>
+                <div class="col-xs-8">
+                    <input type="text" name="pques" id="pques" class="form-control" placeholder="请输入发布问题" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="psolv" class="col-xs-4 control-label">找谁解决</label>
+                <div class="col-xs-8">
+                    <input type="text" name="psolv" id="psolv" class="form-control" placeholder="请输入找谁解决" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 control-label">图片上传</label>
+                <div class="col-xs-8">
+                    <p class="picNotes">图片和文件上传详细更加说明</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="picUpBox">
+                        <input type="file" accept="image/*" name="picup" id="picup" onchange="getImg(this)" />
+                        <button type="button" id="addPic" class="btn btnAdd"> 上传图片</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="picGroup" id="picGroup">
+                        <ul class="clearfix">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 control-label">文件上传</label>
+                <div class="col-xs-8">
+                    <p class="picNotes">图片和文件上传详细更加说明</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="picUpBox">
+                        <input type="file" accept="image/*" name="fileup" id="fileup" onchange="getFile(this)" />
+                        <button type="button" id="addFile" class="btn btnAdd"> 上传附件</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button " class="btn btnAdd">确认提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="../../js/app/ppic.js "></script>

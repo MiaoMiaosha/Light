@@ -1,0 +1,447 @@
+html,
+body {
+    min-height: 100%;
+}
+
+html,
+body,
+p,
+ul,
+li,
+input,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei";
+}
+
+i {
+    font-style: normal;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+}
+
+.f_left {
+    float: left;
+}
+
+.f_right {
+    float: right;
+}
+
+.nob {
+    border: 0;
+}
+
+.nobr {
+    border-right: 0;
+}
+
+.nobb {
+    border-bottom: 0;
+}
+
+.t_center {
+    text-align: center;
+}
+
+.t_left {
+    text-align: left;
+}
+
+.p_rel {
+    position: relative;
+}
+
+.p_abs {
+    position: absolute;
+}
+
+.p_fixed {
+    position: fixed;
+}
+
+.d_none {
+    display: none;
+}
+
+.db_line {
+    display: inline-block;
+}
+
+.btnAdd {
+    width: 100%;
+    background: #fda80f;
+    color: #fff;
+}
+
+.btnInfo {
+    background: #84cc2c;
+}
+
+.homeBox {
+    min-height: 100%;
+    max-width: 414px;
+    margin: 0 auto;
+}
+
+.com_header {
+    height: 48px;
+    background: #84cc2c;
+    color: #fff;
+}
+
+.com_header .container-fluid {
+    height: inherit;
+}
+
+.com_header .loc {
+    left: 20px;
+    line-height: 48px;
+}
+
+.com_header .searchBox {
+    height: 26px;
+    margin-top: 12px;
+    /*width: 56%;*/
+    width: 75%;
+    position: relative;
+    left: 8%;
+}
+
+.com_header .perinfobox {
+    left: 0%;
+    width: 56%;
+}
+
+.com_header .searchBox input {
+    width: 70%;
+    border: 0;
+    /* border-radius: 20px; */
+    height: inherit;
+    padding-left: 5%;
+    padding-right: 12%;
+    color: #000;
+    height: 26px;
+    margin-left: -2%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.com_header .searchBox .searchType {
+    -webkit-appearance: none;
+    height: 26px;
+    color: #000;
+    border: 0;
+    width: 30%;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding-left: 10px;
+    background: #fff;
+}
+
+.com_header .searchBox i {
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    height: 22px;
+    width: 22px;
+    margin-top: -11px;
+    color: #818181;
+}
+
+.com_header .opBox {
+    right: 20px;
+    line-height: 48px;
+}
+
+.com_header .opBox li.iedit {
+    margin-right: 10px;
+}
+
+
+/*.com_bottom {
+    height: 120px;
+}
+
+.com_bottom .fixedBottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}*/
+
+.com_bottom .fixedBottom {
+    height: 60px;
+}
+
+.com_bottom .bt_menu {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.com_bottom .cyrhts,
+.com_bottom .bt_menu {
+    height: 60px;
+    text-align: center;
+}
+
+.com_bottom .cyrhts {
+    background: #fff;
+}
+
+.com_bottom .cyrhts p {
+    line-height: 30px;
+    font-size: 12px;
+}
+
+.com_bottom .bt_menu {
+    /*background: #84cc2c;*/
+    background: #fff;
+    border-top: 1px solid #eaeaea;
+}
+
+.com_bottom .bt_menu li {
+    width: 20%;
+    color: gray;
+}
+.com_bottom .bt_menu li a{
+    color: gray;
+}
+
+.com_bottom .bt_menu li i {
+    font-size: 26px;
+}
+
+.com_bottom .bt_menu li.cur,
+.com_bottom .bt_menu li.cur a{
+    color: #fda80f;
+}
+
+.com_table {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.com_table h3 {
+    font-size: 18px;
+    padding: 20px 0;
+}
+
+.com_table .form-group {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.com_table .form-group label {
+    line-height: 32px;
+}
+
+.com_table .col-xs-4 {
+    padding: 0 2%;
+}
+
+.com_table .col-xs-8 {
+    padding: 0 1%;
+}
+
+.com_table textarea {
+    resize: none;
+}
+
+.com_table input[type=file] {
+    display: none;
+}
+
+.com_table .picNotes {
+    font-size: 12px;
+    text-align: left;
+    line-height: 32px;
+}
+
+.com_table .picUpBox .addPic {
+    width: 100%
+}
+
+.com_table .picGroup .plis {
+    width: 46%;
+    margin-bottom: 5px;
+    height: 75px;
+    overflow: hidden;
+    position: relative;
+}
+
+.com_table .picGroup .plis .del {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    opacity: .8;
+}
+
+.com_table .picGroup .plis:not(:last-child) {
+    margin-right: 5px;
+}
+
+.loadMore {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.loadMore .btnLoad {
+    background: #fff;
+    border-radius: 24px;
+    width: 120px;
+}
+
+.com_body {
+    background: #f2f3f7;
+}
+
+
+/*弹窗*/
+
+body {
+    position: relative;
+}
+
+.trans {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.dialog {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.dialog .mask {
+    background: #000;
+    opacity: 0.6;
+    height: 100%;
+    width: 100%;
+}
+
+.dialog .dialog1Img {
+    position: absolute;
+}
+
+.dialog .dialogCtn {
+    background: #fff;
+    width: 90%;
+    height: 200px;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    /*margin-top: -100px;*/
+    margin-left: -45%;
+    border-radius: 10px;
+    overflow: hidden;
+    transform: translateY(100px);
+    opacity: 0;
+}
+
+.dialog .title {
+    line-height: 45px;
+    padding: 0 10px;
+    border-bottom: 1px solid #c8c9cd;
+}
+
+.dialog .body {
+    height: 110px;
+    padding: 10px;
+}
+
+.dialog .body textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: none;
+}
+
+.dialog .footer {
+    border-top: 1px solid #c8c9cd;
+}
+
+.dialog .footer .flis {
+    height: 45px;
+    width: 50%;
+}
+
+.dialog .footer .flis:not(:last-child) {
+    border-right: 1px solid #c8c9cd;
+}
+
+.dialog .footer .btnOk {
+    color: #fda80f;
+}
+
+.dialog .footer .btnFooter {
+    border: none;
+    width: 100%;
+    height: inherit;
+    background: #fff;
+}
+
+.otherDetails {
+    padding: 10px;
+}
+
+.otherDetails img:not(:last-child) {
+    padding-bottom: 10px;
+}
+
+
+/*无用*/
+
+.dialog-share-wrapper {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: -webkit-box;
+    display: -ms-box;
+    display: -moz-box;
+    display: box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    z-index: 600;
+}
+
+.dialog-share-wrapper .share-tips {
+    display: block;
+    width: 80%;
+    position: fixed;
+    top: 0;
+    right: .5rem;
+    background: url(../../images/share-tips.png) no-repeat;
+    background-size: contain;
+    height: 80%;
+}

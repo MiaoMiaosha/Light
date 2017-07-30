@@ -1,0 +1,83 @@
+.perInfo_body {
+    background: #f1f3f6;
+}
+
+.perInfo_body .s_info {
+    padding: 20px;
+    background: #fff;
+}
+
+.perInfo_body .s_info img {
+    max-width: 60px;
+    max-height: 60px;
+    border-radius: 50%;
+}
+
+.perInfo_body .s_info p {
+    line-height: 24px;
+    margin: 10px 0;
+}
+
+.perInfo_body .s_info p.name {
+    font-size: 16px;
+}
+
+.perInfo_body .s_info p.name span {
+    font-size: 12px;
+    display: inline-block;
+    line-height: 25px;
+    margin-left: 10px;
+    color: #666;
+}
+
+.perInfo_body .s_info p.lv {
+    font-size: 12px;
+    color: #666;
+}
+
+.perInfo_body .s_info p.lv span {
+    color: #fda80f;
+}
+
+.info_header .s_oplist {
+    background: #fff;
+    margin-top: 10px;
+}
+
+.info_header .s_oplist .oplis {
+    width: 50%;
+    height: 90px;
+    line-height: 45px;
+    font-size: 16px;
+    border-bottom: 1px solid #f1f2f3;
+}
+
+.info_header .s_oplist .oplis:not(:last-child) {
+    border-right: 2px solid #f1f3f6;
+}
+
+.info_header .oplis i {
+    color: #fda80f;
+    font-size: 40px;
+}
+
+.perInfo_body .hasMenu {
+    background: #fff;
+    margin-top: 10px;
+}
+
+.perInfo_body .hasMenu .hlis {
+    line-height: 40px;
+    border-bottom: 1px solid #f1f3f6;
+    padding: 0 10px;
+}
+
+.perInfo_body .hasMenu .hlis p i {
+    float: right;
+}
+
+.perInfo_body .exit {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 0;
+}

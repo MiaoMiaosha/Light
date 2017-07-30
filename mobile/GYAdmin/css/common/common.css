@@ -1,0 +1,473 @@
+html,
+body {
+    min-height: 100%;
+}
+
+html,
+body,
+p,
+ul,
+li,
+input,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft Yahei";
+}
+
+i {
+    font-style: normal;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+}
+
+.f_left {
+    float: left;
+}
+
+.f_right {
+    float: right;
+}
+
+.clear:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.nob {
+    border: 0;
+}
+
+.nobr {
+    border-right: 0;
+}
+
+.nobb {
+    border-bottom: 0;
+}
+
+.t_center {
+    text-align: center;
+}
+
+.t_left {
+    text-align: left;
+}
+
+.p_rel {
+    position: relative;
+}
+
+.p_abs {
+    position: absolute;
+}
+
+.p_fixed {
+    position: fixed;
+}
+
+.d_none {
+    display: none;
+}
+
+.db_line {
+    display: inline-block;
+}
+
+.btnAdd {
+    width: 100%;
+    background: #fda80f;
+    color: #fff;
+}
+
+.homeBox {
+    max-width: 414px;
+    margin: 0 auto;
+}
+
+.btnInfo {
+    background: #84cc2c;
+}
+
+.com_table {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.com_table .form-group {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.com_table .form-group label {
+    line-height: 32px;
+}
+
+.com_table .col-xs-4 {
+    padding: 0 2%;
+}
+
+.com_table .col-xs-8 {
+    padding: 0 1%;
+    text-align: left;
+}
+
+.com_table textarea {
+    resize: none;
+}
+
+.com_table input[type=file] {
+    display: none;
+}
+
+.com_table .picNotes {
+    font-size: 12px;
+    text-align: left;
+    line-height: 32px;
+}
+
+.com_table .picUpBox .addPic {
+    width: 100%
+}
+
+.com_table .picGroup .plis {
+    width: 46%;
+    margin-bottom: 5px;
+    height: 75px;
+    overflow: hidden;
+    position: relative;
+}
+
+.com_table .picGroup .plis .del {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    opacity: .8;
+}
+
+.com_table .picGroup .plis:not(:last-child) {
+    margin-right: 5px;
+}
+
+.loadMore {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.loadMore .btnLoad {
+    background: #fff;
+    border-radius: 24px;
+    width: 120px;
+}
+
+.com_body {
+    background: #f2f3f7;
+}
+
+.com_header {
+    height: 48px;
+    background: #84cc2c;
+    color: #fff;
+}
+
+.com_header .container-fluid {
+    height: inherit;
+}
+
+.com_header .loc {
+    left: 20px;
+    line-height: 48px;
+}
+
+.com_header .searchBox {
+    height: 26px;
+    margin-top: 12px;
+    width: 56%;
+}
+
+.com_header .searchBox input {
+    width: 100%;
+    border: 0;
+    border-radius: 20px;
+    height: inherit;
+    padding-left: 5%;
+    padding-right: 12%;
+    color: #000;
+}
+
+.com_header .searchBox i {
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    height: 22px;
+    width: 22px;
+    margin-top: -11px;
+    color: #818181;
+}
+
+.com_header .opBox {
+    right: 20px;
+    line-height: 48px;
+}
+
+.com_header .opBox li.iedit {
+    margin-right: 10px;
+}
+
+
+/*弹窗*/
+
+body {
+    position: relative;
+}
+
+.trans {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.dialog1 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.dialog1 .mask {
+    background: #000;
+    opacity: 0.6;
+    height: 100%;
+    width: 100%;
+}
+
+.dialog1 .dialog1Img {
+    position: absolute;
+}
+
+.dialog1 .dialogCtn {
+    background: #fff;
+    width: 90%;
+    height: 200px;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    /*margin-top: -100px;*/
+    margin-left: -45%;
+    border-radius: 10px;
+    overflow: hidden;
+    transform: translateY(100px);
+    opacity: 0;
+}
+
+.dialog1 .title {
+    line-height: 45px;
+    padding: 0 10px;
+    border-bottom: 1px solid #c8c9cd;
+}
+
+.dialog1 .body {
+    height: 110px;
+    padding: 10px;
+    text-align: center;
+}
+
+.dialog1 .body textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: none;
+}
+
+.dialog1 .footer {
+    border-top: 1px solid #c8c9cd;
+}
+
+.dialog1 .footer .flis {
+    height: 45px;
+    width: 50%;
+}
+
+.dialog1 .footer .flis:not(:last-child) {
+    border-right: 1px solid #c8c9cd;
+}
+
+.dialog1 .footer .btnOk {
+    color: #fda80f;
+}
+
+.dialog1 select {
+    width: 80%;
+    margin: 20px auto;
+    padding: 10px 5px;
+}
+
+.dialog1 .footer .btnFooter {
+    border: none;
+    width: 100%;
+    height: inherit;
+    background: #fff;
+}
+
+.comTable .table-title {
+    text-align: center;
+    font-size: 14px;
+    line-height: 50px;
+}
+
+.comTable .table-title .tAdd {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    padding: 0 10px;
+    line-height: 24px;
+    display: block;
+    margin-top: -12px;
+    background: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #999;
+}
+
+.comTable .table-title .tBack {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    padding: 0 10px;
+    line-height: 24px;
+    display: block;
+    margin-top: -12px;
+    background: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #999;
+}
+
+.devide-box {
+    width: 100%;
+    padding: 6px 12px;
+    min-height: 34px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: left;
+    background: #fff;
+}
+
+.devide-box:hover {
+    border-color: #66afe9;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.devide-box span {
+    border: 1px solid #ccc;
+    padding: 0px 6px;
+    background: #ccc;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    display: inline-block;
+}
+
+.devide-box span i {
+    margin-left: 5px;
+}
+
+.select-box {
+    z-index: 999;
+    background: #fff;
+    width: 97%;
+    border: 1px solid #ccc;
+}
+
+.select-box .slis {
+    line-height: 30px;
+}
+
+.searchBox {
+    margin: 10px 0;
+}
+
+.searchKey {
+    width: 100%;
+    padding: 5px 0;
+}
+
+.searchKeyIpts {
+    padding: 5px;
+    border: 1px solid #aaa;
+    vertical-align: top;
+}
+
+.searchBtn {
+    padding: 3px 10px;
+    vertical-align: top;
+}
+
+.searchBtn i {}
+
+.typebox {
+    margin-top: 10px;
+}
+
+.typebox .searchType {
+    padding: 5px;
+    width: 25%;
+}
+
+.typebox .searchWords {
+    padding: 5px;
+}
+
+.typebox .search-btn {
+    padding: 6px 7px;
+}
+
+#datatable-default tr {
+    border-bottom: 2px solid #ddd;
+}
+
+#datatable-default td {
+    /* line-height: 1px; */
+    font-size: 12px;
+    height: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#datatable-default .uncheck td {
+    background: #f2ad8b;
+    color: #000;
+}
+
+#datatable-default .checked td {
+    background: #fff;
+    color: #000;
+}
+
+#datatable-default .unpass td {
+    background: gray;
+    color: #000;
+}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>分红表</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/common/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/fonts/fonts.css">
+    <link rel="stylesheet" type="text/css" href="../css/app/fenhong.css">
+</head>
+
+<body>
+    <div class="com_table t_center">
+        <form action="" class="form-horizontal" role="form" id="fenhongForm">
+            <div class="form-group kjshow d_none">
+                <label for="updateTime" class="col-xs-4 control-label">计入月份</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="updateTime" id="updateTime">
+                    <input type="month" name="updateTime1" id="updateTime1" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bonusTime" class="col-xs-4 control-label">日期</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="bid" id="bid">
+                    <input type="hidden" name="bonusTime" id="bonusTime">
+                    <input type="date" name="bonusTime1" id="bonusTime1" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bonusUsers" class="col-xs-4 control-label">分红人</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="bonusUsers" id="bonusUsers">
+                    <div class="devide-box p_rel" id="employeebox" data-open="0">
+                        <!--<span data-id="11">张三<i class="icon-guanbifuzhi"></i></span><span data-id="18">李四<i class="icon-guanbifuzhi"></i></span><span data-id="13">李四<i class="icon-guanbifuzhi"></i></span>
+                        <span data-id="21">王五<i class="icon-guanbifuzhi"></i></span><span data-id="16">六小龄童<i class="icon-guanbifuzhi"></i></span>-->
+                    </div>
+                    <div class="select-box d_none p_abs" id="employee-box">
+                        <ul>
+                            <!--<li class="slis" data-id="1">我是aaa</li>
+                            <li class="slis" data-id="2">我是bbb</li>
+                            <li class="slis" data-id="3">我是ccc</li>
+                            <li class="slis" data-id="4">我是ddd</li>
+                            <li class="slis" data-id="5">我是eee</li>
+                            <li class="slis" data-id="6">我是fff</li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="contractids" class="col-xs-4 control-label">合同人</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="contractids" id="contractids">
+                    <div class="devide-box p_rel" id="contactbox" data-open="0">
+                        <!--<span data-id="11">张三<i class="icon-guanbifuzhi"></i></span><span data-id="18">李四<i class="icon-guanbifuzhi"></i></span><span data-id="13">李四<i class="icon-guanbifuzhi"></i></span>
+                        <span data-id="21">王五<i class="icon-guanbifuzhi"></i></span><span data-id="16">六小龄童<i class="icon-guanbifuzhi"></i></span>-->
+                    </div>
+                    <div class="select-box d_none p_abs" id="contact-box">
+                        <ul>
+                            <!--<li class="slis" data-id="1">我是aaa</li>
+                            <li class="slis" data-id="2">我是bbb</li>
+                            <li class="slis" data-id="3">我是ccc</li>
+                            <li class="slis" data-id="4">我是ddd</li>
+                            <li class="slis" data-id="5">我是eee</li>
+                            <li class="slis" data-id="6">我是fff</li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="projectId" class="col-xs-4 control-label">市场名称</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="marketName" id="marketName">
+                    <select name="projectId" id="projectId" class="form-control">
+                                    <!--<option value="0">市场差旅费</option>
+                                    <option value="1">谈业务差旅</option>
+                                    <option value="2">客户接待</option>
+                                    <option value="3">快递图文</option>
+                                    <option value="4">设计院挂号</option>
+                                    <option value="5">物业水电租金</option>
+                                    <option value="6">办公相关</option>
+                                    <option value="7">企业活动</option>
+                                    <option value="8">税费相关</option>
+                                    <option value="9">其他</option>-->
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="typeId" class="col-xs-4 control-label">分红类型</label>
+                <div class="col-xs-8">
+                    <select name="typeId" id="typeId" class="form-control">
+                                    <!--<option value="0">市场差旅费</option>
+                                    <option value="1">谈业务差旅</option>
+                                    <option value="2">客户接待</option>
+                                    <option value="3">快递图文</option>
+                                    <option value="4">设计院挂号</option>
+                                    <option value="5">物业水电租金</option>
+                                    <option value="6">办公相关</option>
+                                    <option value="7">企业活动</option>
+                                    <option value="8">税费相关</option>
+                                    <option value="9">其他</option>-->
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="receiveMoney" class="col-xs-4 control-label">到账金额</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="receiveMoney" id="receiveMoney" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="travelMoney" class="col-xs-4 control-label">差旅</label>
+                <div class="col-xs-8">
+                    <input type="number" name="travelMoney" id="travelMoney" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="rebateMoney" class="col-xs-4 control-label">回扣</label>
+                <div class="col-xs-8">
+                    <input type="number" name="rebateMoney" id="rebateMoney" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="otherMoney" class="col-xs-4 control-label">其他</label>
+                <div class="col-xs-8">
+                    <input type="number" name="otherMoney" id="otherMoney" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="realMoney" class="col-xs-4 control-label">公司真实收入</label>
+                <div class="col-xs-8">
+                    <input type="number" name="realMoney" id="realMoney" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bonusNum" class="col-xs-4 control-label">分红人数</label>
+                <div class="col-xs-8">
+                    <input type="number" name="bonusNum" id="bonusNum" class="form-control" value="0" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="personBusSalary" class="col-xs-4 control-label">个人业绩收入</label>
+                <div class="col-xs-8">
+                    <input type="number" name="personBusSalary" id="personBusSalary" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dividendRadio" class="col-xs-4 control-label">分红比例</label>
+                <div class="col-xs-8 p_rel">
+                    <input type="number" name="dividendRadio" id="dividendRadio" class="form-control dividendRadio" placeholder="请输入1-100之间的数值,单位%,">
+                    <div class="rateBox p_abs d_none" data-open="0">
+                        <ul>
+                            <li>1.5</li>
+                            <li>2.0</li>
+                            <li>2.5</li>
+                            <li>3.5</li>
+                            <li>4.5</li>
+                            <li>5.5</li>
+                            <li>6.5</li>
+                            <li>7.5</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <label for="bonusLevel" class="col-xs-4 control-label">分红级别</label>
+                <div class="col-xs-8">
+                    <input type="number" name="bonusLevel" id="bonusLevel" class="form-control" value="0">
+                </div>
+            </div>-->
+            <div class="form-group">
+                <label for="bonusMoney" class="col-xs-4 control-label">分红金额</label>
+                <div class="col-xs-8">
+                    <input type="number" name="bonusMoney" id="bonusMoney" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group check-box d_none">
+                <label for="status" class="col-xs-4 control-label">审核状态</label>
+                <div class="col-xs-8">
+                    <select name="status" id="status" class="form-control">
+                                    <option value="0">申请中</option>
+                                    <option value="1">申请成功</option>
+                                    <option value="2">拒绝申请</option>
+                                </select>
+                </div>
+            </div>
+            <!--<div class="form-group check-box d_none">
+                <label for="updateTime" class="col-xs-4 control-label">记录工资月份</label>
+                <div class="col-xs-8">
+                    <input type="month" name="updateTime" id="updateTime" class="form-control">
+                </div>
+            </div>-->
+            <div class="form-group">
+                <label for="remark" class="col-xs-4 control-label">备注</label>
+                <div class="col-xs-8">
+                    <textarea name="remark" id="remark" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btnAdd changeBtn" id="addTable">确认提交</button>
+                <button type="button" class="btn btnAdd d_none" id="editTable">确认提交</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="../lib/jquery-2.1.1.min.js "></script>
+<script src="../lib/jquery-migrate-1.2.1.min.js "></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js "></script>
+<script src="../js/common.js "></script>
+<script src="../js/app/fenhong_add.js "></script>
+<script>
+    $(function() {
+        checkLoginStatus();
+    })
+</script>
+
+</html>

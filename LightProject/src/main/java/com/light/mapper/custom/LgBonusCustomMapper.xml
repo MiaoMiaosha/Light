@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.custom.LgBonusCustomMapper" >
+
+  <select id="getUserPersonSalaryById" resultType="java.lang.Integer"
+   parameterType="java.lang.Integer">
+    select SUM(person_salary) from lg_total_count where user_id=#{employeeId} and date_no <![CDATA[>=]]> #{startTime} and date_no <![CDATA[<=]]>#{endTime};
+  </select>
+  
+    <select id="getBonusRelateEmployeeId" resultType="java.lang.Integer"
+   parameterType="java.lang.Integer">
+    select employee_id from lg_employee_bonus where bonus_id = #{bonusId}
+  </select>
+  
+   <select id="getBonusMoneyByBid" resultType="java.lang.Integer"
+   parameterType="java.lang.Integer">
+    select bonus_money from lg_bonus where bid = #{bid}
+  </select>
+  
+   <select id="getBonusMapByBid" resultType="java.util.Map"
+   parameterType="java.lang.Integer">
+    select bonus_money as bonusMoney, person_bus_salary as personSalary, update_time as updateTime, status as status from lg_bonus where bid = #{id}
+  </select>
+  
+    <select id="getCountByBonusTypeId" resultType="java.lang.Integer"
+   parameterType="java.lang.Integer">
+	   SELECT
+		count(*)
+	FROM
+		lg_bonus
+	WHERE
+		type_id = #{id}
+	AND `status` <![CDATA[<>]]> 3 
+   
+  </select>
+  
+</mapper>

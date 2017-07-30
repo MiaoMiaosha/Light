@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>入账表</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/common/common.css">
+</head>
+
+<body>
+    <div class="com_table t_center">
+        <form action="" class="form-horizontal" role="form">
+            <div class="form-group">
+                <input type="hidden" name="aid" id="aid" />
+                <label for="receiveDate" class="col-xs-4 control-label">到账日期</label>
+                <div class="col-xs-8">
+                    <input type="date" name="receiveDate" id="receiveDate" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="marketId" class="col-xs-4 control-label">市场名称</label>
+                <div class="col-xs-8">
+                    <select name="marketId" id="marketId" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="typeId" class="col-xs-4 control-label">项款类型</label>
+                <div class="col-xs-8">
+                    <select name="typeId" id="typeId" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="receiveBank" class="col-xs-4 control-label">收款银行</label>
+                <div class="col-xs-8">
+                    <select name="receiveBank" id="receiveBank" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="receiveMoney" class="col-xs-4 control-label">到账金额</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="receiveMoney" id="receiveMoney" class="form-control" onkeyup="checkMoney(this)">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="invoiceStatus" class="col-xs-4 control-label">发票</label>
+                <div class="col-xs-8">
+                    <select name="invoiceStatus" id="invoiceStatus" class="form-control">
+                                    <option value="0">未开</option>
+                                    <option value="1">已开</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="invoiceTime" class="col-xs-4 control-label">开票时间</label>
+                <div class="col-xs-8">
+                    <input type="date" name="invoiceTime" id="invoiceTime" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 control-label">发票上传</label>
+                <div class="col-xs-8">
+                    <p class="picNotes">只能上传JPG、GIF、PNG或者BMP图片</p>
+                </div>
+            </div>
+            <div class="form-group filebox">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="picUpBox">
+                        <input type="hidden" name="invoicePic" id="invoicePic" />
+                        <input type="file" accept="image/*" class="com_fileup" name="fileup" id="fileup" onchange="getImg(this)" />
+                        <button type="button" id="addPic" class="btn btn-info com_add addPic">上传发票</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group picbox">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="com_picGroup picGroup" id="picGroup">
+                        <ul class="clearfix"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group check-box d_none">
+                <label for="status" class="col-xs-4 control-label">审核状态</label>
+                <div class="col-xs-8">
+                    <select name="status" id="status" class="form-control">
+                                    <!--<option value="0">申请中</option>-->
+                                    <option value="1">申请成功</option>
+                                    <option value="2">拒绝申请</option>
+                                </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="remark" class="col-xs-4 control-label">备注</label>
+                <div class="col-xs-8">
+                    <textarea name="remark" id="remark" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btnAdd changeBtn" id="addTable">确认提交</button>
+                <button type="button" class="btn btnAdd d_none" id="editTable">确认修改</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="../lib/jquery-2.1.1.min.js "></script>
+<script src="../lib/jquery-migrate-1.2.1.min.js "></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js "></script>
+<script src="../js/common.js "></script>
+<script src="../js/app/enter_add.js "></script>
+<script>
+    $(function() {
+        checkLoginStatus();
+    })
+</script>
+
+</html>

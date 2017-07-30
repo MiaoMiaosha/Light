@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.LgBonusMapper" >
+  <resultMap id="BaseResultMap" type="com.light.pojo.LgBonus" >
+    <id column="bid" property="bid" jdbcType="INTEGER" />
+    <result column="market_id" property="marketId" jdbcType="INTEGER" />
+    <result column="contractIds" property="contractids" jdbcType="VARCHAR" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="market_name" property="marketName" jdbcType="VARCHAR" />
+    <result column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="receive_money" property="receiveMoney" jdbcType="INTEGER" />
+    <result column="travel_money" property="travelMoney" jdbcType="INTEGER" />
+    <result column="rebate_money" property="rebateMoney" jdbcType="INTEGER" />
+    <result column="other_money" property="otherMoney" jdbcType="INTEGER" />
+    <result column="real_money" property="realMoney" jdbcType="INTEGER" />
+    <result column="bonus_num" property="bonusNum" jdbcType="INTEGER" />
+    <result column="person_bus_salary" property="personBusSalary" jdbcType="INTEGER" />
+    <result column="dividend_radio" property="dividendRadio" jdbcType="INTEGER" />
+    <result column="bonus_level" property="bonusLevel" jdbcType="INTEGER" />
+    <result column="bonus_money" property="bonusMoney" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="bonus_time" property="bonusTime" jdbcType="INTEGER" />
+    <result column="operate_no" property="operateNo" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="INTEGER" />
+    <result column="login_user_id" property="loginUserId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    bid, market_id, contractIds, project_id, market_name, type_id, receive_money, travel_money, 
+    rebate_money, other_money, real_money, bonus_num, person_bus_salary, dividend_radio, 
+    bonus_level, bonus_money, remark, bonus_time, operate_no, update_time, login_user_id, 
+    status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.light.pojo.LgBonusExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lg_bonus
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lg_bonus
+    where bid = #{bid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lg_bonus
+    where bid = #{bid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.light.pojo.LgBonusExample" >
+    delete from lg_bonus
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.light.pojo.LgBonus" >
+    insert into lg_bonus (bid, market_id, contractIds, 
+      project_id, market_name, type_id, 
+      receive_money, travel_money, rebate_money, 
+      other_money, real_money, bonus_num, 
+      person_bus_salary, dividend_radio, bonus_level, 
+      bonus_money, remark, bonus_time, 
+      operate_no, update_time, login_user_id, 
+      status)
+    values (#{bid,jdbcType=INTEGER}, #{marketId,jdbcType=INTEGER}, #{contractids,jdbcType=VARCHAR}, 
+      #{projectId,jdbcType=INTEGER}, #{marketName,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, 
+      #{receiveMoney,jdbcType=INTEGER}, #{travelMoney,jdbcType=INTEGER}, #{rebateMoney,jdbcType=INTEGER}, 
+      #{otherMoney,jdbcType=INTEGER}, #{realMoney,jdbcType=INTEGER}, #{bonusNum,jdbcType=INTEGER}, 
+      #{personBusSalary,jdbcType=INTEGER}, #{dividendRadio,jdbcType=INTEGER}, #{bonusLevel,jdbcType=INTEGER}, 
+      #{bonusMoney,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{bonusTime,jdbcType=INTEGER}, 
+      #{operateNo,jdbcType=INTEGER}, #{updateTime,jdbcType=INTEGER}, #{loginUserId,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.light.pojo.LgBonus" >
+    insert into lg_bonus
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bid != null" >
+        bid,
+      </if>
+      <if test="marketId != null" >
+        market_id,
+      </if>
+      <if test="contractids != null" >
+        contractIds,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="marketName != null" >
+        market_name,
+      </if>
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="receiveMoney != null" >
+        receive_money,
+      </if>
+      <if test="travelMoney != null" >
+        travel_money,
+      </if>
+      <if test="rebateMoney != null" >
+        rebate_money,
+      </if>
+      <if test="otherMoney != null" >
+        other_money,
+      </if>
+      <if test="realMoney != null" >
+        real_money,
+      </if>
+      <if test="bonusNum != null" >
+        bonus_num,
+      </if>
+      <if test="personBusSalary != null" >
+        person_bus_salary,
+      </if>
+      <if test="dividendRadio != null" >
+        dividend_radio,
+      </if>
+      <if test="bonusLevel != null" >
+        bonus_level,
+      </if>
+      <if test="bonusMoney != null" >
+        bonus_money,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="bonusTime != null" >
+        bonus_time,
+      </if>
+      <if test="operateNo != null" >
+        operate_no,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="loginUserId != null" >
+        login_user_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bid != null" >
+        #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="marketId != null" >
+        #{marketId,jdbcType=INTEGER},
+      </if>
+      <if test="contractids != null" >
+        #{contractids,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="marketName != null" >
+        #{marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="receiveMoney != null" >
+        #{receiveMoney,jdbcType=INTEGER},
+      </if>
+      <if test="travelMoney != null" >
+        #{travelMoney,jdbcType=INTEGER},
+      </if>
+      <if test="rebateMoney != null" >
+        #{rebateMoney,jdbcType=INTEGER},
+      </if>
+      <if test="otherMoney != null" >
+        #{otherMoney,jdbcType=INTEGER},
+      </if>
+      <if test="realMoney != null" >
+        #{realMoney,jdbcType=INTEGER},
+      </if>
+      <if test="bonusNum != null" >
+        #{bonusNum,jdbcType=INTEGER},
+      </if>
+      <if test="personBusSalary != null" >
+        #{personBusSalary,jdbcType=INTEGER},
+      </if>
+      <if test="dividendRadio != null" >
+        #{dividendRadio,jdbcType=INTEGER},
+      </if>
+      <if test="bonusLevel != null" >
+        #{bonusLevel,jdbcType=INTEGER},
+      </if>
+      <if test="bonusMoney != null" >
+        #{bonusMoney,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bonusTime != null" >
+        #{bonusTime,jdbcType=INTEGER},
+      </if>
+      <if test="operateNo != null" >
+        #{operateNo,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="loginUserId != null" >
+        #{loginUserId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.light.pojo.LgBonusExample" resultType="java.lang.Integer" >
+    select count(*) from lg_bonus
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update lg_bonus
+    <set >
+      <if test="record.bid != null" >
+        bid = #{record.bid,jdbcType=INTEGER},
+      </if>
+      <if test="record.marketId != null" >
+        market_id = #{record.marketId,jdbcType=INTEGER},
+      </if>
+      <if test="record.contractids != null" >
+        contractIds = #{record.contractids,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectId != null" >
+        project_id = #{record.projectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.marketName != null" >
+        market_name = #{record.marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typeId != null" >
+        type_id = #{record.typeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiveMoney != null" >
+        receive_money = #{record.receiveMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.travelMoney != null" >
+        travel_money = #{record.travelMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.rebateMoney != null" >
+        rebate_money = #{record.rebateMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.otherMoney != null" >
+        other_money = #{record.otherMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.realMoney != null" >
+        real_money = #{record.realMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.bonusNum != null" >
+        bonus_num = #{record.bonusNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.personBusSalary != null" >
+        person_bus_salary = #{record.personBusSalary,jdbcType=INTEGER},
+      </if>
+      <if test="record.dividendRadio != null" >
+        dividend_radio = #{record.dividendRadio,jdbcType=INTEGER},
+      </if>
+      <if test="record.bonusLevel != null" >
+        bonus_level = #{record.bonusLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.bonusMoney != null" >
+        bonus_money = #{record.bonusMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bonusTime != null" >
+        bonus_time = #{record.bonusTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.operateNo != null" >
+        operate_no = #{record.operateNo,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.loginUserId != null" >
+        login_user_id = #{record.loginUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update lg_bonus
+    set bid = #{record.bid,jdbcType=INTEGER},
+      market_id = #{record.marketId,jdbcType=INTEGER},
+      contractIds = #{record.contractids,jdbcType=VARCHAR},
+      project_id = #{record.projectId,jdbcType=INTEGER},
+      market_name = #{record.marketName,jdbcType=VARCHAR},
+      type_id = #{record.typeId,jdbcType=INTEGER},
+      receive_money = #{record.receiveMoney,jdbcType=INTEGER},
+      travel_money = #{record.travelMoney,jdbcType=INTEGER},
+      rebate_money = #{record.rebateMoney,jdbcType=INTEGER},
+      other_money = #{record.otherMoney,jdbcType=INTEGER},
+      real_money = #{record.realMoney,jdbcType=INTEGER},
+      bonus_num = #{record.bonusNum,jdbcType=INTEGER},
+      person_bus_salary = #{record.personBusSalary,jdbcType=INTEGER},
+      dividend_radio = #{record.dividendRadio,jdbcType=INTEGER},
+      bonus_level = #{record.bonusLevel,jdbcType=INTEGER},
+      bonus_money = #{record.bonusMoney,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      bonus_time = #{record.bonusTime,jdbcType=INTEGER},
+      operate_no = #{record.operateNo,jdbcType=INTEGER},
+      update_time = #{record.updateTime,jdbcType=INTEGER},
+      login_user_id = #{record.loginUserId,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.light.pojo.LgBonus" >
+    update lg_bonus
+    <set >
+      <if test="marketId != null" >
+        market_id = #{marketId,jdbcType=INTEGER},
+      </if>
+      <if test="contractids != null" >
+        contractIds = #{contractids,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="marketName != null" >
+        market_name = #{marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null" >
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="receiveMoney != null" >
+        receive_money = #{receiveMoney,jdbcType=INTEGER},
+      </if>
+      <if test="travelMoney != null" >
+        travel_money = #{travelMoney,jdbcType=INTEGER},
+      </if>
+      <if test="rebateMoney != null" >
+        rebate_money = #{rebateMoney,jdbcType=INTEGER},
+      </if>
+      <if test="otherMoney != null" >
+        other_money = #{otherMoney,jdbcType=INTEGER},
+      </if>
+      <if test="realMoney != null" >
+        real_money = #{realMoney,jdbcType=INTEGER},
+      </if>
+      <if test="bonusNum != null" >
+        bonus_num = #{bonusNum,jdbcType=INTEGER},
+      </if>
+      <if test="personBusSalary != null" >
+        person_bus_salary = #{personBusSalary,jdbcType=INTEGER},
+      </if>
+      <if test="dividendRadio != null" >
+        dividend_radio = #{dividendRadio,jdbcType=INTEGER},
+      </if>
+      <if test="bonusLevel != null" >
+        bonus_level = #{bonusLevel,jdbcType=INTEGER},
+      </if>
+      <if test="bonusMoney != null" >
+        bonus_money = #{bonusMoney,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bonusTime != null" >
+        bonus_time = #{bonusTime,jdbcType=INTEGER},
+      </if>
+      <if test="operateNo != null" >
+        operate_no = #{operateNo,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="loginUserId != null" >
+        login_user_id = #{loginUserId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.light.pojo.LgBonus" >
+    update lg_bonus
+    set market_id = #{marketId,jdbcType=INTEGER},
+      contractIds = #{contractids,jdbcType=VARCHAR},
+      project_id = #{projectId,jdbcType=INTEGER},
+      market_name = #{marketName,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      receive_money = #{receiveMoney,jdbcType=INTEGER},
+      travel_money = #{travelMoney,jdbcType=INTEGER},
+      rebate_money = #{rebateMoney,jdbcType=INTEGER},
+      other_money = #{otherMoney,jdbcType=INTEGER},
+      real_money = #{realMoney,jdbcType=INTEGER},
+      bonus_num = #{bonusNum,jdbcType=INTEGER},
+      person_bus_salary = #{personBusSalary,jdbcType=INTEGER},
+      dividend_radio = #{dividendRadio,jdbcType=INTEGER},
+      bonus_level = #{bonusLevel,jdbcType=INTEGER},
+      bonus_money = #{bonusMoney,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      bonus_time = #{bonusTime,jdbcType=INTEGER},
+      operate_no = #{operateNo,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=INTEGER},
+      login_user_id = #{loginUserId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+</mapper>

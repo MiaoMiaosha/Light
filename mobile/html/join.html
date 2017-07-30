@@ -1,0 +1,74 @@
+<link rel="stylesheet" type="text/css" href="../css/app/join.css">
+<div class="join_body">
+    <div class="com_table joinCtn t_center">
+        <h3>- 加盟申请表 -</h3>
+        <form action="" class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="cname" class="col-xs-4 control-label">公司全称</label>
+                <div class="col-xs-8">
+                    <input type="text" name="cname" id="cname" class="form-control" placeholder="请输入公司全称" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="csheng" class="col-xs-4 control-label">省份</label>
+                <div class="col-xs-8">
+                    <select name="csheng" id="csheng" class="form-control">
+                                    <option value="0">浙江省</option>
+                                    <option value="1">江苏省</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cshi" class="col-xs-4 control-label">城市</label>
+                <div class="col-xs-8">
+                    <select name="cshi" id="cshi" class="form-control">
+                                    <option value="0">杭州市</option>
+                                    <option value="1">南京市</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cxian" class="col-xs-4 control-label">县区</label>
+                <div class="col-xs-8">
+                    <select name="cxian" id="cxian" class="form-control">
+                                    <option value="0">滨江区</option>
+                                    <option value="1">不明区</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cxian" class="col-xs-4 control-label">公司主营</label>
+                <div class="col-xs-8 com_cbkAll">
+                    <ul class="clearfix">
+                        <li class="f_left cbklis">
+                            <label>
+                                            <input type="checkbox" class="cbk" name="" id="">农贸市场设计
+                                        </label>
+                        </li>
+                        <li class="f_left cbklis">
+                            <label>
+                                            <input type="checkbox" class="cbk" name="" id="">农贸市场管理
+                                        </label>
+                        </li>
+                        <li class="f_left cbklis">
+                            <label>
+                                            <input type="checkbox" class="cbk" name="" id="">农贸市场电商
+                                        </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cintro" class="col-xs-4 control-label">公司简介</label>
+                <div class="col-xs-8">
+                    <textarea rows="5" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btnAdd">提交申请</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../js/app/join.js"></script>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.custom.LgSearchCustomMapper" >
+
+  <select id="getCaseResultList" resultType="com.light.dto.SearchOutoutBean"
+   parameterType="java.lang.String">
+    	select cid as contentId,  case_name as content
+    	from lg_case where state=1 and case_name like #{key} order by create_time desc
+    		  
+  </select>
+  <select id="getMarketResultList" resultType="com.light.dto.SearchOutoutBean"
+   parameterType="java.lang.String">
+    	select mid as contentId,  market_name as content
+    	from lg_market where status=1 and market_name like #{key} order by create_time desc
+  </select>
+    <select id="getGoodsResultList" resultType="com.light.dto.SearchOutoutBean"
+   parameterType="java.lang.String">
+    	select goods_id as contentId,  goods_name as content
+    	from lg_goods where status =1 and goods_name like #{key} order by last_update_time desc
+  </select>
+    <select id="getNewsResultList" resultType="com.light.dto.SearchOutoutBean"
+   parameterType="java.lang.String">
+    	select nid as contentId,  news_title as content
+    	from lg_news where status =1 and news_title like #{key} order by create_time desc
+  </select>
+    <select id="getCooperateResultList" resultType="com.light.dto.SearchOutoutBean"
+   parameterType="java.lang.String">
+    	select cid as contentId,  full_name as content
+    	from lg_cooperate_company where status = 1 and full_name like #{key} order by create_time desc
+  </select>
+  
+  <select id="countHotWords" resultType="java.lang.Integer">
+      select count(*) from lg_hotwords
+  </select>
+  
+   <select id="getCountSortList" resultType="java.lang.Integer">
+      select id from lg_hotwords order by heat desc
+  </select>
+  
+</mapper>

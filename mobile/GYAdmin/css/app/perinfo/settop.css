@@ -1,0 +1,86 @@
+.caseInfo_body {
+    background: #f2f3f7;
+}
+
+.caseInfo_body .opbox {
+    padding-top: 2px;
+}
+
+.caseInfo_body .opbox .oplis {
+    line-height: 40px;
+    text-align: center;
+    width: 25%;
+    background: #fff;
+    font-size: 12px;
+}
+
+.caseInfo_body .opbox .oplis.cur {
+    color: #86db31;
+}
+
+.caseInfo_body .opbox .oplis:not(:last-child) {
+    border-right: 1px solid #f2f3f7;
+}
+
+.caseInfo_body .caseList {
+    margin-top: 10px;
+}
+
+.caseList .clis {
+    padding: 20px 10px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    width: 90%;
+    background: #fff;
+    color: #8f8f8f;
+    font-size: 12px;
+}
+
+.caseList .clis h3 {
+    color: #000;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 28px;
+}
+
+.caseList .clis h3 span {
+    float: right;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.caseList .clis p {
+    line-height: 20px;
+}
+
+.push {
+    color: #86db31;
+}
+
+.apply-success {
+    color: #fda80f;
+}
+
+.apply-error {
+    color: #fb4448;
+}
+
+.dialog ul {
+    height: inherit;
+}
+
+.dlis {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 16px;
+    color: #000;
+}
+
+#listbox .settop {
+    border: 0;
+    padding: 5px 10px;
+    color: #fff;
+    background: #fda80f;
+    border-radius: 4px;
+}

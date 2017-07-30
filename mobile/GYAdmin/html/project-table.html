@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>工程表</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/common/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/fonts/fonts.css">
+</head>
+
+<body>
+    <div class="com_table t_center">
+        <form action="" class="form-horizontal" role="form" id="projectForm">
+            <div class="form-group">
+                <label for="createTime" class="col-xs-4 control-label">日期</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="pid" id="pid">
+                    <input type="hidden" name="createTime" id="createTime">
+                    <input type="date" name="createTime1" id="createTime1" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="contractIds" class="col-xs-4 control-label">合同人</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="contractIds" id="contractIds" class="form-control" placeholder="">
+                    <div class="devide-box p_rel" id="employeebox" data-open="0">
+                        <!--<span data-id="11">张三<i class="icon-guanbifuzhi"></i></span><span data-id="18">李四<i class="icon-guanbifuzhi"></i></span><span data-id="13">李四<i class="icon-guanbifuzhi"></i></span>
+                        <span data-id="21">王五<i class="icon-guanbifuzhi"></i></span><span data-id="16">六小龄童<i class="icon-guanbifuzhi"></i></span>-->
+                    </div>
+                    <div class="select-box d_none p_abs" id="employee-box">
+                        <ul>
+                            <!--<li class="slis" data-id="1">我是aaa</li>
+                            <li class="slis" data-id="2">我是bbb</li>
+                            <li class="slis" data-id="3">我是ccc</li>
+                            <li class="slis" data-id="4">我是ddd</li>
+                            <li class="slis" data-id="5">我是eee</li>
+                            <li class="slis" data-id="6">我是fff</li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="marketName" class="col-xs-4 control-label">市场名称</label>
+                <div class="col-xs-8">
+                    <input type="text" name="marketName" id="marketName" class="form-control" placeholder="请输入市场名称">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="customerId" class="col-xs-4 control-label">单位名称</label>
+                <div class="col-xs-8">
+                    <select class="form-control" name="customerId" id="customerId">
+                        
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="realContactMoney" class="col-xs-4 control-label">实际合同价</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="realContactMoney" id="realContactMoney" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="contactMoney" class="col-xs-4 control-label">合同价</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="contactMoney" id="contactMoney" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstMoney" class="col-xs-4 control-label">第一笔</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="firstMoney" id="firstMoney" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstFinishTime" class="col-xs-4 control-label">完成时间</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="firstFinishTime" id="firstFinishTime">
+                    <input type="date" name="firstFinishTime1" id="firstFinishTime1" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="secondMoney" class="col-xs-4 control-label">第二笔</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="secondMoney" id="secondMoney" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="secondFinishTime" class="col-xs-4 control-label">完成时间</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="secondFinishTime" id="secondFinishTime">
+                    <input type="date" name="secondFinishTime1" id="secondFinishTime1" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="thirdMoney" class="col-xs-4 control-label">第三笔</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="thirdMoney" id="thirdMoney" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="thirdFinishTime" class="col-xs-4 control-label">完成时间</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="thirdFinishTime" id="thirdFinishTime">
+                    <input type="date" name="thirdFinishTime1" id="thirdFinishTime1" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="fourMoney" class="col-xs-4 control-label">第四笔</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="fourMoney" id="fourMoney" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="fourFinishTime" class="col-xs-4 control-label">完成时间</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="fourFinishTime" id="fourFinishTime">
+                    <input type="date" name="fourFinishTime1" id="fourFinishTime1" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="fiveMoney" class="col-xs-4 control-label">第五笔</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="fiveMoney" id="fiveMoney" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="fiveFinishTime" class="col-xs-4 control-label">完成时间</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="fiveFinishTime" id="fiveFinishTime">
+                    <input type="date" name="fiveFinishTime1" id="fiveFinishTime1" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="remark" class="col-xs-4 control-label">备注</label>
+                <div class="col-xs-8">
+                    <textarea name="remark" id="remark" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="busTravelType" class="col-xs-4 control-label">差旅类型</label>
+                <div class="col-xs-8">
+                    <select name="busTravelType" id="busTravelType" class="form-control">
+                                    <option value="0">甲方全报</option>
+                                    <option value="1">甲方报销交通</option>
+                                    <option value="2">甲方报销住宿</option>
+                                    <option value="3">乙方全报</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="travelMoney" class="col-xs-4 control-label">差旅金额</label>
+                <div class="col-xs-8">
+                    <input type="number" name="travelMoney" id="travelMoney" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="rebateMoney" class="col-xs-4 control-label">回扣金额</label>
+                <div class="col-xs-8">
+                    <input type="number" name="rebateMoney" id="rebateMoney" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="extraMoney" class="col-xs-4 control-label">其他金额</label>
+                <div class="col-xs-8">
+                    <input type="number" name="extraMoney" id="extraMoney" class="form-control" value="0">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="signingCompany" class="col-xs-4 control-label">签约公司</label>
+                <div class="col-xs-8">
+                    <select name="signingCompany" id="signingCompany" class="form-control">
+                                    <option value="0">光影</option>
+                                    <option value="1">菜源</option>
+                                    <option value="2">其他</option>
+                                </select>
+                </div>
+            </div>
+
+            <div class="form-group pstatus d_none">
+                <label for="status" class="col-xs-4 control-label">工程状态</label>
+                <div class="col-xs-8">
+                    <select name="status" id="status" class="form-control">
+                                    <!--<option value="0">未开始</option>-->
+                                    <option value="1">进行中</option>
+                                    <option value="2">工程关闭</option>
+                                    <option value="3">成功结束</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="province" class="col-xs-4 control-label">省份</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="province" id="province" value="">
+                    <select name="provincebox" id="provincebox" class="form-control" onchange="getCity(this)">
+                                    <!--<option value="0">浙江省</option>
+                                    <option value="1">江苏省</option>-->
+                                </select>
+                </div>
+            </div>
+            <div class="form-group" id="cityBox">
+                <label for="city" class="col-xs-4 control-label">城市</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="city" id="city" value="">
+                    <select name="citybox" id="citybox" class="form-control" onchange="getTown(this)">
+                                    <!--<option value="0">杭州市</option>
+                                    <option value="1">南京市</option>-->
+                                </select>
+                </div>
+            </div>
+            <div class="form-group" id="townBox">
+                <label for="district" class="col-xs-4 control-label">县区</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="district" id="district" value="">
+                    <select name="districtbox" id="districtbox" class="form-control" onchange="getXian(this)">
+                                    <!--<option value="0">滨江区</option>
+                                    <option value="1">不明区</option>-->
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="marketAddress" class="col-xs-4 control-label">市场地址</label>
+                <div class="col-xs-8">
+                    <input type="text" name="marketAddress" id="marketAddress" class="form-control" placeholder="请输入市场地址">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="marketIntro" class="col-xs-4 control-label">市场介绍</label>
+                <div class="col-xs-8">
+                    <textarea name="marketIntro" id="marketIntro" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group htgroup">
+                <label class="col-xs-4 control-label">合同上传</label>
+                <div class="col-xs-8">
+                    <p class="picNotes">只能上传JPG、GIF、PNG或者BMP图片</p>
+                </div>
+            </div>
+            <div class="form-group filebox htgroup">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="picUpBox">
+                        <input type="hidden" name="contractUrls" id="contractUrls">
+                        <input type="file" accept="image/*" class="com_fileup" name="fileup" id="fileup" onchange="getImg(this)" />
+                        <button type="button" id="addPic" class="btn btn-info com_add addPic">上传合同</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group picbox htgroup">
+                <label class="col-xs-4 control-label"></label>
+                <div class="col-xs-8">
+                    <div class="com_picGroup picGroup" id="picGroup">
+                        <ul class="clearfix"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btnAdd changeBtn" id="addTable">确认提交</button>
+                <button type="button" class="btn btnAdd d_none" id="editTable">确认修改</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="../lib/jquery-2.1.1.min.js "></script>
+<script src="../lib/jquery-migrate-1.2.1.min.js "></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js "></script>
+<script src="../js/common.js "></script>
+<script src="../js/app/project_add.js "></script>
+<script>
+    $(function() {
+        checkLoginStatus();
+    })
+</script>
+
+</html>

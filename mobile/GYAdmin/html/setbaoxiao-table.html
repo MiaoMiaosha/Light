@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>添加报销类型</title>
+    <link rel="stylesheet" type="text/css" href="../../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/common/common.css">
+</head>
+
+<body>
+    <div class="com_table t_center">
+        <form action="" class="form-horizontal" role="form" id="setbaoxiaoForm">
+            <div class="form-group">
+                <label for="typeName" class="col-xs-4 control-label">类型名称</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="id">
+                    <input type="text" class="form-control" name="typeName" id="typeName" value="" placeholder="请输入类型名称...">
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <label for="type" class="col-xs-4 control-label">类型</label>
+                <div class="col-xs-8">
+                    <select class="form-control" name="type" id="type">
+                        <option value="0">收入类型</option>
+                        <option value="1">设计内容</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="typeMoney" class="col-xs-4 control-label">收入金额</label>
+                <div class="col-xs-8">
+                    <input type="number" class="form-control" min="0" name="typeMoney" id="typeMoney" value="" placeholder="请输入收入金额...">
+                </div>
+            </div>-->
+            <div class="form-group">
+                <button type="button" class="btn btnAdd changeBtn" id="addTable">确认提交</button>
+                <button type="button" class="btn btnAdd d_none" id="editTable">确认提交</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="../lib/jquery-2.1.1.min.js "></script>
+<script src="../lib/jquery-migrate-1.2.1.min.js "></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js "></script>
+<script src="../js/common.js "></script>
+<script src="../js/app/setbaoxiao_add.js "></script>
+<script>
+    $(function() {
+        checkLoginStatus();
+    })
+</script>
+
+</html>

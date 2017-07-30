@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.custom.LgManagePublishMapper" >
+
+  <!-- 案例发布 -->
+  <resultMap id="CaseApplyMap" type="com.light.dto.CaseApplySqlBean" >
+    <result column="caid" property="caid" jdbcType="INTEGER" />
+    <result column="userId" property="userId" jdbcType="INTEGER" />
+    <result column="caseId" property="caseId" jdbcType="INTEGER" />
+    <result column="createTime" property="createTime" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="caseName" property="caseName" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   <select id="getCasePubilishApplyList"  resultMap="CaseApplyMap" 
+       parameterType="java.util.Map">
+    	SELECT
+		  a.caid AS caid,
+		  a.user_id AS userId,
+		  a.case_id AS caseId,
+		  a.create_time AS createTime,
+		  a.state AS state,
+		  b.case_name AS caseName,
+		  b.area AS area
+		FROM
+			lg_case_apply a
+		INNER JOIN
+			lg_case b
+		ON
+		 a.case_id = b.cid
+	  
+		 <where >
+	     <if test="caidId != null">
+	       a.caidId = #{caidId,jdbcType=INTEGER}
+	     </if>
+	     <if test="userId != null">
+	      and a.user_id = #{userId,jdbcType=INTEGER}
+	     </if>
+	     <if test="state != null">
+	      and a.state = #{state,jdbcType=INTEGER}
+	     </if>  
+	     <if test="caseId != null">
+	      and a.case_id = #{caseId,jdbcType=INTEGER}
+	     </if>
+	     <if test="startTime != null">
+	      and a.create_time <![CDATA[>=]]> #{startTime,jdbcType=INTEGER}
+	     </if>
+	     <if test="endTime != null">
+	      and a.create_time <![CDATA[<=]]> #{endTime,jdbcType=INTEGER}
+	     </if>
+	    </where>
+
+	   <if test="order != null" >
+        order by a.${order}
+      </if>
+   </select>
+   
+   <!-- 市场发布 -->
+     <resultMap id="MarketApplyMap" type="com.light.dto.MarketApplySqlBean" >
+	    <result column="maid" property="maid" jdbcType="INTEGER" />
+	    <result column="userId" property="userId" jdbcType="INTEGER" />
+	    <result column="marketId" property="marketId" jdbcType="INTEGER" />
+	    <result column="createTime" property="createTime" jdbcType="INTEGER" />
+	    <result column="status" property="status" jdbcType="INTEGER" />
+	    <result column="marketName" property="marketName" jdbcType="VARCHAR" />
+	    <result column="contactName" property="contactName" jdbcType="VARCHAR" />
+	    <result column="contactMobile" property="contactMobile" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <select id="getMarketApplyList"  resultMap="MarketApplyMap" 
+       parameterType="java.util.Map">
+    	  SELECT
+		  a.maid AS maid,
+		  a.user_id AS userId,
+		  a.market_id AS marketId,
+		  a.create_time AS createTime,
+		  a.status AS STATUS,
+		  b.market_name AS marketName,
+		  b.contact_name AS contactName,
+			b.contact_mobile as contactMobile
+		FROM
+			lg_market_apply a
+		INNER JOIN
+			lg_market b
+		ON
+		 a.market_id = b.mid
+	  
+		 <where >
+	     <if test="maid != null">
+	       a.maid = #{maid,jdbcType=INTEGER}
+	     </if>
+	     <if test="userId != null">
+	      and a.user_id = #{userId,jdbcType=INTEGER}
+	     </if>
+	     <if test="marketId != null">
+	      and a.market_id = #{marketId,jdbcType=INTEGER}
+	     </if>  
+	     <if test="status != null">
+	      and a.status = #{status,jdbcType=INTEGER}
+	     </if>
+	     <if test="marketName != null">
+	      and b.market_name = #{marketName,jdbcType=INTEGER}
+	     </if>
+	     <if test="contactName != null">
+	      and b.contact_name = #{contactName,jdbcType=INTEGER}
+	     </if>
+	     <if test="contactMobile != null">
+	      and b.contact_mobile = #{contactMobile,jdbcType=INTEGER}
+	     </if>	     
+	     
+	    </where>
+
+	   <if test="order != null" >
+        order by a.${order}
+      </if>
+   </select>
+   
+   <!-- 摊位发布 -->
+   
+    <resultMap id="StallApplyMap" type="com.light.dto.MarketApplySqlBean" >
+	    <result column="said" property="said" jdbcType="INTEGER" />
+	    <result column="userId" property="userId" jdbcType="INTEGER" />
+	    <result column="stallId" property="stallId" jdbcType="INTEGER" />
+	    <result column="createTime" property="createTime" jdbcType="INTEGER" />
+	    <result column="status" property="status" jdbcType="INTEGER" />
+	    <result column="marketId" property="marketId" jdbcType="INTEGER" />
+	    <result column="floorId" property="floorId" jdbcType="INTEGER" />
+	    
+	    <result column="stallName" property="stallName" jdbcType="VARCHAR" />
+	    <result column="contactName" property="contactName" jdbcType="VARCHAR" />
+	    <result column="contactMobile" property="contactMobile" jdbcType="VARCHAR" />
+	    
+	    <result column="floorName" property="floorName" jdbcType="VARCHAR" />
+	    
+    </resultMap>
+    
+    <select id="getStallApplyList"  resultMap="StallApplyMap" 
+       parameterType="java.util.Map">
+       SELECT
+		  a.said AS said,
+		  a.user_id AS userId,
+		  a.stall_id AS stallId,
+		  a.create_time AS createTime,
+		  a.status AS STATUS,
+		  a.stall_name as stallName,
+		  a.contact_mobile as contactMobile,
+          a.contact_name as contactName,
+			
+		  b.market_id AS marketId,
+
+          c.fid,
+		  c.floor_name
+
+		FROM
+			(lg_stall_apply a
+		INNER JOIN
+			lg_stall b
+		ON
+		 a.stall_id = b.sid)
+     INNER JOIN
+     lg_floor c 
+     ON
+		c.fid = b.floor_id
+ 
+		 <where >
+	     <if test="said != null">
+	       a.said = #{said,jdbcType=INTEGER}
+	     </if>
+	     <if test="userId != null">
+	      and a.user_id = #{userId,jdbcType=INTEGER}
+	     </if>
+	     <if test="stallId != null">
+	      and a.stall_id = #{stallId,jdbcType=INTEGER}
+	     </if>  
+	     <if test="status != null">
+	      and a.status = #{status,jdbcType=INTEGER}
+	     </if>
+	     <if test="stallName != null">
+	      and a.stall_name = #{stallName,jdbcType=INTEGER}
+	     </if>
+	     <if test="contactName != null">
+	      and b.contact_name = #{contactName,jdbcType=INTEGER}
+	     </if>
+	     <if test="contactMobile != null">
+	      and b.contact_mobile = #{contactMobile,jdbcType=INTEGER}
+	     </if>	     
+	     
+	    </where>
+
+	   <if test="order != null" >
+        order by a.${order}
+      </if>
+   </select>
+   
+      <!-- 新闻 -->
+     <resultMap id="NewsApplyMap" type="com.light.dto.NewsApplySqlBean" >
+	    <result column="naid" property="naid" jdbcType="INTEGER" />
+	    <result column="userId" property="userId" jdbcType="INTEGER" />
+	    <result column="newsId" property="newsId" jdbcType="INTEGER" />
+	    <result column="createTime" property="createTime" jdbcType="INTEGER" />
+	    <result column="status" property="status" jdbcType="INTEGER" />
+	    <result column="newsTitle" property="newsTitle" jdbcType="VARCHAR" />
+	    <result column="type" property="type" jdbcType="INTEGER" />
+	    
+    </resultMap>
+    
+    <select id="getNewsApplyList"  resultMap="NewsApplyMap" 
+       parameterType="java.util.Map">
+		select 
+		 a.naid as naid,
+		 a.user_id as userId,
+		 a.news_id as newsId,
+		 a.create_time as createTime,
+		 a.status as status,
+		
+		 b.news_title as newsTitle,
+		 b.type as type
+		 
+		 from lg_news_apply as a
+		 INNER JOIN
+		  lg_news as b
+		  on a.news_id = b.nid
+	  
+		 <where >
+	     <if test="naid != null">
+	       a.naid = #{naid,jdbcType=INTEGER}
+	     </if>
+	     <if test="userId != null">
+	      and a.user_id = #{userId,jdbcType=INTEGER}
+	     </if>
+	     <if test="newsId != null">
+	      and a.news_id = #{newsId,jdbcType=INTEGER}
+	     </if>  
+	     <if test="status != null">
+	      and a.status = #{status,jdbcType=INTEGER}
+	     </if>
+	     <if test="startTime != null">
+	      and a.create_time <![CDATA[>=]]> #{startTime,jdbcType=INTEGER}
+	     </if>
+	     <if test="endTime != null">
+	      and a.create_time <![CDATA[<=]]> #{endTime,jdbcType=INTEGER}
+	     </if>
+	     <if test="newsTitle != null">
+	      and b.news_title like #{newsTitle,jdbcType=VARCHAR}
+	     </if>
+	     <if test="type != null">
+	      and b.type = #{type,jdbcType=INTEGER}
+	     </if>
+	    </where>
+
+	   <if test="order != null" >
+        order by a.${order}
+      </if>
+   </select>
+   
+   <!-- 加盟发布 -->
+        <resultMap id="CooperateApplyMap" type="com.light.dto.CooperateApplySqlBean" >
+	    <result column="cid" property="cid" jdbcType="INTEGER" />
+	    <result column="userId" property="userId" jdbcType="INTEGER" />
+	    <result column="cooperateCompanyId" property="cooperateCompanyId" jdbcType="INTEGER" />
+	    <result column="createTime" property="createTime" jdbcType="INTEGER" />
+	    <result column="state" property="state" jdbcType="INTEGER" />
+	    <result column="fullName" property="fullName" jdbcType="VARCHAR" />
+	    
+    </resultMap>
+       <select id="getCooperateApplyList"  resultMap="CooperateApplyMap" 
+       parameterType="java.util.Map">
+		select 
+		  a.cid as cid,
+		  a.user_id as userId,
+		  a.cooperate_company_id as cooperateCompanyId,
+		  a.create_time as createTime,
+		  a.state as state,
+		  b.full_name as fullName
+		from 
+			 lg_cooperate_company_apply as a
+		INNER JOIN
+			 lg_cooperate_company as b
+		ON
+			 a.cooperate_company_id = b.cid  
+ 		<where >
+	     <if test="cid != null">
+	       a.cid = #{cid,jdbcType=INTEGER}
+	     </if>
+	      <if test="state != null">
+	       a.state = #{state,jdbcType=INTEGER}
+	     </if>
+	     <if test="userId != null">
+	       a.userId = #{userId,jdbcType=INTEGER}
+	     </if>
+	    </where>
+	   <if test="order != null" >
+        order by a.${order}
+      </if>
+   </select>
+   
+   <!-- 获取设备发布列表 -->
+    <resultMap id="GoodsApplyMap" type="com.light.dto.GoodsApplySqlBean" >
+	    <result column="gaid" property="gaid" jdbcType="INTEGER" />
+	    <result column="goodsId" property="goodsId" jdbcType="INTEGER" />
+	    <result column="createTime" property="createTime" jdbcType="INTEGER" />
+	    <result column="status" property="status" jdbcType="INTEGER" />
+	    <result column="goodsName" property="goodsName" jdbcType="VARCHAR" />
+	    <result column="img" property="img" jdbcType="VARCHAR" />
+    </resultMap>
+       <select id="getGoodsApplyList"  resultMap="GoodsApplyMap" 
+       parameterType="java.util.Map">
+		SELECT
+			a.gaid as gaid,
+			a.goods_id as goodsId,
+			a.create_time as createTime,
+			a.`status` as status,
+			b.goods_name as goodsName,
+			b.goods_price as goodsPrice,
+		    b.img as img
+		
+		FROM
+			lg_goods_apply AS a
+		LEFT JOIN
+			lg_goods as b
+		on a.goods_id = b.goods_id 
+ 		<where >
+	     <if test="gaid != null">
+	       a.gaid = #{gaid,jdbcType=INTEGER}
+	     </if>
+	      <if test="status != null">
+	      and a.status = #{status,jdbcType=INTEGER}
+	     </if>
+	     <if test="userId != null">
+	      and a.user_id = #{userId,jdbcType=INTEGER}
+	     </if>
+	    </where>
+	   <if test="order != null" >
+        order by a.${order}
+      </if>
+   </select>
+   
+</mapper>

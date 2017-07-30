@@ -1,0 +1,268 @@
+.pushMarket_body .lvInfo {
+    padding: 10px;
+}
+
+.lvInfo .infobox {
+    background: #fff;
+    padding: 10px;
+    /*padding-bottom: 0;*/
+    /*margin-bottom: 10px;*/
+}
+
+.lvInfo h3 {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 32px;
+    border-bottom: 1px solid #f2f3f7;
+}
+
+#infobox .inlis {
+    text-align: center;
+    width: 50%;
+    padding: 10px 5px;
+    font-size: 12px;
+    color: #fff;
+}
+
+#infobox .bgdone {
+    background: #999;
+}
+
+#infobox .bg4bacc6 {
+    background: #4bacce;
+}
+
+#infobox .bg49d1a3 {
+    background: #49d1a3;
+}
+
+#infobox .bg47dc57 {
+    background: #47dc57;
+}
+
+#infobox .bg8ce646 {
+    background: #8ce646;
+}
+
+#infobox .bgedef45 {
+    background: #edef45;
+}
+
+#infobox .bgf79846 {
+    background: #f79846;
+}
+
+#infobox .bb {
+    border-bottom: 1px solid #f2f3f7;
+}
+
+#infobox .br {
+    /*border-left: 1px solid #f2f3f7;*/
+    border-right: 1px solid #f2f3f7;
+}
+
+#infobox .blr {
+    border-left: 1px solid #f2f3f7;
+    border-right: 1px solid #f2f3f7;
+}
+
+.lvInfo .lvType {
+    margin: 10px 0;
+}
+
+.lvType label {
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.lvType .tcbk {
+    vertical-align: sub;
+    margin-right: 10px;
+}
+
+input[type=file] {
+    display: none;
+}
+
+.comlist {
+    margin-top: 10px;
+}
+
+.comlist .clis {
+    background: #fff;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.comlist .clis .ilis {
+    width: 25%;
+    text-align: center;
+    float: left;
+    padding: 10px 0;
+    font-size: 12px;
+}
+
+.comlist .clis .ilis p {
+    word-break: break-all;
+}
+
+.comlist .clis .ilis img {
+    height: 50px;
+}
+
+.comlist .clis .ilis:not(:last-child) {
+    margin-right: 10px;
+}
+
+.comlist .clis:not(:last-child) {
+    /*margin-bottom: 10px;*/
+    border-bottom: 1px solid #f2f3f7;
+}
+
+.comlist .clis .ititle {
+    font-size: 12px;
+    color: #b2b2b2;
+    line-height: 40px;
+}
+
+.comlist .clis .ititle .uinfo {
+    display: inline-block;
+}
+
+.comlist .clis .ititle p.name {
+    float: none;
+    display: inline-block;
+}
+
+.comlist .clis .ititle p {
+    float: right;
+}
+
+.comlist .clis .ititle p a {
+    color: #fda80f;
+}
+
+.comlist .clis .ititle img {
+    vertical-align: middle;
+    max-width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.clis .ctn {
+    margin: 10px 0;
+}
+
+.clis .ctn .replyCbyl {
+    font-size: 12px;
+    margin-bottom: 20px;
+    color: #b2b2b2;
+}
+
+.clis .footerbtn {
+    font-size: 12px;
+    color: #b2b2b2;
+    line-height: 18px;
+}
+
+.clis .footerbtn span {
+    float: right;
+}
+
+.clis .footerbtn .comment {
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.bbsInfo_body .lvbox {
+    padding: 10px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #f2f3f7;
+}
+
+.lv-ctn .lv-title {
+    font-weight: 600;
+}
+
+.lv-ctn .lv-text {
+    font-size: 12px;
+    margin-top: 10px;
+    line-height: 24px;
+    color: #999;
+}
+
+.lvbox .lv-user {
+    color: #999;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.lv-user .uinfo {
+    display: inline-block;
+}
+
+.lv-user img {
+    max-width: 40px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.lv-user p {
+    display: inline;
+    margin: 0 10px;
+}
+
+.lv-user p.name {
+    margin: 0;
+}
+
+.lv-user .icon-comment1 {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.lv-islike .ilis {
+    width: 33%;
+    text-align: center;
+    padding: 10px 0;
+    color: #999;
+}
+
+.lv-islike .ilis:not(:last-child) {
+    border-right: 1px solid #f2f3f7;
+}
+
+body {
+    position: inherit;
+}
+
+.dialog1 .dlis {
+    text-align: center;
+    line-height: 45px;
+}
+
+.dialog1 .dlis:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
+
+.lvbox .lv-ctn .ilis {
+    width: 25%;
+    text-align: center;
+    float: left;
+    padding: 10px 0;
+    font-size: 12px;
+}
+
+.lvbox .lv-ctn .ilis p {
+    word-break: break-all;
+}
+
+.lvbox .lv-ctn .ilis:not(:last-child) {
+    margin-right: 10px;
+}
+
+.lvbox .lv-ctn li.ilis img {
+    height: 50px;
+}

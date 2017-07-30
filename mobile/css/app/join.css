@@ -1,0 +1,24 @@
+.joinCtn h3 {
+    font-size: 18px;
+    padding-bottom: 20px;
+}
+
+.joinCtn .cbklis {
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+.joinCtn .cbklis label {
+    font-weight: 100;
+}
+
+.joinCtn .cbklis input[type=checkbox] {
+    vertical-align: sub;
+    margin-right: 5px;
+}
+
+.joinCtn .btnAdd {
+    width: 100%;
+    background: #fda80f;
+    color: #fff;
+}

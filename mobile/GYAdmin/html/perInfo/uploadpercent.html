@@ -1,0 +1,73 @@
+<link rel="stylesheet" type="text/css" href="../../css/app/perinfo/uploadpercent.css">
+<div class="uploadPercent_body com_body">
+    <div class="upCtn com_table t_center">
+        <form action="" class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="upmname" class="col-xs-4 control-label">市场名称</label>
+                <div class="col-xs-8">
+                    <input type="text" name="upmname" id="upmname" class="form-control" placeholder="请输入市场名称" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="upname" class="col-xs-4 control-label">提交人</label>
+                <div class="col-xs-8">
+                    <input type="text" name="upname" id="upname" class="form-control" placeholder="请输入提交人" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="uptype" class="col-xs-4 control-label">收入类别</label>
+                <div class="col-xs-8">
+                    <select name="uptype" id="uptype" class="form-control">
+                                    <option value="0">出差</option>
+                                    <option value="1">旅行</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="upctn" class="col-xs-4 control-label">提成内容</label>
+                <div class="col-xs-8">
+                    <select name="upctn" id="upctn" class="form-control">
+                                    <option value="0">平面设计</option>
+                                    <option value="1">网页设计</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="uplv" class="col-xs-4 control-label">工程阶段</label>
+                <div class="col-xs-8">
+                    <select name="uplv" id="uplv" class="form-control">
+                                    <option value="0">合同阶段</option>
+                                    <option value="1">设计阶段</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="upmoney" class="col-xs-4 control-label">金额</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="upmoney" id="upmoney" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="uptime" class="col-xs-4 control-label">时间</label>
+                <div class="col-xs-8">
+                    <input type="date" min="0" name="uptime" id="uptime" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="upmark" class="col-xs-4 control-label">备注</label>
+                <div class="col-xs-8">
+                    <textarea name="upmark" id="upmark" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btnAdd">确认提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="../../js/app/perinfo/uploadpercent.js "></script>
+<script>
+    $(function() {
+        checkLoginStatus();
+    })
+</script>

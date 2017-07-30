@@ -1,0 +1,50 @@
+.memo_body {
+    background: #f2f3f7;
+}
+
+.memo_body .memoBox {
+    padding: 10px 0;
+}
+
+.memoBox .mlis {
+    width: 90%;
+    margin: 10px auto;
+}
+
+.memoBox .mlis p {
+    padding: 5px 10px;
+    background: #fff;
+    line-height: 34px;
+}
+
+.memoBox .mlis p i {
+    float: right;
+    color: #fda80f;
+    font-size: 24px;
+}
+
+.memoBox .memoCtn {
+    background: #f2f3f7;
+    padding: 10px 0;
+    font-size: 12px;
+    color: #929397;
+    border-bottom: 1px solid #c8c9cd;
+}
+
+.memoCtn .ctnText {
+    padding-bottom: 20px;
+}
+
+.memoCtn .ctnOp {
+    position: absolute;
+    right: 0;
+    bottom: 15%;
+}
+
+.memoCtn .ctnOp .colis {
+    line-height: 22px;
+}
+
+.memoCtn .ctnOp .colis:not(:last-child) {
+    margin-right: 10px;
+}

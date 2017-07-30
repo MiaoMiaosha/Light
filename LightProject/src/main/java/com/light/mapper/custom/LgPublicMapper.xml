@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.custom.LgPublicMapper" >
+
+  <select id="selectLastInsertId" resultType="java.lang.Integer">
+    	SELECT LAST_INSERT_ID()
+  </select>
+  
+    <select id="getWXUserNameById" resultType="java.lang.String"
+    parameterType="java.lang.Integer">
+    	select user_name from lg_user where user_id=#{userId}
+  </select>
+   <select id="getWXUserHeadImg" resultType="java.lang.String"
+    parameterType="java.lang.Integer">
+    	select headimgurl from lg_user where user_id=#{userId}
+  </select>
+  
+    <select id="getValueByConfigName" resultType="java.lang.String"
+    parameterType="java.lang.String">
+    	select value from lg_config where name=#{name}
+  </select>
+  
+      <select id="getAppid" resultType="java.lang.String"
+    parameterType="java.lang.Integer">
+    	select appid from lg_wx_user where id=#{id}
+  </select>
+        <select id="getAppSecret" resultType="java.lang.String"
+    parameterType="java.lang.Integer">
+    	select appsecret from lg_wx_user where id=#{id}
+  </select>
+   <select id="getAppIdAndAppSecret" resultType="com.light.dto.WXIdAndSecret"
+    parameterType="java.lang.Integer">
+    	select appid,appsecret from lg_wx_user where id=#{id}
+  </select>
+  
+</mapper>

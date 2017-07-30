@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.custom.LgTotalCountCustomMapper" >
+
+
+  <select id="getUserListDesc" resultType="com.light.dto.TotalCountUserListBean" 
+    parameterType="com.light.dto.InputMybatis">
+    	select user_id as userId,SUM(${keyword}) as sumNum 
+    	from lg_total_count GROUP BY user_id ORDER BY sumNum desc 
+  </select>
+  
+    <select id="getTimeInterval" resultType="java.lang.Integer">
+    	select date_no from lg_total_count group by date_no order by date_no desc
+  </select>
+   <select id="specDataWithEidDateNo" resultType="java.lang.Integer"
+    parameterType="com.light.dto.InputMybatis">
+    	select ${keyword} from lg_total_count where user_id = ${userId} and date_no = ${dateNo}
+  </select>
+  
+  <!-- 工资统计 -->
+   <select id="getSumSalary"  resultType="com.light.dto.StaffSalaryCountBean" 
+       parameterType="java.util.Map">
+		SELECT
+			status,
+			SUM(salary_money) as sumSalaryMoney
+		FROM
+			lg_salary
+		 <where >
+	     <if test="employeeId != null">
+	       employee_id = #{employeeId,jdbcType=INTEGER}
+	     </if>
+	     <if test="startTime != null">
+	      and finish_time <![CDATA[>=]]> #{startTime,jdbcType=INTEGER}
+	     </if>
+	     <if test="endTime != null">
+	      and finish_time <![CDATA[<=]]> #{endTime,jdbcType=INTEGER}
+	     </if>
+	      <if test="status != null">
+	      and status =  #{status,jdbcType=INTEGER}
+	     </if>
+	     
+	    </where>
+		group by `status` 
+		
+	   <if test="order != null" >
+        order by ${order}
+      </if>
+   </select>
+   <!-- 获取月内未审核 工资 -->
+    <select id="getSumNotAppSalary"  resultType="java.lang.Integer" 
+       parameterType="java.util.Map">
+		SELECT
+			SUM(salary_money) as sumSalaryMoney
+		FROM
+			lg_salary
+		 <where >
+	     <if test="employeeId != null">
+	       employee_id = #{employeeId,jdbcType=INTEGER}
+	     </if>
+	     <if test="startTime != null">
+	      and create_time <![CDATA[>=]]> #{startTime,jdbcType=INTEGER}
+	     </if>
+	     <if test="endTime != null">
+	      and create_time <![CDATA[<=]]> #{endTime,jdbcType=INTEGER}
+	     </if>
+	      <if test="status != null">
+	      and status =  #{status,jdbcType=INTEGER}
+	     </if>
+	     
+	    </where>
+   </select>
+   
+   
+   
+   
+    <select id="getSumReim"  resultType="java.lang.Integer" 
+       parameterType="java.util.Map">
+		SELECT
+			SUM(money)
+		FROM
+			lg_reimburse
+		 <where >
+	     <if test="employeeId != null">
+	       reimburse_user_id = #{employeeId,jdbcType=INTEGER}
+	     </if>
+	      <if test="type != null">
+	      and reimburse_user_type = #{type,jdbcType=INTEGER}
+	     </if>
+	     <if test="startTime != null">
+	      and update_time <![CDATA[>=]]> #{startTime,jdbcType=INTEGER}
+	     </if>
+	     <if test="endTime != null">
+	      and update_time <![CDATA[<=]]> #{endTime,jdbcType=INTEGER}
+	     </if>
+	      <if test="status != null">
+	      and status =  #{status,jdbcType=INTEGER}
+	     </if>
+	    </where>
+
+	   <if test="order != null" >
+        order by ${order}
+      </if>
+   </select>
+   <!-- 分红统计 -->
+    <select id="getSumBonus"  resultType="com.light.dto.StaffSalaryCountBean" 
+       parameterType="java.util.Map">
+       
+		SELECT
+			a.`status` as status,
+			SUM(a.bonus_money) as BonusMoney
+		FROM
+			lg_bonus AS a
+		left join
+			lg_employee_bonus AS b
+		on a.bid = b.bonus_id
+		 <where >
+	     <if test="employeeId != null">
+	       b.employee_id = #{employeeId,jdbcType=INTEGER}
+	     </if>
+	     <if test="startTime != null">
+	      and a.update_time <![CDATA[>=]]> #{startTime,jdbcType=INTEGER}
+	     </if>
+	     <if test="endTime != null">
+	      and a.update_time <![CDATA[<=]]> #{endTime,jdbcType=INTEGER}
+	     </if>
+	      <if test="status != null">
+	      and a.status =  #{status,jdbcType=INTEGER}
+	     </if>
+	    </where>
+		GROUP BY a.`status`
+
+	   <if test="order != null" >
+        order by a.${order}
+      </if>
+   </select>
+   <select id="getSumNotAppBonus"  resultType="java.lang.Integer" 
+       parameterType="java.util.Map">
+		SELECT
+			SUM(a.bonus_money) as BonusMoney
+		FROM
+			lg_bonus AS a
+		left join
+			lg_employee_bonus AS b
+		on a.bid = b.bonus_id
+		 <where >
+	     <if test="employeeId != null">
+	       b.employee_id = #{employeeId,jdbcType=INTEGER}
+	     </if>
+	     <if test="startTime != null">
+	      and a.bonus_time <![CDATA[>=]]> #{startTime,jdbcType=INTEGER}
+	     </if>
+	     <if test="endTime != null">
+	      and a.bonus_time <![CDATA[<=]]> #{endTime,jdbcType=INTEGER}
+	     </if>
+	      <if test="status != null">
+	      and a.status =  #{status,jdbcType=INTEGER}
+	     </if>
+	    </where>
+   </select>
+      <select id="getPersonBusSalary"  resultType="java.lang.Integer" 
+       parameterType="java.util.Map">
+		SELECT
+			SUM(a.person_bus_salary)
+		FROM
+			lg_bonus AS a
+		left join
+			lg_employee_bonus AS b
+		on a.bid = b.bonus_id
+		 <where >
+	     <if test="employeeId != null">
+	       b.employee_id = #{employeeId,jdbcType=INTEGER}
+	     </if>
+	     <if test="startTime != null">
+	      and a.bonus_time <![CDATA[>=]]> #{startTime,jdbcType=INTEGER}
+	     </if>
+	     <if test="endTime != null">
+	      and a.bonus_time <![CDATA[<=]]> #{endTime,jdbcType=INTEGER}
+	     </if>
+	      <if test="status != null">
+	      and a.status =  #{status,jdbcType=INTEGER}
+	     </if>
+	    </where>
+   </select>
+   
+   
+  
+</mapper>

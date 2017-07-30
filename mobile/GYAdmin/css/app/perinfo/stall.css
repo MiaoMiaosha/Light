@@ -1,0 +1,68 @@
+.stallCtn {
+    padding-top: 10px;
+}
+
+.stallCtn h3 {
+    font-size: 18px;
+    padding: 20px 0;
+}
+
+#tanwei .tlis {
+    width: 18%;
+    border: 1px solid #e0e0e0;
+    position: relative;
+    margin-right: 2%;
+    margin-bottom: 4px;
+}
+
+#tanwei .tlis.cur {
+    border-color: #fda80f;
+}
+
+#tanwei .tlis.cur i {
+    display: block;
+}
+
+#tanwei .tlis.cur:after {
+    content: '';
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    height: 0;
+    width: 0;
+    border-bottom: 10px solid #fda80f;
+    border-left: 10px solid transparent;
+    z-index: 2;
+}
+
+#tanwei .tlis i {
+    display: none;
+    position: absolute;
+    right: -16%;
+    bottom: -40%;
+    z-index: 3;
+    color: #fff;
+}
+
+#tanwei p.notes {
+    color: #646464;
+    font-size: 12px;
+}
+
+.stallCtn #sexbox label {
+    font-weight: 100;
+}
+
+#sexbox label input[type=radio] {
+    margin-right: 5px;
+}
+
+.stallCtn #sexbox .sexlis {
+    margin-right: 20px;
+}
+
+.stallCtn .btnAdd {
+    width: 100%;
+    background: #fda80f;
+    color: #fff;
+}

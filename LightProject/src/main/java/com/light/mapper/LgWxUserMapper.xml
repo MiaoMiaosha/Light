@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.LgWxUserMapper" >
+  <resultMap id="BaseResultMap" type="com.light.pojo.LgWxUser" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="wxname" property="wxname" jdbcType="VARCHAR" />
+    <result column="aeskey" property="aeskey" jdbcType="VARCHAR" />
+    <result column="encode" property="encode" jdbcType="BIT" />
+    <result column="appid" property="appid" jdbcType="VARCHAR" />
+    <result column="appsecret" property="appsecret" jdbcType="VARCHAR" />
+    <result column="wxid" property="wxid" jdbcType="VARCHAR" />
+    <result column="weixin" property="weixin" jdbcType="CHAR" />
+    <result column="headerpic" property="headerpic" jdbcType="VARCHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="w_token" property="wToken" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="updatetime" property="updatetime" jdbcType="INTEGER" />
+    <result column="authorizer_access_token" property="authorizerAccessToken" jdbcType="VARCHAR" />
+    <result column="authorizer_refresh_token" property="authorizerRefreshToken" jdbcType="VARCHAR" />
+    <result column="authorizer_expires" property="authorizerExpires" jdbcType="INTEGER" />
+    <result column="web_access_token" property="webAccessToken" jdbcType="VARCHAR" />
+    <result column="web_refresh_token" property="webRefreshToken" jdbcType="VARCHAR" />
+    <result column="web_expires" property="webExpires" jdbcType="INTEGER" />
+    <result column="qr" property="qr" jdbcType="VARCHAR" />
+    <result column="menu_config" property="menuConfig" jdbcType="VARCHAR" />
+    <result column="wait_access" property="waitAccess" jdbcType="BIT" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="jsapi_ticket" property="jsapiTicket" jdbcType="VARCHAR" />
+    <result column="jsapi_ticket_expires" property="jsapiTicketExpires" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, uid, wxname, aeskey, encode, appid, appsecret, wxid, weixin, headerpic, token, 
+    w_token, create_time, updatetime, authorizer_access_token, authorizer_refresh_token, 
+    authorizer_expires, web_access_token, web_refresh_token, web_expires, qr, menu_config, 
+    wait_access, type, jsapi_ticket, jsapi_ticket_expires
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.light.pojo.LgWxUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lg_wx_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lg_wx_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lg_wx_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.light.pojo.LgWxUserExample" >
+    delete from lg_wx_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.light.pojo.LgWxUser" >
+    insert into lg_wx_user (id, uid, wxname, 
+      aeskey, encode, appid, 
+      appsecret, wxid, weixin, 
+      headerpic, token, w_token, 
+      create_time, updatetime, authorizer_access_token, 
+      authorizer_refresh_token, authorizer_expires, 
+      web_access_token, web_refresh_token, web_expires, 
+      qr, menu_config, wait_access, 
+      type, jsapi_ticket, jsapi_ticket_expires
+      )
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{wxname,jdbcType=VARCHAR}, 
+      #{aeskey,jdbcType=VARCHAR}, #{encode,jdbcType=BIT}, #{appid,jdbcType=VARCHAR}, 
+      #{appsecret,jdbcType=VARCHAR}, #{wxid,jdbcType=VARCHAR}, #{weixin,jdbcType=CHAR}, 
+      #{headerpic,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, #{wToken,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=INTEGER}, #{updatetime,jdbcType=INTEGER}, #{authorizerAccessToken,jdbcType=VARCHAR}, 
+      #{authorizerRefreshToken,jdbcType=VARCHAR}, #{authorizerExpires,jdbcType=INTEGER}, 
+      #{webAccessToken,jdbcType=VARCHAR}, #{webRefreshToken,jdbcType=VARCHAR}, #{webExpires,jdbcType=INTEGER}, 
+      #{qr,jdbcType=VARCHAR}, #{menuConfig,jdbcType=VARCHAR}, #{waitAccess,jdbcType=BIT}, 
+      #{type,jdbcType=INTEGER}, #{jsapiTicket,jdbcType=VARCHAR}, #{jsapiTicketExpires,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.light.pojo.LgWxUser" >
+    insert into lg_wx_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="wxname != null" >
+        wxname,
+      </if>
+      <if test="aeskey != null" >
+        aeskey,
+      </if>
+      <if test="encode != null" >
+        encode,
+      </if>
+      <if test="appid != null" >
+        appid,
+      </if>
+      <if test="appsecret != null" >
+        appsecret,
+      </if>
+      <if test="wxid != null" >
+        wxid,
+      </if>
+      <if test="weixin != null" >
+        weixin,
+      </if>
+      <if test="headerpic != null" >
+        headerpic,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="wToken != null" >
+        w_token,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="authorizerAccessToken != null" >
+        authorizer_access_token,
+      </if>
+      <if test="authorizerRefreshToken != null" >
+        authorizer_refresh_token,
+      </if>
+      <if test="authorizerExpires != null" >
+        authorizer_expires,
+      </if>
+      <if test="webAccessToken != null" >
+        web_access_token,
+      </if>
+      <if test="webRefreshToken != null" >
+        web_refresh_token,
+      </if>
+      <if test="webExpires != null" >
+        web_expires,
+      </if>
+      <if test="qr != null" >
+        qr,
+      </if>
+      <if test="menuConfig != null" >
+        menu_config,
+      </if>
+      <if test="waitAccess != null" >
+        wait_access,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="jsapiTicket != null" >
+        jsapi_ticket,
+      </if>
+      <if test="jsapiTicketExpires != null" >
+        jsapi_ticket_expires,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="wxname != null" >
+        #{wxname,jdbcType=VARCHAR},
+      </if>
+      <if test="aeskey != null" >
+        #{aeskey,jdbcType=VARCHAR},
+      </if>
+      <if test="encode != null" >
+        #{encode,jdbcType=BIT},
+      </if>
+      <if test="appid != null" >
+        #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="appsecret != null" >
+        #{appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wxid != null" >
+        #{wxid,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null" >
+        #{weixin,jdbcType=CHAR},
+      </if>
+      <if test="headerpic != null" >
+        #{headerpic,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="wToken != null" >
+        #{wToken,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=INTEGER},
+      </if>
+      <if test="authorizerAccessToken != null" >
+        #{authorizerAccessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizerRefreshToken != null" >
+        #{authorizerRefreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizerExpires != null" >
+        #{authorizerExpires,jdbcType=INTEGER},
+      </if>
+      <if test="webAccessToken != null" >
+        #{webAccessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="webRefreshToken != null" >
+        #{webRefreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="webExpires != null" >
+        #{webExpires,jdbcType=INTEGER},
+      </if>
+      <if test="qr != null" >
+        #{qr,jdbcType=VARCHAR},
+      </if>
+      <if test="menuConfig != null" >
+        #{menuConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="waitAccess != null" >
+        #{waitAccess,jdbcType=BIT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="jsapiTicket != null" >
+        #{jsapiTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="jsapiTicketExpires != null" >
+        #{jsapiTicketExpires,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.light.pojo.LgWxUserExample" resultType="java.lang.Integer" >
+    select count(*) from lg_wx_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update lg_wx_user
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.wxname != null" >
+        wxname = #{record.wxname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aeskey != null" >
+        aeskey = #{record.aeskey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.encode != null" >
+        encode = #{record.encode,jdbcType=BIT},
+      </if>
+      <if test="record.appid != null" >
+        appid = #{record.appid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appsecret != null" >
+        appsecret = #{record.appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wxid != null" >
+        wxid = #{record.wxid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weixin != null" >
+        weixin = #{record.weixin,jdbcType=CHAR},
+      </if>
+      <if test="record.headerpic != null" >
+        headerpic = #{record.headerpic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.token != null" >
+        token = #{record.token,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wToken != null" >
+        w_token = #{record.wToken,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatetime != null" >
+        updatetime = #{record.updatetime,jdbcType=INTEGER},
+      </if>
+      <if test="record.authorizerAccessToken != null" >
+        authorizer_access_token = #{record.authorizerAccessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authorizerRefreshToken != null" >
+        authorizer_refresh_token = #{record.authorizerRefreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authorizerExpires != null" >
+        authorizer_expires = #{record.authorizerExpires,jdbcType=INTEGER},
+      </if>
+      <if test="record.webAccessToken != null" >
+        web_access_token = #{record.webAccessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="record.webRefreshToken != null" >
+        web_refresh_token = #{record.webRefreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="record.webExpires != null" >
+        web_expires = #{record.webExpires,jdbcType=INTEGER},
+      </if>
+      <if test="record.qr != null" >
+        qr = #{record.qr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.menuConfig != null" >
+        menu_config = #{record.menuConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="record.waitAccess != null" >
+        wait_access = #{record.waitAccess,jdbcType=BIT},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.jsapiTicket != null" >
+        jsapi_ticket = #{record.jsapiTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jsapiTicketExpires != null" >
+        jsapi_ticket_expires = #{record.jsapiTicketExpires,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update lg_wx_user
+    set id = #{record.id,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      wxname = #{record.wxname,jdbcType=VARCHAR},
+      aeskey = #{record.aeskey,jdbcType=VARCHAR},
+      encode = #{record.encode,jdbcType=BIT},
+      appid = #{record.appid,jdbcType=VARCHAR},
+      appsecret = #{record.appsecret,jdbcType=VARCHAR},
+      wxid = #{record.wxid,jdbcType=VARCHAR},
+      weixin = #{record.weixin,jdbcType=CHAR},
+      headerpic = #{record.headerpic,jdbcType=VARCHAR},
+      token = #{record.token,jdbcType=VARCHAR},
+      w_token = #{record.wToken,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=INTEGER},
+      updatetime = #{record.updatetime,jdbcType=INTEGER},
+      authorizer_access_token = #{record.authorizerAccessToken,jdbcType=VARCHAR},
+      authorizer_refresh_token = #{record.authorizerRefreshToken,jdbcType=VARCHAR},
+      authorizer_expires = #{record.authorizerExpires,jdbcType=INTEGER},
+      web_access_token = #{record.webAccessToken,jdbcType=VARCHAR},
+      web_refresh_token = #{record.webRefreshToken,jdbcType=VARCHAR},
+      web_expires = #{record.webExpires,jdbcType=INTEGER},
+      qr = #{record.qr,jdbcType=VARCHAR},
+      menu_config = #{record.menuConfig,jdbcType=VARCHAR},
+      wait_access = #{record.waitAccess,jdbcType=BIT},
+      type = #{record.type,jdbcType=INTEGER},
+      jsapi_ticket = #{record.jsapiTicket,jdbcType=VARCHAR},
+      jsapi_ticket_expires = #{record.jsapiTicketExpires,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.light.pojo.LgWxUser" >
+    update lg_wx_user
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="wxname != null" >
+        wxname = #{wxname,jdbcType=VARCHAR},
+      </if>
+      <if test="aeskey != null" >
+        aeskey = #{aeskey,jdbcType=VARCHAR},
+      </if>
+      <if test="encode != null" >
+        encode = #{encode,jdbcType=BIT},
+      </if>
+      <if test="appid != null" >
+        appid = #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="appsecret != null" >
+        appsecret = #{appsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wxid != null" >
+        wxid = #{wxid,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null" >
+        weixin = #{weixin,jdbcType=CHAR},
+      </if>
+      <if test="headerpic != null" >
+        headerpic = #{headerpic,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="wToken != null" >
+        w_token = #{wToken,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=INTEGER},
+      </if>
+      <if test="authorizerAccessToken != null" >
+        authorizer_access_token = #{authorizerAccessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizerRefreshToken != null" >
+        authorizer_refresh_token = #{authorizerRefreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizerExpires != null" >
+        authorizer_expires = #{authorizerExpires,jdbcType=INTEGER},
+      </if>
+      <if test="webAccessToken != null" >
+        web_access_token = #{webAccessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="webRefreshToken != null" >
+        web_refresh_token = #{webRefreshToken,jdbcType=VARCHAR},
+      </if>
+      <if test="webExpires != null" >
+        web_expires = #{webExpires,jdbcType=INTEGER},
+      </if>
+      <if test="qr != null" >
+        qr = #{qr,jdbcType=VARCHAR},
+      </if>
+      <if test="menuConfig != null" >
+        menu_config = #{menuConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="waitAccess != null" >
+        wait_access = #{waitAccess,jdbcType=BIT},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="jsapiTicket != null" >
+        jsapi_ticket = #{jsapiTicket,jdbcType=VARCHAR},
+      </if>
+      <if test="jsapiTicketExpires != null" >
+        jsapi_ticket_expires = #{jsapiTicketExpires,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.light.pojo.LgWxUser" >
+    update lg_wx_user
+    set uid = #{uid,jdbcType=INTEGER},
+      wxname = #{wxname,jdbcType=VARCHAR},
+      aeskey = #{aeskey,jdbcType=VARCHAR},
+      encode = #{encode,jdbcType=BIT},
+      appid = #{appid,jdbcType=VARCHAR},
+      appsecret = #{appsecret,jdbcType=VARCHAR},
+      wxid = #{wxid,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=CHAR},
+      headerpic = #{headerpic,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      w_token = #{wToken,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=INTEGER},
+      updatetime = #{updatetime,jdbcType=INTEGER},
+      authorizer_access_token = #{authorizerAccessToken,jdbcType=VARCHAR},
+      authorizer_refresh_token = #{authorizerRefreshToken,jdbcType=VARCHAR},
+      authorizer_expires = #{authorizerExpires,jdbcType=INTEGER},
+      web_access_token = #{webAccessToken,jdbcType=VARCHAR},
+      web_refresh_token = #{webRefreshToken,jdbcType=VARCHAR},
+      web_expires = #{webExpires,jdbcType=INTEGER},
+      qr = #{qr,jdbcType=VARCHAR},
+      menu_config = #{menuConfig,jdbcType=VARCHAR},
+      wait_access = #{waitAccess,jdbcType=BIT},
+      type = #{type,jdbcType=INTEGER},
+      jsapi_ticket = #{jsapiTicket,jdbcType=VARCHAR},
+      jsapi_ticket_expires = #{jsapiTicketExpires,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

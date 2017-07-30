@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.LgTotalCountMapper" >
+  <resultMap id="BaseResultMap" type="com.light.pojo.LgTotalCount" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="date_no" property="dateNo" jdbcType="INTEGER" />
+    <result column="total_salary" property="totalSalary" jdbcType="INTEGER" />
+    <result column="commission" property="commission" jdbcType="INTEGER" />
+    <result column="reward" property="reward" jdbcType="INTEGER" />
+    <result column="travel_money" property="travelMoney" jdbcType="INTEGER" />
+    <result column="bonus" property="bonus" jdbcType="INTEGER" />
+    <result column="person_salary" property="personSalary" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="other_money" property="otherMoney" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, user_id, date_no, total_salary, commission, reward, travel_money, bonus, person_salary, 
+    status, other_money
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.light.pojo.LgTotalCountExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lg_total_count
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lg_total_count
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lg_total_count
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.light.pojo.LgTotalCountExample" >
+    delete from lg_total_count
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.light.pojo.LgTotalCount" >
+    insert into lg_total_count (id, user_id, date_no, 
+      total_salary, commission, reward, 
+      travel_money, bonus, person_salary, 
+      status, other_money)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{dateNo,jdbcType=INTEGER}, 
+      #{totalSalary,jdbcType=INTEGER}, #{commission,jdbcType=INTEGER}, #{reward,jdbcType=INTEGER}, 
+      #{travelMoney,jdbcType=INTEGER}, #{bonus,jdbcType=INTEGER}, #{personSalary,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{otherMoney,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.light.pojo.LgTotalCount" >
+    insert into lg_total_count
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="dateNo != null" >
+        date_no,
+      </if>
+      <if test="totalSalary != null" >
+        total_salary,
+      </if>
+      <if test="commission != null" >
+        commission,
+      </if>
+      <if test="reward != null" >
+        reward,
+      </if>
+      <if test="travelMoney != null" >
+        travel_money,
+      </if>
+      <if test="bonus != null" >
+        bonus,
+      </if>
+      <if test="personSalary != null" >
+        person_salary,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="otherMoney != null" >
+        other_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="dateNo != null" >
+        #{dateNo,jdbcType=INTEGER},
+      </if>
+      <if test="totalSalary != null" >
+        #{totalSalary,jdbcType=INTEGER},
+      </if>
+      <if test="commission != null" >
+        #{commission,jdbcType=INTEGER},
+      </if>
+      <if test="reward != null" >
+        #{reward,jdbcType=INTEGER},
+      </if>
+      <if test="travelMoney != null" >
+        #{travelMoney,jdbcType=INTEGER},
+      </if>
+      <if test="bonus != null" >
+        #{bonus,jdbcType=INTEGER},
+      </if>
+      <if test="personSalary != null" >
+        #{personSalary,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="otherMoney != null" >
+        #{otherMoney,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.light.pojo.LgTotalCountExample" resultType="java.lang.Integer" >
+    select count(*) from lg_total_count
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update lg_total_count
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.dateNo != null" >
+        date_no = #{record.dateNo,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalSalary != null" >
+        total_salary = #{record.totalSalary,jdbcType=INTEGER},
+      </if>
+      <if test="record.commission != null" >
+        commission = #{record.commission,jdbcType=INTEGER},
+      </if>
+      <if test="record.reward != null" >
+        reward = #{record.reward,jdbcType=INTEGER},
+      </if>
+      <if test="record.travelMoney != null" >
+        travel_money = #{record.travelMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.bonus != null" >
+        bonus = #{record.bonus,jdbcType=INTEGER},
+      </if>
+      <if test="record.personSalary != null" >
+        person_salary = #{record.personSalary,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.otherMoney != null" >
+        other_money = #{record.otherMoney,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update lg_total_count
+    set id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      date_no = #{record.dateNo,jdbcType=INTEGER},
+      total_salary = #{record.totalSalary,jdbcType=INTEGER},
+      commission = #{record.commission,jdbcType=INTEGER},
+      reward = #{record.reward,jdbcType=INTEGER},
+      travel_money = #{record.travelMoney,jdbcType=INTEGER},
+      bonus = #{record.bonus,jdbcType=INTEGER},
+      person_salary = #{record.personSalary,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      other_money = #{record.otherMoney,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.light.pojo.LgTotalCount" >
+    update lg_total_count
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="dateNo != null" >
+        date_no = #{dateNo,jdbcType=INTEGER},
+      </if>
+      <if test="totalSalary != null" >
+        total_salary = #{totalSalary,jdbcType=INTEGER},
+      </if>
+      <if test="commission != null" >
+        commission = #{commission,jdbcType=INTEGER},
+      </if>
+      <if test="reward != null" >
+        reward = #{reward,jdbcType=INTEGER},
+      </if>
+      <if test="travelMoney != null" >
+        travel_money = #{travelMoney,jdbcType=INTEGER},
+      </if>
+      <if test="bonus != null" >
+        bonus = #{bonus,jdbcType=INTEGER},
+      </if>
+      <if test="personSalary != null" >
+        person_salary = #{personSalary,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="otherMoney != null" >
+        other_money = #{otherMoney,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.light.pojo.LgTotalCount" >
+    update lg_total_count
+    set user_id = #{userId,jdbcType=INTEGER},
+      date_no = #{dateNo,jdbcType=INTEGER},
+      total_salary = #{totalSalary,jdbcType=INTEGER},
+      commission = #{commission,jdbcType=INTEGER},
+      reward = #{reward,jdbcType=INTEGER},
+      travel_money = #{travelMoney,jdbcType=INTEGER},
+      bonus = #{bonus,jdbcType=INTEGER},
+      person_salary = #{personSalary,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      other_money = #{otherMoney,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

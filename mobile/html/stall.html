@@ -1,0 +1,141 @@
+<link rel="stylesheet" type="text/css" href="../css/app/market.css">
+<link rel="stylesheet" type="text/css" href="../css/app/stall.css">
+<div class="stall_body">
+    <div class="com_table stallCtn t_center">
+        <div class="ad">
+            <img src="../images/n1.jpg" alt="" />
+        </div>
+        <h3>- 求租摊位 -</h3>
+        <form action="" class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="selectMarket" class="col-xs-4 control-label">市场名称</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="mid" id="mid" value="" />
+                    <input type="hidden" name="userid" id="userid" value="" />
+                    <input type="text" id="selectMarket" name="mtname" class="form-control" placeholder="点击选择市场名称" readonly="true" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mtsheng" class="col-xs-4 control-label">省份</label>
+                <div class="col-xs-8">
+                    <input type="text" name="mtsheng" id="mtsheng" class="form-control" readonly="true" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mtshi" class="col-xs-4 control-label">城市</label>
+                <div class="col-xs-8">
+                    <input type="text" name="mtshi" id="mtshi" class="form-control" readonly="true" />
+                </div>
+            </div>
+            <!--<div class="form-group">
+                        <label for="mtxian" class="col-xs-4 control-label">县区</label>
+                        <div class="col-xs-8">
+                            <input type="text" name="mtxian" id="mtxian" class="form-control" readonly="true" />
+                        </div>
+                    </div>-->
+            <div class="form-group">
+                <label for="mtaddr" class="col-xs-4 control-label">详细地址</label>
+                <div class="col-xs-8">
+                    <input type="text" name="mtaddr" id="mtaddr" class="form-control" readonly="true" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mtarea" class="col-xs-4 control-label">面积</label>
+                <div class="col-xs-8">
+                    <input type="text" name="mtarea" id="mtarea" class="form-control" readonly="true" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mtfloor" class="col-xs-4 control-label">楼层</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="floorId" id="floorId" value="" />
+                    <select name="mtfloor" id="mtfloor" class="form-control" onchange="getStallNum(this)">
+                                    <!--<option value="0">地面一层</option>
+                                    <option value="1">地面二层</option>-->
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mtpart" class="col-xs-4 control-label">摊位号</label>
+                <div class="col-xs-8 com_li" id="tanwei">
+                    <ul class="clearfix">
+                        <!--<li class="f_left tlis cur">
+                            <i class="icon-select"></i> A1
+                        </li>
+                        <li class="f_left tlis">
+                            <i class="icon-select"></i> A2
+                        </li>
+                        <li class="f_left tlis">
+                            <i class="icon-select"></i> A3
+                        </li>
+                        <li class="f_left tlis">
+                            <i class="icon-select"></i> A4
+                        </li>
+                        <li class="f_left tlis">
+                            <i class="icon-select"></i> A5
+                        </li>
+                        <li class="f_left tlis">
+                            <i class="icon-select"></i> B1
+                        </li>
+                        <li class="f_left tlis">
+                            <i class="icon-select"></i> B2
+                        </li>
+                        <li class="f_left tlis">
+                            <i class="icon-select"></i> B3
+                        </li>
+                        <li class="f_left tlis">
+                            <i class="icon-select"></i> B4
+                        </li>
+                        <li class="f_left tlis">
+                            <i class="icon-select"></i> B5
+                        </li>-->
+                    </ul>
+                    <p class="notes t_left">选好摊位后，请填写您的姓名和电话，方便我们及时联系。</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mpic" class=" col-xs-4 control-label ">市场图</label>
+                <div class="col-xs-8 ">
+                    <input type="hidden" name="imgkey" id="imgkey">
+                    <div class="showPic picGroup com_picGroup" id="showPic">
+                        <ul class="clearfix">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="mtcName" class=" col-xs-4 control-label ">联系人姓名</label>
+                <div class="col-xs-8 ">
+                    <input type="text " name="mtcName" id="mtcName" class="form-control " placeholder="请输入联系人姓名" />
+                </div>
+            </div>
+            <!--<div class="form-group ">
+                        <label for="mtsex " class=" col-xs-4 control-label ">性别</label>
+                        <div class="col-xs-8 " id="sexbox ">
+                            <ul class="clearfix ">
+                                <li class="f_left sexlis ">
+                                    <label>
+                                            <input type="radio " name="sex " id=" ">男
+                                        </label>
+                                </li>
+                                <li class="f_left sexlis ">
+                                    <label>
+                                            <input type="radio " name="sex " id=" ">女
+                                        </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>-->
+            <div class="form-group">
+                <label for="mtphone" class=" col-xs-4 control-label ">手机号码</label>
+                <div class="col-xs-8">
+                    <input type="text" name="mtphone" id="mtphone" class="form-control" placeholder="请输入联系人手机号" />
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btnAdd" id="stallApply">提交申请</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="../js/app/market.js "></script>

@@ -1,0 +1,87 @@
+.order_body {
+    background: #f2f3f7;
+}
+
+.order_body .oplist {
+    padding-top: 2px;
+}
+
+.order_body .oplist .oplis {
+    line-height: 40px;
+    font-size: 12px;
+    width: 25%;
+    text-align: center;
+    background: #fff;
+}
+
+.order_body .oplist .oplis:not(:last-child) {
+    border-right: 1px solid #f2f3f7;
+}
+
+.order_body .oplist .oplis.cur {
+    color: #86db31;
+}
+
+.order_body .orderList {
+    margin: 10px 0;
+}
+
+.orderList .olis {
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.orderList .olis p {
+    font-size: 12px;
+    color: #999;
+    line-height: 24px;
+}
+
+.orderList .olis p.ordernum {
+    font-size: 14px;
+    color: #000;
+    line-height: 28px;
+}
+
+.orderList .olis p.name {
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
+}
+
+.orderList .olis .orderinfo {
+    padding: 10px 0;
+    border-bottom: 1px solid #f2f3f7;
+}
+
+.orderList .orderinfo img {
+    max-width: 80px;
+    max-height: 80px;
+    float: left;
+}
+
+.orderList .orderinfo .info {
+    margin-left: 90px;
+}
+
+.orderList .orderOp {
+    padding-top: 10px;
+    float: right;
+}
+
+.orderList .orderOp .plis:not(:last-child) {
+    margin-right: 10px;
+}
+
+.orderList .orderOp .btn {
+    color: #fff;
+}
+
+.orderList .orderOp .btnSure {
+    background: #fda80f;
+}
+
+.orderList .orderOp .btnCancel {
+    background: #999;
+}

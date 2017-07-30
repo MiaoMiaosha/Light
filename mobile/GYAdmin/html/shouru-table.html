@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>收入表</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/fonts/fonts.css">
+    <link rel="stylesheet" type="text/css" href="../css/common/common.css">
+</head>
+
+<body>
+    <div class="com_table t_center">
+        <form action="" class="form-horizontal" role="form" id="shouruForm">
+            <div class="form-group kjshow d_none">
+                <label for="finishTime" class="col-xs-4 control-label">计入月份</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="finishTime" id="finishTime">
+                    <input type="month" name="finishTime1" id="finishTime1" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="personCommitTime" class="col-xs-4 control-label">日期</label>
+                <div class="col-xs-8">
+                    <input type="hidden" name="sid" id="sid">
+                    <input type="hidden" name="personCommitTime" id="personCommitTime">
+                    <input type="date" name="personCommitTime1" id="personCommitTime1" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="employeeId" class="col-xs-4 control-label">设计师</label>
+                <div class="col-xs-8">
+                    <select name="employeeId" id="employeeId" class="form-control">
+                                    <!--<option value="1">调用员工档案</option>
+                                    <option value="2">调用合作方档案</option>-->
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="projectId" class="col-xs-4 control-label">市场名称</label>
+                <div class="col-xs-8">
+                    <select name="projectId" id="projectId" class="form-control"></select>
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <label for="salaryType" class="col-xs-4 control-label">收入类型</label>
+                <div class="col-xs-8">
+                    <select name="salaryType" id="salaryType" class="form-control" onchange="getSalaryRemark(this)"></select>
+                </div>
+            </div>-->
+            <div class="form-group salaryOther d_none">
+                <label for="salaryOther" class="col-xs-4 control-label">收入其他备注</label>
+                <div class="col-xs-8">
+                    <textarea name="salaryOther" id="salaryOther" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="designContentType" class="col-xs-4 control-label">设计内容</label>
+                <div class="col-xs-8">
+                    <select name="designContentType" id="designContentType" class="form-control" onchange="getDesignerRemark(this)"></select>
+                </div>
+            </div>
+            <div class="form-group designModify d_none">
+                <label for="designModify" class="col-xs-4 control-label">设计修改备注</label>
+                <div class="col-xs-8">
+                    <textarea name="designModify" id="designModify" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group designOther d_none">
+                <label for="designOther" class="col-xs-4 control-label">设计其他备注</label>
+                <div class="col-xs-8">
+                    <textarea name="designOther" id="designOther" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="salaryMoney" class="col-xs-4 control-label">收入金额</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="salaryMoney" id="salaryMoney" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group check-box d_none">
+                <label for="status" class="col-xs-4 control-label">审核状态</label>
+                <div class="col-xs-8">
+                    <select name="status" id="status" class="form-control">
+                                    <option value="0">申请中</option>
+                                    <option value="1">申请成功</option>
+                                    <option value="2">拒绝申请</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="remark" class="col-xs-4 control-label">备注</label>
+                <div class="col-xs-8">
+                    <textarea name="remark" id="remark" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btnAdd changeBtn" id="addTable">确认提交</button>
+                <button type="button" class="btn btnAdd d_none" id="editTable">确认提交</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="../lib/jquery-2.1.1.min.js "></script>
+<script src="../lib/jquery-migrate-1.2.1.min.js "></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js "></script>
+<script src="../js/common.js "></script>
+<script src="../js/app/shouru_add.js "></script>
+<script>
+    $(function() {
+        checkLoginStatus();
+    })
+</script>
+
+</html>

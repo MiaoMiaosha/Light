@@ -1,0 +1,64 @@
+.userBBS_body .ubType {}
+
+.ubType .ulis {
+    width: 33.3%;
+    line-height: 40px;
+    background: #fff;
+    text-align: center;
+}
+
+.b2 {
+    border-left: 2px solid #f2f3f7;
+    border-right: 2px solid #f2f3f7;
+}
+
+.b3 {
+    border-bottom: 2px solid #f2f3f7;
+}
+
+.ubItems {
+    margin-top: 10px;
+}
+
+.ubItems .uitem {
+    background: #fff;
+    width: 95%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.ubItems .uitem:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.ubItems .uitem .ititle {
+    font-size: 12px;
+    color: #b2b2b2;
+}
+
+.ubItems .uitem .ititle p {
+    float: right;
+}
+
+.ubItems .uitem .ititle input {
+    vertical-align: sub;
+}
+
+.uitem .ubBox .ctn {
+    margin: 10px 0;
+}
+
+.uitem .ubBox .footerbtn {
+    font-size: 12px;
+    color: #b2b2b2;
+    line-height: 18px;
+}
+
+.uitem .ubBox .footerbtn span {
+    float: right;
+}
+
+.uitem .ubBox .footerbtn .comment {
+    margin-right: 10px;
+    font-size: 14px;
+}

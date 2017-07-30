@@ -1,0 +1,85 @@
+.uploadBBS_body .header-top {
+    padding-top: 2px;
+}
+
+.uploadBBS_body .header-top .hlis {
+    width: 33.3%;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    background: #fff;
+}
+
+.uploadBBS_body .header-top .hlis.cur {
+    color: #86db31;
+}
+
+.uploadBBS_body .header-top .hlis:not(:last-child) {
+    border-right: 1px solid #f2f3f7;
+}
+
+.uploadBBS_body .content-box {
+    margin: 10px;
+}
+
+.content-box .box-item {
+    background: #fff;
+    padding: 10px;
+}
+
+.content-box .box-item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.box-item .item-header {
+    font-weight: 600;
+}
+
+.box-item .item-header span {
+    float: right;
+    font-weight: 100;
+    font-size: 12px;
+}
+
+.box-item .item-header .undone {
+    color: #fe0707;
+}
+
+.box-item .item-header .isdone {
+    color: #86db31;
+}
+
+.box-item .item-body {
+    margin: 20px 0 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f2f3f7;
+}
+
+.box-item .item-body .lis {
+    width: 33.3%;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #fff;
+    font-size: 12px;
+}
+
+.box-item .item-body .lis:not(:last-child) {
+    border-right: 1px solid #fff;
+}
+
+.item-body .undone {
+    background: #86db31;
+    color: #fff;
+}
+
+.item-body .isdone {
+    background: #f2f3f7;
+    color: #000;
+}
+
+.box-item .item-footer {
+    font-size: 12px;
+    text-align: center;
+    padding: 10px 0 0;
+}

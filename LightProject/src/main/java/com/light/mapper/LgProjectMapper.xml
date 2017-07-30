@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.LgProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.light.pojo.LgProject" >
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="market_id" property="marketId" jdbcType="INTEGER" />
+    <result column="market_name" property="marketName" jdbcType="VARCHAR" />
+    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="real_contact_money" property="realContactMoney" jdbcType="INTEGER" />
+    <result column="contact_money" property="contactMoney" jdbcType="INTEGER" />
+    <result column="first_money" property="firstMoney" jdbcType="INTEGER" />
+    <result column="first_finish_time" property="firstFinishTime" jdbcType="INTEGER" />
+    <result column="second_money" property="secondMoney" jdbcType="INTEGER" />
+    <result column="second_finish_time" property="secondFinishTime" jdbcType="INTEGER" />
+    <result column="third_money" property="thirdMoney" jdbcType="INTEGER" />
+    <result column="third_finish_time" property="thirdFinishTime" jdbcType="INTEGER" />
+    <result column="four_money" property="fourMoney" jdbcType="INTEGER" />
+    <result column="four_finish_time" property="fourFinishTime" jdbcType="INTEGER" />
+    <result column="five_money" property="fiveMoney" jdbcType="INTEGER" />
+    <result column="five_finish_time" property="fiveFinishTime" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="bus_travel_type" property="busTravelType" jdbcType="INTEGER" />
+    <result column="travel_money" property="travelMoney" jdbcType="INTEGER" />
+    <result column="rebate_money" property="rebateMoney" jdbcType="INTEGER" />
+    <result column="extra_money" property="extraMoney" jdbcType="INTEGER" />
+    <result column="signing_company" property="signingCompany" jdbcType="INTEGER" />
+    <result column="province" property="province" jdbcType="INTEGER" />
+    <result column="city" property="city" jdbcType="INTEGER" />
+    <result column="district" property="district" jdbcType="INTEGER" />
+    <result column="town" property="town" jdbcType="INTEGER" />
+    <result column="market_address" property="marketAddress" jdbcType="VARCHAR" />
+    <result column="market_intro" property="marketIntro" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="process_id" property="processId" jdbcType="INTEGER" />
+    <result column="login_user_id" property="loginUserId" jdbcType="INTEGER" />
+    <result column="upload_pic" property="uploadPic" jdbcType="VARCHAR" />
+    <result column="upload_doc" property="uploadDoc" jdbcType="VARCHAR" />
+    <result column="process_str" property="processStr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pid, create_time, market_id, market_name, customer_id, customer_name, real_contact_money, 
+    contact_money, first_money, first_finish_time, second_money, second_finish_time, 
+    third_money, third_finish_time, four_money, four_finish_time, five_money, five_finish_time, 
+    remark, bus_travel_type, travel_money, rebate_money, extra_money, signing_company, 
+    province, city, district, town, market_address, market_intro, status, process_id, 
+    login_user_id, upload_pic, upload_doc, process_str
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.light.pojo.LgProjectExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lg_project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lg_project
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lg_project
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.light.pojo.LgProjectExample" >
+    delete from lg_project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.light.pojo.LgProject" >
+    insert into lg_project (pid, create_time, market_id, 
+      market_name, customer_id, customer_name, 
+      real_contact_money, contact_money, first_money, 
+      first_finish_time, second_money, second_finish_time, 
+      third_money, third_finish_time, four_money, 
+      four_finish_time, five_money, five_finish_time, 
+      remark, bus_travel_type, travel_money, 
+      rebate_money, extra_money, signing_company, 
+      province, city, district, 
+      town, market_address, market_intro, 
+      status, process_id, login_user_id, 
+      upload_pic, upload_doc, process_str
+      )
+    values (#{pid,jdbcType=INTEGER}, #{createTime,jdbcType=INTEGER}, #{marketId,jdbcType=INTEGER}, 
+      #{marketName,jdbcType=VARCHAR}, #{customerId,jdbcType=INTEGER}, #{customerName,jdbcType=VARCHAR}, 
+      #{realContactMoney,jdbcType=INTEGER}, #{contactMoney,jdbcType=INTEGER}, #{firstMoney,jdbcType=INTEGER}, 
+      #{firstFinishTime,jdbcType=INTEGER}, #{secondMoney,jdbcType=INTEGER}, #{secondFinishTime,jdbcType=INTEGER}, 
+      #{thirdMoney,jdbcType=INTEGER}, #{thirdFinishTime,jdbcType=INTEGER}, #{fourMoney,jdbcType=INTEGER}, 
+      #{fourFinishTime,jdbcType=INTEGER}, #{fiveMoney,jdbcType=INTEGER}, #{fiveFinishTime,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{busTravelType,jdbcType=INTEGER}, #{travelMoney,jdbcType=INTEGER}, 
+      #{rebateMoney,jdbcType=INTEGER}, #{extraMoney,jdbcType=INTEGER}, #{signingCompany,jdbcType=INTEGER}, 
+      #{province,jdbcType=INTEGER}, #{city,jdbcType=INTEGER}, #{district,jdbcType=INTEGER}, 
+      #{town,jdbcType=INTEGER}, #{marketAddress,jdbcType=VARCHAR}, #{marketIntro,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{processId,jdbcType=INTEGER}, #{loginUserId,jdbcType=INTEGER}, 
+      #{uploadPic,jdbcType=VARCHAR}, #{uploadDoc,jdbcType=VARCHAR}, #{processStr,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.light.pojo.LgProject" >
+    insert into lg_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="marketId != null" >
+        market_id,
+      </if>
+      <if test="marketName != null" >
+        market_name,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="customerName != null" >
+        customer_name,
+      </if>
+      <if test="realContactMoney != null" >
+        real_contact_money,
+      </if>
+      <if test="contactMoney != null" >
+        contact_money,
+      </if>
+      <if test="firstMoney != null" >
+        first_money,
+      </if>
+      <if test="firstFinishTime != null" >
+        first_finish_time,
+      </if>
+      <if test="secondMoney != null" >
+        second_money,
+      </if>
+      <if test="secondFinishTime != null" >
+        second_finish_time,
+      </if>
+      <if test="thirdMoney != null" >
+        third_money,
+      </if>
+      <if test="thirdFinishTime != null" >
+        third_finish_time,
+      </if>
+      <if test="fourMoney != null" >
+        four_money,
+      </if>
+      <if test="fourFinishTime != null" >
+        four_finish_time,
+      </if>
+      <if test="fiveMoney != null" >
+        five_money,
+      </if>
+      <if test="fiveFinishTime != null" >
+        five_finish_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="busTravelType != null" >
+        bus_travel_type,
+      </if>
+      <if test="travelMoney != null" >
+        travel_money,
+      </if>
+      <if test="rebateMoney != null" >
+        rebate_money,
+      </if>
+      <if test="extraMoney != null" >
+        extra_money,
+      </if>
+      <if test="signingCompany != null" >
+        signing_company,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="district != null" >
+        district,
+      </if>
+      <if test="town != null" >
+        town,
+      </if>
+      <if test="marketAddress != null" >
+        market_address,
+      </if>
+      <if test="marketIntro != null" >
+        market_intro,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="processId != null" >
+        process_id,
+      </if>
+      <if test="loginUserId != null" >
+        login_user_id,
+      </if>
+      <if test="uploadPic != null" >
+        upload_pic,
+      </if>
+      <if test="uploadDoc != null" >
+        upload_doc,
+      </if>
+      <if test="processStr != null" >
+        process_str,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="marketId != null" >
+        #{marketId,jdbcType=INTEGER},
+      </if>
+      <if test="marketName != null" >
+        #{marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="realContactMoney != null" >
+        #{realContactMoney,jdbcType=INTEGER},
+      </if>
+      <if test="contactMoney != null" >
+        #{contactMoney,jdbcType=INTEGER},
+      </if>
+      <if test="firstMoney != null" >
+        #{firstMoney,jdbcType=INTEGER},
+      </if>
+      <if test="firstFinishTime != null" >
+        #{firstFinishTime,jdbcType=INTEGER},
+      </if>
+      <if test="secondMoney != null" >
+        #{secondMoney,jdbcType=INTEGER},
+      </if>
+      <if test="secondFinishTime != null" >
+        #{secondFinishTime,jdbcType=INTEGER},
+      </if>
+      <if test="thirdMoney != null" >
+        #{thirdMoney,jdbcType=INTEGER},
+      </if>
+      <if test="thirdFinishTime != null" >
+        #{thirdFinishTime,jdbcType=INTEGER},
+      </if>
+      <if test="fourMoney != null" >
+        #{fourMoney,jdbcType=INTEGER},
+      </if>
+      <if test="fourFinishTime != null" >
+        #{fourFinishTime,jdbcType=INTEGER},
+      </if>
+      <if test="fiveMoney != null" >
+        #{fiveMoney,jdbcType=INTEGER},
+      </if>
+      <if test="fiveFinishTime != null" >
+        #{fiveFinishTime,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="busTravelType != null" >
+        #{busTravelType,jdbcType=INTEGER},
+      </if>
+      <if test="travelMoney != null" >
+        #{travelMoney,jdbcType=INTEGER},
+      </if>
+      <if test="rebateMoney != null" >
+        #{rebateMoney,jdbcType=INTEGER},
+      </if>
+      <if test="extraMoney != null" >
+        #{extraMoney,jdbcType=INTEGER},
+      </if>
+      <if test="signingCompany != null" >
+        #{signingCompany,jdbcType=INTEGER},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=INTEGER},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=INTEGER},
+      </if>
+      <if test="town != null" >
+        #{town,jdbcType=INTEGER},
+      </if>
+      <if test="marketAddress != null" >
+        #{marketAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="marketIntro != null" >
+        #{marketIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="processId != null" >
+        #{processId,jdbcType=INTEGER},
+      </if>
+      <if test="loginUserId != null" >
+        #{loginUserId,jdbcType=INTEGER},
+      </if>
+      <if test="uploadPic != null" >
+        #{uploadPic,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadDoc != null" >
+        #{uploadDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="processStr != null" >
+        #{processStr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.light.pojo.LgProjectExample" resultType="java.lang.Integer" >
+    select count(*) from lg_project
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update lg_project
+    <set >
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.marketId != null" >
+        market_id = #{record.marketId,jdbcType=INTEGER},
+      </if>
+      <if test="record.marketName != null" >
+        market_name = #{record.marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerId != null" >
+        customer_id = #{record.customerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.customerName != null" >
+        customer_name = #{record.customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.realContactMoney != null" >
+        real_contact_money = #{record.realContactMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.contactMoney != null" >
+        contact_money = #{record.contactMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.firstMoney != null" >
+        first_money = #{record.firstMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.firstFinishTime != null" >
+        first_finish_time = #{record.firstFinishTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.secondMoney != null" >
+        second_money = #{record.secondMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.secondFinishTime != null" >
+        second_finish_time = #{record.secondFinishTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.thirdMoney != null" >
+        third_money = #{record.thirdMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.thirdFinishTime != null" >
+        third_finish_time = #{record.thirdFinishTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.fourMoney != null" >
+        four_money = #{record.fourMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.fourFinishTime != null" >
+        four_finish_time = #{record.fourFinishTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.fiveMoney != null" >
+        five_money = #{record.fiveMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.fiveFinishTime != null" >
+        five_finish_time = #{record.fiveFinishTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.busTravelType != null" >
+        bus_travel_type = #{record.busTravelType,jdbcType=INTEGER},
+      </if>
+      <if test="record.travelMoney != null" >
+        travel_money = #{record.travelMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.rebateMoney != null" >
+        rebate_money = #{record.rebateMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.extraMoney != null" >
+        extra_money = #{record.extraMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.signingCompany != null" >
+        signing_company = #{record.signingCompany,jdbcType=INTEGER},
+      </if>
+      <if test="record.province != null" >
+        province = #{record.province,jdbcType=INTEGER},
+      </if>
+      <if test="record.city != null" >
+        city = #{record.city,jdbcType=INTEGER},
+      </if>
+      <if test="record.district != null" >
+        district = #{record.district,jdbcType=INTEGER},
+      </if>
+      <if test="record.town != null" >
+        town = #{record.town,jdbcType=INTEGER},
+      </if>
+      <if test="record.marketAddress != null" >
+        market_address = #{record.marketAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.marketIntro != null" >
+        market_intro = #{record.marketIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.processId != null" >
+        process_id = #{record.processId,jdbcType=INTEGER},
+      </if>
+      <if test="record.loginUserId != null" >
+        login_user_id = #{record.loginUserId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uploadPic != null" >
+        upload_pic = #{record.uploadPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uploadDoc != null" >
+        upload_doc = #{record.uploadDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.processStr != null" >
+        process_str = #{record.processStr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update lg_project
+    set pid = #{record.pid,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=INTEGER},
+      market_id = #{record.marketId,jdbcType=INTEGER},
+      market_name = #{record.marketName,jdbcType=VARCHAR},
+      customer_id = #{record.customerId,jdbcType=INTEGER},
+      customer_name = #{record.customerName,jdbcType=VARCHAR},
+      real_contact_money = #{record.realContactMoney,jdbcType=INTEGER},
+      contact_money = #{record.contactMoney,jdbcType=INTEGER},
+      first_money = #{record.firstMoney,jdbcType=INTEGER},
+      first_finish_time = #{record.firstFinishTime,jdbcType=INTEGER},
+      second_money = #{record.secondMoney,jdbcType=INTEGER},
+      second_finish_time = #{record.secondFinishTime,jdbcType=INTEGER},
+      third_money = #{record.thirdMoney,jdbcType=INTEGER},
+      third_finish_time = #{record.thirdFinishTime,jdbcType=INTEGER},
+      four_money = #{record.fourMoney,jdbcType=INTEGER},
+      four_finish_time = #{record.fourFinishTime,jdbcType=INTEGER},
+      five_money = #{record.fiveMoney,jdbcType=INTEGER},
+      five_finish_time = #{record.fiveFinishTime,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      bus_travel_type = #{record.busTravelType,jdbcType=INTEGER},
+      travel_money = #{record.travelMoney,jdbcType=INTEGER},
+      rebate_money = #{record.rebateMoney,jdbcType=INTEGER},
+      extra_money = #{record.extraMoney,jdbcType=INTEGER},
+      signing_company = #{record.signingCompany,jdbcType=INTEGER},
+      province = #{record.province,jdbcType=INTEGER},
+      city = #{record.city,jdbcType=INTEGER},
+      district = #{record.district,jdbcType=INTEGER},
+      town = #{record.town,jdbcType=INTEGER},
+      market_address = #{record.marketAddress,jdbcType=VARCHAR},
+      market_intro = #{record.marketIntro,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      process_id = #{record.processId,jdbcType=INTEGER},
+      login_user_id = #{record.loginUserId,jdbcType=INTEGER},
+      upload_pic = #{record.uploadPic,jdbcType=VARCHAR},
+      upload_doc = #{record.uploadDoc,jdbcType=VARCHAR},
+      process_str = #{record.processStr,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.light.pojo.LgProject" >
+    update lg_project
+    <set >
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="marketId != null" >
+        market_id = #{marketId,jdbcType=INTEGER},
+      </if>
+      <if test="marketName != null" >
+        market_name = #{marketName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="customerName != null" >
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="realContactMoney != null" >
+        real_contact_money = #{realContactMoney,jdbcType=INTEGER},
+      </if>
+      <if test="contactMoney != null" >
+        contact_money = #{contactMoney,jdbcType=INTEGER},
+      </if>
+      <if test="firstMoney != null" >
+        first_money = #{firstMoney,jdbcType=INTEGER},
+      </if>
+      <if test="firstFinishTime != null" >
+        first_finish_time = #{firstFinishTime,jdbcType=INTEGER},
+      </if>
+      <if test="secondMoney != null" >
+        second_money = #{secondMoney,jdbcType=INTEGER},
+      </if>
+      <if test="secondFinishTime != null" >
+        second_finish_time = #{secondFinishTime,jdbcType=INTEGER},
+      </if>
+      <if test="thirdMoney != null" >
+        third_money = #{thirdMoney,jdbcType=INTEGER},
+      </if>
+      <if test="thirdFinishTime != null" >
+        third_finish_time = #{thirdFinishTime,jdbcType=INTEGER},
+      </if>
+      <if test="fourMoney != null" >
+        four_money = #{fourMoney,jdbcType=INTEGER},
+      </if>
+      <if test="fourFinishTime != null" >
+        four_finish_time = #{fourFinishTime,jdbcType=INTEGER},
+      </if>
+      <if test="fiveMoney != null" >
+        five_money = #{fiveMoney,jdbcType=INTEGER},
+      </if>
+      <if test="fiveFinishTime != null" >
+        five_finish_time = #{fiveFinishTime,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="busTravelType != null" >
+        bus_travel_type = #{busTravelType,jdbcType=INTEGER},
+      </if>
+      <if test="travelMoney != null" >
+        travel_money = #{travelMoney,jdbcType=INTEGER},
+      </if>
+      <if test="rebateMoney != null" >
+        rebate_money = #{rebateMoney,jdbcType=INTEGER},
+      </if>
+      <if test="extraMoney != null" >
+        extra_money = #{extraMoney,jdbcType=INTEGER},
+      </if>
+      <if test="signingCompany != null" >
+        signing_company = #{signingCompany,jdbcType=INTEGER},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=INTEGER},
+      </if>
+      <if test="district != null" >
+        district = #{district,jdbcType=INTEGER},
+      </if>
+      <if test="town != null" >
+        town = #{town,jdbcType=INTEGER},
+      </if>
+      <if test="marketAddress != null" >
+        market_address = #{marketAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="marketIntro != null" >
+        market_intro = #{marketIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="processId != null" >
+        process_id = #{processId,jdbcType=INTEGER},
+      </if>
+      <if test="loginUserId != null" >
+        login_user_id = #{loginUserId,jdbcType=INTEGER},
+      </if>
+      <if test="uploadPic != null" >
+        upload_pic = #{uploadPic,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadDoc != null" >
+        upload_doc = #{uploadDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="processStr != null" >
+        process_str = #{processStr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.light.pojo.LgProject" >
+    update lg_project
+    set create_time = #{createTime,jdbcType=INTEGER},
+      market_id = #{marketId,jdbcType=INTEGER},
+      market_name = #{marketName,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      real_contact_money = #{realContactMoney,jdbcType=INTEGER},
+      contact_money = #{contactMoney,jdbcType=INTEGER},
+      first_money = #{firstMoney,jdbcType=INTEGER},
+      first_finish_time = #{firstFinishTime,jdbcType=INTEGER},
+      second_money = #{secondMoney,jdbcType=INTEGER},
+      second_finish_time = #{secondFinishTime,jdbcType=INTEGER},
+      third_money = #{thirdMoney,jdbcType=INTEGER},
+      third_finish_time = #{thirdFinishTime,jdbcType=INTEGER},
+      four_money = #{fourMoney,jdbcType=INTEGER},
+      four_finish_time = #{fourFinishTime,jdbcType=INTEGER},
+      five_money = #{fiveMoney,jdbcType=INTEGER},
+      five_finish_time = #{fiveFinishTime,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      bus_travel_type = #{busTravelType,jdbcType=INTEGER},
+      travel_money = #{travelMoney,jdbcType=INTEGER},
+      rebate_money = #{rebateMoney,jdbcType=INTEGER},
+      extra_money = #{extraMoney,jdbcType=INTEGER},
+      signing_company = #{signingCompany,jdbcType=INTEGER},
+      province = #{province,jdbcType=INTEGER},
+      city = #{city,jdbcType=INTEGER},
+      district = #{district,jdbcType=INTEGER},
+      town = #{town,jdbcType=INTEGER},
+      market_address = #{marketAddress,jdbcType=VARCHAR},
+      market_intro = #{marketIntro,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      process_id = #{processId,jdbcType=INTEGER},
+      login_user_id = #{loginUserId,jdbcType=INTEGER},
+      upload_pic = #{uploadPic,jdbcType=VARCHAR},
+      upload_doc = #{uploadDoc,jdbcType=VARCHAR},
+      process_str = #{processStr,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+</mapper>

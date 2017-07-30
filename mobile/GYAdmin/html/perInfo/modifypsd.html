@@ -1,0 +1,34 @@
+<link rel="stylesheet" type="text/css" href="../../css/app/perinfo/modifypsd.css">
+<div class="modifyPsd_body p_rel">
+    <div class="modifyBox com_table">
+        <form action="" class="form-horizontal" role="form">
+            <div class="form-group p_rel">
+                <label for="opsd" class="col-xs-4 control-label">当前密码</label>
+                <div class="col-xs-8">
+                    <input type="password" name="opsd" id="opsd" class="form-control" placeholder="请输入当前密码">
+                </div>
+            </div>
+            <div class="form-group p_rel">
+                <label for="npsd" class="col-xs-4 control-label">新的密码</label>
+                <div class="col-xs-8">
+                    <input type="password" name="npsd" id="npsd" class="form-control" placeholder="6-20位字母-数字组合">
+                </div>
+            </div>
+            <div class="form-group p_rel">
+                <label for="qnpsd" class="col-xs-4 control-label">确认密码</label>
+                <div class="col-xs-8">
+                    <input type="password" name="qnpsd" id="qnpsd" class="form-control" placeholder="再次输入新密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button" id="enter" class="btn btn-md btnAdd">确认修改</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="../../js/app/perinfo/modifypsd.js "></script>
+<script>
+    $(function() {
+        checkLoginStatus();
+    })
+</script>

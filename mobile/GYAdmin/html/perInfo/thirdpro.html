@@ -1,0 +1,87 @@
+<link rel="stylesheet" type="text/css" href="../../css/app/perinfo/thirdpro.css">
+<div class="thirdProject_body com_body">
+    <div class="tpCtn com_table t_center">
+        <form class="form-horizontal" role="form" action="">
+            <div class="form-group">
+                <label for="tpmname" class="col-xs-4 control-label">市场名称</label>
+                <div class="col-xs-8">
+                    <input type="text" name="upmname" id="upmname" class="form-control" placeholder="请输入市场名称" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tpname" class="col-xs-4 control-label">提交人</label>
+                <div class="col-xs-8">
+                    <input type="text" name="upname" id="upname" class="form-control" placeholder="请输入提交人" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tp3name" class="col-xs-4 control-label">第三方提交人</label>
+                <div class="col-xs-8">
+                    <input type="text" name="tp3name" id="tp3name" class="form-control" placeholder="第三方提交人" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tpinput" class="col-xs-4 control-label">现金收入</label>
+                <div class="col-xs-8">
+                    <input type="number" name="tpinput" id="tpinput" class="form-control" value="100000" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tpperson" class="col-xs-4 control-label">合同人</label>
+                <div class="col-xs-8">
+                    <input type="text" name="tpperson" id="tpperson" class="form-control" value="陈洪亮" />
+                </div>
+            </div>
+            <!--确定不是下拉框?-->
+            <div class="form-group">
+                <label for="tptype" class="col-xs-4 control-label">分红类型</label>
+                <div class="col-xs-8">
+                    <input type="text" name="tptype" id="tptype" class="form-control" placeholder="请输入分红类型" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tpdev" class="col-xs-4 control-label">分红</label>
+                <div class="col-xs-8">
+                    <input type="number" name="tpdev" id="tpdev" class="form-control" placeholder="" />
+                </div>
+            </div>
+            <!--确定不是下拉框?-->
+            <div class="form-group">
+                <label for="tpcltype" class="col-xs-4 control-label">差旅类型</label>
+                <div class="col-xs-8">
+                    <input type="text" name="tpcltype" id="tpcltype" class="form-control" placeholder="请输入差旅类型" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tplv" class="col-xs-4 control-label">工程阶段</label>
+                <div class="col-xs-8">
+                    <select name="tplv" id="tplv" class="form-control">
+                                    <option value="0">合同阶段</option>
+                                    <option value="1">设计阶段</option>
+                                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tpmoney" class="col-xs-4 control-label">金额</label>
+                <div class="col-xs-8">
+                    <input type="number" min="0" name="tpmoney" id="tpmoney" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tpmark" class="col-xs-4 control-label">备注</label>
+                <div class="col-xs-8">
+                    <textarea name="tpmark" id="tpmark" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="button " class="btn btnAdd ">确认提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="../../js/app/perinfo/thirdpro.js "></script>
+<script>
+    $(function() {
+        checkLoginStatus();
+    })
+</script>

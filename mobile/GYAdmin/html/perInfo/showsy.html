@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="../../css/app/perinfo/perinfo.css">
+<div class="showTime">
+    <div class="showCtn t_center">
+        <div class="dateSelect">
+            <input type="date" name="startTime" id="startTime">
+            <span>-</span>
+            <input type="date" name="endTime" id="endTime">
+            <button type="button" class="showsytime" id="showsytime">确定</button>
+        </div>
+        <div class="s_oplist">
+            <ul class="clearfix">
+                <li class="f_left oplis sylis">
+                    <div class="rmoney com_money">
+                        <p>当前时间段总和</p>
+                        <span>0</span>
+                        <p class="ys">已审:</p>
+                        <span>0</span>
+                        <p class="ws">未审:</p>
+                        <span>0</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="../../js/app/perinfo/showsy.js"></script>
+<script>
+    $(function() {
+        checkLoginStatus();
+    })
+</script>

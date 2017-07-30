@@ -1,0 +1,37 @@
+.regCtn p.notes {
+    font-size: 12px;
+    color: #989898;
+}
+
+.regCtn {
+    position: absolute;
+    width: 90%;
+    height: 280px;
+    top: 50%;
+    left: 50%;
+    margin-top: -140px;
+    margin-left: -45%;
+}
+
+.reg_body {
+    background: #f2f3f7;
+}
+
+.regCplCtn #userImg {
+    max-width: 60px;
+    border-radius: 50%;
+}
+
+.regCplCtn #userImg+span {
+    color: #989898;
+}
+
+.com_table.regCplCtn label.uimg {
+    height: 60px;
+    line-height: 60px;
+}
+
+.regCplCtn p.bdphone {
+    line-height: 32px;
+    color: #fda80f;
+}
